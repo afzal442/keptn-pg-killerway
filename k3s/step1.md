@@ -6,14 +6,14 @@ First of all, you will need to create a cluster for Keptn, and then install and 
 We'll run Keptn on a local k3s cluster.
 ## Check the cluster
 
-In order to check the cluster just run  `kubectl cluster-info && \
+In order to check the cluster just run  `kubectl cluster-info && 
 kubectl get nodes`{{execute}}
 
  ## Install and expose keptn
 
  Every Keptn release provides binaries for the Keptn CLI. These binaries are available for Linux, macOS, and Windows.
 
-`curl -sL https://get.keptn.sh | KEPTN_VERSION=0.12.0 bash && \
+`curl -sL https://get.keptn.sh | KEPTN_VERSION=0.12.0 bash && 
 helm install keptn https://github.com/keptn/keptn/releases/download/0.12.0/keptn-0.12.0.tgz -n keptn --create-namespace`{{execute}}
 
 
@@ -49,7 +49,7 @@ Run the following to expose the bridge (UI) on a loadBalancer.
 
 Get Keptn endpoint: Get the EXTERNAL-IP of the api-gateway-ngix using the command below. The Keptn API endpoint is: http://<ENDPOINT_OF_API_GATEWAY>/api
 
-`export KEPTN_ENDPOINT=$(kubectl get services -n keptn api-gateway-nginx -o=jsonpath='{.status.loadBalancer.ingress[0].ip}') && \
+`export KEPTN_ENDPOINT=$(kubectl get services -n keptn api-gateway-nginx -o=jsonpath='{.status.loadBalancer.ingress[0].ip}') && 
 echo "Keptn Available at: http://$KEPTN_ENDPOINT"`{{execute}}
 
 # Authenticate Keptn CLI
