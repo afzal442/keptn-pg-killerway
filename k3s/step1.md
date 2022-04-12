@@ -47,7 +47,11 @@ Run the following to expose the bridge (UI) on a loadBalancer.
 
 `helm upgrade keptn https://github.com/keptn/keptn/releases/download/0.12.0/keptn-0.12.0.tgz -n keptn --set=control-plane.apiGatewayNginx.type=LoadBalancer`{{execute}}
 
-Get Keptn endpoint: Get the EXTERNAL-IP of the api-gateway-ngix using the command below. The Keptn API endpoint is: http://<ENDPOINT_OF_API_GATEWAY>/api
+# Traffic Port Accessor 
+
+`kubectl port-forward --address 0.0.0.0 service/api-gateway-nginx 80:80 -n keptn`{{execute}}
+
+Get Keptn endpoint: Get the EXTERNAL-IP of the api-gateway-ngix using the command below. The Keptn API endpoint is: ```http://<ENDPOINT_OF_API_GATEWAY>/api```
 
 `export KEPTN_ENDPOINT=$(kubectl get services -n keptn api-gateway-nginx -o=jsonpath='{.status.loadBalancer.ingress[0].ip}') &&
 echo "Keptn Available at: http://$KEPTN_ENDPOINT"`{{execute}}
