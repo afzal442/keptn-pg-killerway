@@ -1,0 +1,12 @@
+apiVersion: v2
+actions:
+  - name: "Run alpine image to say hello world"
+    events:
+      - name: "sh.keptn.event.hello-world.triggered"
+    tasks:
+      - name: "Say Hello World"
+        image: "jenkins/jenkinsfile-runner:latest"
+        cmd:
+          - 'jenkinsfile-runner version'
+        args:
+          - 'Write-Host Hello, World from Jenkins!'
