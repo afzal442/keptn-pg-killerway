@@ -1,0 +1,13 @@
+apiVersion: v2
+actions:
+  - name: "Run alpine image to say hello world"
+    events:
+      - name: "sh.keptn.event.hello-world.triggered"
+    tasks:
+      - name: "Say Hello World"
+        image: "mcr.microsoft.com/powershell:latest"
+        cmd:
+          - 'pwsh'
+        args:
+          - '-Command'
+          - 'Write-Host Hello, World from PowerShell!'
