@@ -9,4 +9,4 @@ actions:
         cmd:
           - 'jenkinsfile-runner version'
         args:
-          - 'Write-Host Hello, World from Jenkins!'
+          - 'prints the Jenkinsfile-runner version'
