@@ -45,19 +45,19 @@ export GIT_TOKEN=ghp_****`
 
 Then create a project using `keptn create` command
 
-`keptn create project hello-world --shipyard=shipyard.yaml --git-user=$GIT_USER --git-remote-url=$GIT_REPO --git-token=$GIT_TOKEN && \
+`keptn create project hello-world --shipyard=shipyard.yaml --git-user=$GIT_USER --git-remote-url=$GIT_REPO --git-token=$GIT_TOKEN && 
 keptn create service demo --project=hello-world`{{execute}}
 
 Create a job config
 
-`wget https://gist.githubusercontent.com/agardnerIT/1d4eaa1425832ee9a9036de92a20b3b7/raw/c0caddfcc3025fb16b55b21ea683ed7f1be328fe/jobconfig.yaml && / 
+`wget https://gist.githubusercontent.com/agardnerIT/1d4eaa1425832ee9a9036de92a20b3b7/raw/c0caddfcc3025fb16b55b21ea683ed7f1be328fe/jobconfig.yaml &&  
 keptn add-resource --project=hello-world --service=demo --stage=dev --resource=jobconfig.yaml --resourceUri=job/config.yaml`{{execute}}
 
 ## Trigger Keptn
 
 Trigger Keptn by sending a cloudevent to the API using the keptn send event command. A precrafted cloudevent is available for you:
 
-`wget https://gist.githubusercontent.com/agardnerIT/005fc85fa86072d723a551a5708db21d/raw/d9efa71969657f7508403f82d0d214f878c4c9ca/hello.triggered.event.json
+`wget https://gist.githubusercontent.com/agardnerIT/005fc85fa86072d723a551a5708db21d/raw/d9efa71969657f7508403f82d0d214f878c4c9ca/hello.triggered.event.json && 
 keptn send event -f hello.triggered.event.json`{{execute}}
 
 Go to the Keptn bridge, into the sequence view of the hello-world project and you will be able to see the CD.
