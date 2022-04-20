@@ -1,6 +1,6 @@
 apiVersion: v2
 actions:
-  - name: "Run alpine image to say hello world"
+  - name: "Run jenkinsfile-runner image to say hello world"
     events:
       - name: "sh.keptn.event.hello-world.triggered"
     tasks:
