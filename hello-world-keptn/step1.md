@@ -49,7 +49,7 @@ Run the following to expose the bridge (UI) on a loadBalancer.
 
 # Traffic Port Accessor 
 
-`kubectl port-forward --address 0.0.0.0 service/api-gateway-nginx 80:80 -n keptn`{{execute}}
+<!-- `kubectl port-forward --address 0.0.0.0 service/api-gateway-nginx 80:80 -n keptn`{{execute}} -->
 
 Get Keptn endpoint: Get the EXTERNAL-IP of the api-gateway-ngix using the command below. The Keptn API endpoint is: `http://<ENDPOINT_OF_API_GATEWAY>/api`
 
@@ -62,6 +62,8 @@ echo "Keptn Available at: http://$KEPTN_ENDPOINT"`{{execute}}
 ## Visualization 
 
 You can also view the trigerred result in a UI
+
+[ACCESS KEPTN BRIDGE]({{TRAFFIC_HOST1_80}})
 
 ![UI View](./assets/keptn-hello-world.jpg)
 
