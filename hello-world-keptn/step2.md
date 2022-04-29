@@ -12,7 +12,7 @@ To get the username for authentication, execute:
 
 To get the password for authentication, execute:
 
-`kubectl get secret -n keptn bridge-credentials -o jsonpath="{.data.BASIC_AUTH_PASSWORD}" | base64 --decode \n`{{execute}}
+`kubectl get secret -n keptn bridge-credentials -o jsonpath="{.data.BASIC_AUTH_PASSWORD}" | base64 --decode`{{execute}}
 
 Now, you can click on Dashboard tab, next to terminal tab which will ask you to authenticate the UI.
 
