@@ -34,18 +34,20 @@ spec:
           tasks:
             - name: "hello-world"
 ```
-## Create Github stuff
+<!-- ## Create Github stuff
 - Create a GitHub PAT with full repo scope. Keptn will use this token to ensure all files and changes are synced to the upstream repo.
 - Create a blank (uninitialised) repository for Keptn to work with. Do not add any files (not even a readme)
 - Set some environment variables like below
 
 `export GIT_USER=<YourGitUsername>
 export GIT_REPO=https://github.com/<YourGitUserName>/<YourRepo>
-export GIT_TOKEN=ghp_****`
+export GIT_TOKEN=ghp_****` -->
 
-Then create a project using `keptn create` command
+## Create a project using `keptn create` command
 
-`keptn create project hello-world --shipyard=shipyard.yaml --git-user=$GIT_USER --git-remote-url=$GIT_REPO --git-token=$GIT_TOKEN && 
+<!-- --git-user=$GIT_USER --git-remote-url=$GIT_REPO --git-token=$GIT_TOKEN -->
+
+`keptn create project hello-world --shipyard=shipyard.yaml && 
 keptn create service demo --project=hello-world`{{execute}}
 
 Create a job config

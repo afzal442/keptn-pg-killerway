@@ -53,10 +53,15 @@ Run the following to expose the bridge (UI) on a loadBalancer.
 
 Get Keptn endpoint: Get the EXTERNAL-IP of the api-gateway-ngix using the command below. The Keptn API endpoint is: `http://<ENDPOINT_OF_API_GATEWAY>/api`
 
-`export KEPTN_ENDPOINT=$(kubectl get services -n keptn api-gateway-nginx -o=jsonpath='{.status.loadBalancer.ingress[0].ip}') &&
-echo "Keptn Available at: http://$KEPTN_ENDPOINT"`{{execute}}
+`export KEPTN_ENDPOINT=$(kubectl get services -n keptn api-gateway-nginx -o=jsonpath='{.status.loadBalancer.ingress[0].ip}')`{{execute}}
+
+`echo "Keptn Available at: http://$KEPTN_ENDPOINT"`{{execute}}
+
+This may take a while to get an access to the the `keptn bridge endpoint`. The expected outcome is something like `Keptn Available at: http://172.X.Y.Z`.
 
 # Authenticate Keptn CLI
+
+Please make sure you get the endpoint as above before you encounter this command.
 
 `keptn auth --endpoint=$KEPTN_ENDPOINT`{{execute}}
 ## Visualization 
