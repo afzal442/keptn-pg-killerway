@@ -13,8 +13,8 @@ kubectl get nodes`{{execute}}
 
  Every Keptn release provides binaries for the Keptn CLI. These binaries are available for Linux, macOS, and Windows.
 
-`curl -sL https://get.keptn.sh | KEPTN_VERSION=0.12.0 bash &&
-helm install keptn https://github.com/keptn/keptn/releases/download/0.12.0/keptn-0.12.0.tgz -n keptn --create-namespace`{{execute}}
+`curl -sL https://get.keptn.sh | KEPTN_VERSION=0.13.1 bash &&
+helm install keptn https://github.com/keptn/keptn/releases/download/0.13.1/keptn-0.13.1.tgz -n keptn --create-namespace`{{execute}}
 
 
 `helm install -n keptn job-executor-service https://github.com/keptn-contrib/job-executor-service/releases/download/0.1.6/job-executor-service-0.1.6.tgz`{{execute}}
@@ -45,7 +45,7 @@ You can check all the pods if running with this below command:
 
 Run the following to expose the bridge (UI) on a loadBalancer.
 
-`helm upgrade keptn https://github.com/keptn/keptn/releases/download/0.12.0/keptn-0.12.0.tgz -n keptn --set=control-plane.apiGatewayNginx.type=LoadBalancer`{{execute}}
+`helm upgrade keptn https://github.com/keptn/keptn/releases/download/0.13.1/keptn-0.13.1.tgz -n keptn --set=control-plane.apiGatewayNginx.type=LoadBalancer`{{execute}}
 
 # Traffic Port Accessor 
 
