@@ -26,8 +26,7 @@ You can also view the trigerred result in a UI
 
 ## Configure Keptn
 
-`wget https://gist.githubusercontent.com/agardnerIT/8046b8a81bab90a37aef83219a8e8078/raw/341b6d3c8b8dfab30742320402706e903e5bb4ab/shipyard.yaml`{{execute}}
-It looks like we have created shipyard deployment to the cluster
+To configure the keptn, we need to create a shipyard.yaml file 
 
 ```
 apiVersion: "spec.keptn.sh/0.2.2"
@@ -42,6 +41,14 @@ spec:
           tasks:
             - name: "hello-world"
 ```
+It looks like we have created shipyard deployment to the cluster
+
+OR
+
+Pull the `shipyard.yaml` into your repo using `wget`
+
+`wget https://gist.githubusercontent.com/agardnerIT/8046b8a81bab90a37aef83219a8e8078/raw/341b6d3c8b8dfab30742320402706e903e5bb4ab/shipyard.yaml`{{execute}}
+
 <!-- ## Create Github stuff
 - Create a GitHub PAT with full repo scope. Keptn will use this token to ensure all files and changes are synced to the upstream repo.
 - Create a blank (uninitialised) repository for Keptn to work with. Do not add any files (not even a readme)
@@ -105,10 +112,11 @@ Create a xyz.event.json and save it as hello.triggered.event.json
 OR
 
 Pull the json file `hello.triggered.event.json` into your repo using `wget`
+
 `wget https://gist.githubusercontent.com/agardnerIT/005fc85fa86072d723a551a5708db21d/raw/d9efa71969657f7508403f82d0d214f878c4c9ca/hello.triggered.event.json`{{execute}}
 
 Send the event through keptn
- 
+
 `keptn send event -f hello.triggered.event.json`{{execute}}
 
 Go to the Keptn bridge, into the sequence view of the hello-world project and you will be able to see the CD.
