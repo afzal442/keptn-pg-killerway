@@ -65,7 +65,7 @@ Create a project using `keptn create` command
 `keptn create project hello-world --shipyard=shipyard.yaml && 
 keptn create service demo --project=hello-world`{{execute}}
 
-Create a job config as below and save as jobconfig.yaml
+Create a job config yaml file as below and save it as jobconfig.yaml
 
 ```
 apiVersion: v2
@@ -87,14 +87,15 @@ Pull the `jobconfig.yaml` into your repo using `wget`
 
 `wget https://gist.githubusercontent.com/agardnerIT/1d4eaa1425832ee9a9036de92a20b3b7/raw/c0caddfcc3025fb16b55b21ea683ed7f1be328fe/jobconfig.yaml`{{execute}}
 
-### Add a resource using `keptn` CLI
+Add a resource using `keptn` CLI
+
 `keptn add-resource --project=hello-world --service=demo --stage=dev --resource=jobconfig.yaml --resourceUri=job/config.yaml`{{execute}}
 
 #### Trigger Keptn
 
 Trigger Keptn by sending a cloudevent to the API using the keptn send event command. A precrafted cloudevent is available for you:
 
-Create a xyz.event.json and save it as hello.triggered.event.json
+Create a xyz.event.json file and save it as hello.triggered.event.json
 
 ```
 {
@@ -115,7 +116,7 @@ Pull the json file `hello.triggered.event.json` into your repo using `wget`
 
 `wget https://gist.githubusercontent.com/agardnerIT/005fc85fa86072d723a551a5708db21d/raw/d9efa71969657f7508403f82d0d214f878c4c9ca/hello.triggered.event.json`{{execute}}
 
-Send the event through keptn
+## Send the event through keptn
 
 `keptn send event -f hello.triggered.event.json`{{execute}}
 
