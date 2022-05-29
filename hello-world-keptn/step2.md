@@ -58,7 +58,7 @@ Pull the `shipyard.yaml` into your repo using `wget`
 export GIT_REPO=https://github.com/<YourGitUserName>/<YourRepo>
 export GIT_TOKEN=ghp_****` -->
 
-## Create a project using `keptn create` command
+Create a project using `keptn create` command
 
 <!-- --git-user=$GIT_USER --git-remote-url=$GIT_REPO --git-token=$GIT_TOKEN -->
 
@@ -90,7 +90,7 @@ Pull the `jobconfig.yaml` into your repo using `wget`
 ### Add a resource using `keptn` CLI
 `keptn add-resource --project=hello-world --service=demo --stage=dev --resource=jobconfig.yaml --resourceUri=job/config.yaml`{{execute}}
 
-## Trigger Keptn
+#### Trigger Keptn
 
 Trigger Keptn by sending a cloudevent to the API using the keptn send event command. A precrafted cloudevent is available for you:
 
