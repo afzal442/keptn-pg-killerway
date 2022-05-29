@@ -16,6 +16,14 @@ To get the password for authentication, execute:
 
 Now, you can click on Dashboard tab, next to terminal tab which will ask you to authenticate the UI.
 
+## Visualization 
+
+You can also view the trigerred result in a UI
+
+[ACCESS KEPTN BRIDGE]({{TRAFFIC_HOST1_80}})
+
+![UI View](./assets/keptn-hello-world.jpg)
+
 ## Configure Keptn
 
 `wget https://gist.githubusercontent.com/agardnerIT/8046b8a81bab90a37aef83219a8e8078/raw/341b6d3c8b8dfab30742320402706e903e5bb4ab/shipyard.yaml`{{execute}}
@@ -52,12 +60,41 @@ keptn create service demo --project=hello-world`{{execute}}
 
 Create a job config
 
+```
+apiVersion: v2
+actions:
+  - name: "Run alpine image to say hello world"
+    events:
+      - name: "sh.keptn.event.hello-world.triggered"
+    tasks:
+      - name: "Say Hello World"
+        image: "alpine"
+        cmd:
+          - echo
+        args:
+          - 'Hello, world!'
+```
+
 `wget https://gist.githubusercontent.com/agardnerIT/1d4eaa1425832ee9a9036de92a20b3b7/raw/c0caddfcc3025fb16b55b21ea683ed7f1be328fe/jobconfig.yaml &&  
 keptn add-resource --project=hello-world --service=demo --stage=dev --resource=jobconfig.yaml --resourceUri=job/config.yaml`{{execute}}
 
 ## Trigger Keptn
 
 Trigger Keptn by sending a cloudevent to the API using the keptn send event command. A precrafted cloudevent is available for you:
+
+```
+{
+  "specversion": "1.0",
+  "type": "sh.keptn.event.dev.hello.triggered",
+  "source": "hello-world demo",
+  "datacontenttype": "application/json",
+  "data": {
+    "project": "hello-world",
+    "service": "demo",
+    "stage": "dev"
+  }
+}
+```
 
 `wget https://gist.githubusercontent.com/agardnerIT/005fc85fa86072d723a551a5708db21d/raw/d9efa71969657f7508403f82d0d214f878c4c9ca/hello.triggered.event.json && 
 keptn send event -f hello.triggered.event.json`{{execute}}

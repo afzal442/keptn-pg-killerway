@@ -64,11 +64,3 @@ This may take a while to get an access to the the `keptn bridge endpoint`. The e
 Please make sure you get the endpoint as above before you encounter this command.
 
 `keptn auth --endpoint=$KEPTN_ENDPOINT`{{execute}}
-## Visualization 
-
-You can also view the trigerred result in a UI
-
-[ACCESS KEPTN BRIDGE]({{TRAFFIC_HOST1_80}})
-
-![UI View](./assets/keptn-hello-world.jpg)
-
