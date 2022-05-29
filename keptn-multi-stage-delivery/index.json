@@ -1,6 +1,6 @@
 {
 
-  "title": "Keptn Hello World",
+  "title": "Keptn Multi Stage Delivery",
   "description": "Keptn orchestrates & evaluates remediation-actions such as scaling up, toggling feature flags or custom scripts.",
   "difficulty": "Beginner",
   "time": "10",
