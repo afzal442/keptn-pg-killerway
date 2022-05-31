@@ -44,13 +44,18 @@ You can check all the pods if running with this below command:
 
 # Configure Istio
 
-We are using Istio for traffic routing and as an ingress to our cluster. To make the setup experience as smooth as possible we have provided some scripts for your convenience. If you want to run the Istio configuration yourself step by step, please take a look at the (Keptn documentation)[https://keptn.sh/docs/0.14.x/operate/install/#option-3-expose-keptn-via-an-ingress].
+We are using Istio for traffic routing and as an ingress to our cluster. To make the setup experience as smooth as possible we have provided some scripts for your convenience. If you want to run the Istio configuration yourself step by step, please take a look at the [Keptn documentation](https://keptn.sh/docs/0.14.x/operate/install/#option-3-expose-keptn-via-an-ingress).
+
+Download the configuration bash script and run the configuration script to automatically create your Ingress resources
+
+`curl -o configure-istio.sh https://raw.githubusercontent.com/keptn/examples/0.11.0/istio-configuration/configure-istio.sh && 
+chmod +x configure-istio.sh && ./configure-istio.sh`{{execute}}
 
 
 
 # Expose Keptn via an Ingress:
 
-Run the following to expose the bridge (UI) on a ngnix api-gateway.
+Run the following to expose the bridge (UI) using ngnix api-gateway.
 
 `kubectl -n keptn get ingress api-keptn-ingress
 `{{execute}}
@@ -61,7 +66,7 @@ Run the following to expose the bridge (UI) on a ngnix api-gateway.
 
 Get Keptn endpoint: Get the EXTERNAL-IP of the api-gateway-ngix using the command below. The Keptn API endpoint is: `http://<ENDPOINT_OF_API_GATEWAY>/api`
 
-`export KEPTN_ENDPOINT=$(kubectl get services -n keptn api-gateway-nginx -o=jsonpath='{.status.loadBalancer.ingress[0].ip}')`{{execute}}
+`export KEPTN_ENDPOINT=$(kubectl -n keptn get ingress api-keptn-ingress -ojsonpath='{.spec.rules[0].host}')`{{execute}}
 
 `echo "Keptn Available at: http://$KEPTN_ENDPOINT"`{{execute}}
 
