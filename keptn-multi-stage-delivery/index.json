@@ -1,8 +1,8 @@
 {
 
   "title": "Keptn Multi Stage Delivery",
-  "description": "Keptn orchestrates & evaluates remediation-actions such as scaling up, toggling feature flags or custom scripts.",
-  "difficulty": "Beginner",
+  "description": "Keptn uses a declarative approach to build scalable automation for delivery and operations which can be scaled to a large number of services.",
+  "difficulty": "Medium",
   "time": "10",
   "details": {
     "steps": [

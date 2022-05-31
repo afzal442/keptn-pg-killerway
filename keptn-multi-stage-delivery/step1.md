@@ -1,6 +1,6 @@
 Keptn uses a declarative approach to build scalable automation for delivery and operations which can be scaled to a large number of services.
 
-This Katacoda scenario comes pre installed with a single node K3s cluster and helm3 installed. 
+This Killercoda scenario comes pre installed with helm3, a single node K3s cluster and Istio installed. 
 
 First of all, you will need to create a cluster for Keptn, and then install and configure Keptn itself.
 We'll run Keptn on a local k3s cluster.
@@ -42,11 +42,18 @@ job-executor-service-*       2/2     Running
 You can check all the pods if running with this below command:
 `watch kubectl get pods -n keptn`{{execute}}
 
-# Expose Keptn:
+# Configure Istio
 
-Run the following to expose the bridge (UI) on a loadBalancer.
+We are using Istio for traffic routing and as an ingress to our cluster. To make the setup experience as smooth as possible we have provided some scripts for your convenience. If you want to run the Istio configuration yourself step by step, please take a look at the (Keptn documentation)[https://keptn.sh/docs/0.14.x/operate/install/#option-3-expose-keptn-via-an-ingress].
 
-`helm upgrade keptn https://github.com/keptn/keptn/releases/download/0.13.1/keptn-0.13.1.tgz -n keptn --set=control-plane.apiGatewayNginx.type=LoadBalancer`{{execute}}
+
+
+# Expose Keptn via an Ingress:
+
+Run the following to expose the bridge (UI) on a ngnix api-gateway.
+
+`kubectl -n keptn get ingress api-keptn-ingress
+`{{execute}}
 
 # Traffic Port Accessor 
 
