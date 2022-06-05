@@ -18,8 +18,6 @@ kubectl get nodes`{{execute}}
 keptn install --endpoint-service-type=ClusterIP --use-case=continuous-delivery`{{execute}}
 
 
-`helm install -n keptn job-executor-service https://github.com/keptn-contrib/job-executor-service/releases/download/0.1.6/job-executor-service-0.1.6.tgz`{{execute}}
-
 Once you have all pods running on the cluster as below, you can go ahead and execute the next command:
 ```
 NAME                         READY   STATUS
@@ -51,6 +49,7 @@ Download the configuration bash script and run the configuration script to autom
 `curl -o configure-istio.sh https://raw.githubusercontent.com/keptn/examples/0.11.0/istio-configuration/configure-istio.sh && 
 chmod +x configure-istio.sh && ./configure-istio.sh`{{execute}}
 
+Finally, the script restarts the helm-service pod of Keptn to fetch this new configuration.
 
 
 # Expose Keptn via an Ingress:
