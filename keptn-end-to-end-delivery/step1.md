@@ -14,8 +14,8 @@ kubectl get nodes`{{execute}}
  Every Keptn release provides binaries for the Keptn CLI. These binaries are available for Linux, macOS, and Windows.
  To install the latest release of Keptn with full quality gate + continuous delivery capabilities in your Kubernetes cluster, execute the keptn install command.
 
-`curl -sL https://get.keptn.sh | KEPTN_VERSION=0.14.1 bash &&
-keptn install --endpoint-service-type=ClusterIP --use-case=continuous-delivery`{{execute}}
+`curl -sL https://get.keptn.sh | KEPTN_VERSION=0.15.1 bash &&
+helm install keptn https://github.com/keptn/keptn/releases/download/0.15.1/keptn-0.15.1.tgz -n keptn --create-namespace`{{execute}}
 
 
 Once you have all pods running on the cluster as below, you can go ahead and execute the next command:
@@ -40,24 +40,25 @@ job-executor-service-*       2/2     Running
 You can check all the pods if running with this below command:
 `watch kubectl get pods -n keptn`{{execute}}
 
-# Configure Istio
+# Install Job Executor Service 0.2.0:
 
-We are using Istio for traffic routing and as an ingress to our cluster. To make the setup experience as smooth as possible we have provided some scripts for your convenience. If you want to run the Istio configuration yourself step by step, please take a look at the [Keptn documentation](https://keptn.sh/docs/0.14.x/operate/install/#option-3-expose-keptn-via-an-ingress).
+It allows you to run customizable tasks with Keptn as Kubernetes Jobs
 
-Download the configuration bash script and run the configuration script to automatically create your Ingress resources
+`KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 -d)`{{execute}}
 
-`curl -o configure-istio.sh https://raw.githubusercontent.com/keptn/examples/0.11.0/istio-configuration/configure-istio.sh && 
-chmod +x configure-istio.sh && ./configure-istio.sh`{{execute}}
-
-Finally, the script restarts the helm-service pod of Keptn to fetch this new configuration.
-
+`helm install \
+--namespace keptn-jes --create-namespace \
+--wait --timeout=10m \
+--set=remoteControlPlane.api.hostname=api-gateway-nginx.keptn \
+--set=remoteControlPlane.api.token=$KEPTN_API_TOKEN \
+--set=remoteControlPlane.topicSubscription="sh.keptn.event.hello-world.triggered" \
+job-executor-service https://github.com/keptn-contrib/job-executor-service/releases/download/$JOB_EXECUTOR_SERVICE_VERSION/job-executor-service-$JOB_EXECUTOR_SERVICE_VERSION.tgz`{{execute}}
 
 # Expose Keptn via an Ingress:
 
-Run the following to expose the bridge (UI) using ngnix api-gateway.
+Run the following to expose the bridge (UI) on a loadBalancer.
 
-`kubectl -n keptn get ingress api-keptn-ingress
-`{{execute}}
+`helm upgrade keptn https://github.com/keptn/keptn/releases/download/0.13.1/keptn-0.15.1.tgz -n keptn --set=control-plane.apiGatewayNginx.type=LoadBalancer`{{execute}}
 
 # Traffic Port Accessor 
 
