@@ -24,100 +24,102 @@ You can also view the trigerred result in a UI
 
 ![UI View](./assets/keptn-hello-world.jpg)
 
-## Configure Keptn
-
-To configure the keptn, we need to create a shipyard.yaml file 
-
-```
-apiVersion: "spec.keptn.sh/0.2.2"
-kind: "Shipyard"
-metadata:
-  name: "shipyard"
-spec:
-  stages:
-    - name: "dev"
-      sequences:
-        - name: "hello"
-          tasks:
-            - name: "hello-world"
-```
-It looks like we have created shipyard deployment to the cluster
-
-OR
-
-Pull the `shipyard.yaml` into your repo using `wget`
-
-`wget https://gist.githubusercontent.com/agardnerIT/8046b8a81bab90a37aef83219a8e8078/raw/341b6d3c8b8dfab30742320402706e903e5bb4ab/shipyard.yaml`{{execute}}
-
-<!-- ## Create Github stuff
+## Create Github stuff
 - Create a GitHub PAT with full repo scope. Keptn will use this token to ensure all files and changes are synced to the upstream repo.
 - Create a blank (uninitialised) repository for Keptn to work with. Do not add any files (not even a readme)
 - Set some environment variables like below
 
 `export GIT_USER=<YourGitUsername>
 export GIT_REPO=https://github.com/<YourGitUserName>/<YourRepo>
-export GIT_TOKEN=ghp_****` -->
+export GIT_TOKEN=ghp_****`
 
-Create a project using `keptn create` command
+## Configure Keptn
 
-<!-- --git-user=$GIT_USER --git-remote-url=$GIT_REPO --git-token=$GIT_TOKEN -->
+To configure the keptn, we need to create a shipyard.yaml file 
 
-`keptn create project hello-world --shipyard=shipyard.yaml && 
-keptn create service demo --project=hello-world`{{execute}}
+`cat << EOF > shipyard.yaml
+apiVersion: "spec.keptn.sh/0.2.2"
+kind: "Shipyard"
+metadata:
+  name: "shipyard-delivery"
+spec:
+  stages:
+    - name: "qa"
+      sequences:
+        - name: "delivery"
+          tasks:
+            - name: "je-deployment"
+            - name: "je-test"
 
-Create a job config yaml file as below and save it as jobconfig.yaml
+    - name: "production"
+      sequences:
+        - name: "delivery"
+          triggeredOn:
+            - event: "qa.delivery.finished"
+          tasks:
+            - name: "je-deployment"
+EOF`{{execute}}
 
-```
-apiVersion: v2
-actions:
-  - name: "Run alpine image to say hello world"
-    events:
-      - name: "sh.keptn.event.hello-world.triggered"
-    tasks:
-      - name: "Say Hello World"
-        image: "alpine"
-        cmd:
-          - echo
-        args:
-          - 'Hello, world!'
-```
+It looks like we have created shipyard manifest to deploy to the cluster
+
 OR
 
-Pull the `jobconfig.yaml` into your repo using `wget` 
+Use the Keptn bridge to create the project visually
 
-`wget https://gist.githubusercontent.com/agardnerIT/1d4eaa1425832ee9a9036de92a20b3b7/raw/c0caddfcc3025fb16b55b21ea683ed7f1be328fe/jobconfig.yaml`{{execute}}
+Now, let's create the project as `fulltour` and service called `helloservice` using Keptn CLI
+`service` name must be called precisely that because the helm chart we use is called helloservice.tgz and the job executor runs helm install and relies on a file being available called helloservice.tgz.
 
-Add a resource using `keptn` CLI
+`keptn create project fulltour \
+--shipyard shipyard.yaml \
+--git-remote-url $GIT_REPO \
+--git-user $GIT_USER \
+--git-token $GIT_TOKEN && 
+keptn create service helloservice --project=fulltour`{{execute}}
 
-`keptn add-resource --project=hello-world --service=demo --stage=dev --resource=jobconfig.yaml --resourceUri=job/config.yaml`{{execute}}
+## Add Required Files
 
-#### Trigger Keptn
+Provide keptn with the important files it needs during the sequence execution. Your choice: Either upload directly to the upstream Git repo or use the keptn add resource commands. The result is the same. keptn add resource is just a helpful wrapper around git add / commit / push
 
-Trigger Keptn by sending a cloudevent to the API using the keptn send event command. A precrafted cloudevent is available for you:
+In the web terminal, clone Christian’s PoC repo to download all necessary files:
 
-Create a xyz.event.json file and save it as hello.triggered.event.json
+`git clone https://github.com/christian-kreuzberger-dtx/keptn-job-executor-delivery-poc.git`{{execute}}
 
-```
-{
-  "specversion": "1.0",
-  "type": "sh.keptn.event.dev.hello.triggered",
-  "source": "hello-world demo",
-  "datacontenttype": "application/json",
-  "data": {
-    "project": "hello-world",
-    "service": "demo",
-    "stage": "dev"
-  }
-}
-```
-OR
+Add the helm chart (this is the real application we will deploy). The --resource path is the path to files on disk whereas --resourceUri is the Git target folder. Do not change these. Notice also we’re uploading a helm chart with a name matching the keptn service: helloservice.tgz
 
-Pull the json file `hello.triggered.event.json` into your repo using `wget`
+`cd keptn-job-executor-delivery-poc`{{execute}}
+`keptn add-resource --project=fulltour --service=helloservice --all-stages --resource=./helm/helloservice.tgz --resourceUri=charts/helloservice.tgz`{{execute}}
 
-`wget https://gist.githubusercontent.com/agardnerIT/005fc85fa86072d723a551a5708db21d/raw/d9efa71969657f7508403f82d0d214f878c4c9ca/hello.triggered.event.json`{{execute}}
+Add the files that locust needs:
 
-## Send the event through keptn
+`keptn add-resource --project=fulltour --service=helloservice --stage=qa --resource=./locust/basic.py`{{execute}}
+`keptn add-resource --project=fulltour --service=helloservice --stage=qa --resource=./locust/locust.conf`{{execute}}
 
-`keptn send event -f hello.triggered.event.json`{{execute}}
+Add the job executor service config file. This tells the JES what container and commands to execute for each keptn task:
 
-Go to the Keptn bridge, into the sequence view of the hello-world project and you will be able to see the CD.
+`keptn add-resource --project=fulltour --service=helloservice --all-stages --resource=job-executor-config.yaml --resourceUri=job/config.yaml`{{execute}}
+
+## Job Executor Must Listen for Events
+
+The job executor service is currently configured to only listen and react on the sh.keptn.event.hello-world.triggered event. This was set during the initial installation.
+
+We need the JES to fire on our new task events: `sh.keptn.event.je-deployment.triggered` and `sh.keptn.event.je-test.triggered`
+
+Go to the integration page and add two new integrations for `je-deployment.triggered` and `je-test.triggered`.
+
+The job executor service subscriptions should look like this:
+
+![keptn-subs](./assets/3_subscriptions.jpg)
+
+## 🎉 Trigger Delivery
+
+You are now ready to trigger delivery of the helloservice helm chart into all stages, testing along the way with locust:
+
+You can trigger a sequence via the keptn’s API, via the bridge UI or via the keptn CLI:
+
+`keptn trigger delivery \
+--project=fulltour \
+--service=helloservice \
+--image="ghcr.io/podtato-head/podtatoserver:v0.1.1" \
+--labels=image="ghcr.io/podtato-head/podtatoserver",version="v0.1.1"
+`{{execute}}
+

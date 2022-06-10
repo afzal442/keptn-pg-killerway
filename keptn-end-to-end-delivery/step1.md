@@ -40,7 +40,7 @@ job-executor-service-*       2/2     Running
 You can check all the pods if running with this below command:
 `watch kubectl get pods -n keptn`{{execute}}
 
-# Install Job Executor Service 0.2.0:
+## Install Job Executor Service 0.2.0:
 
 It allows you to run customizable tasks with Keptn as Kubernetes Jobs
 
@@ -54,26 +54,28 @@ It allows you to run customizable tasks with Keptn as Kubernetes Jobs
 --set=remoteControlPlane.topicSubscription="sh.keptn.event.hello-world.triggered" \
 job-executor-service https://github.com/keptn-contrib/job-executor-service/releases/download/$JOB_EXECUTOR_SERVICE_VERSION/job-executor-service-$JOB_EXECUTOR_SERVICE_VERSION.tgz`{{execute}}
 
-# Expose Keptn via an Ingress:
+### Expose Keptn via an Ingress:
 
 Run the following to expose the bridge (UI) on a loadBalancer.
 
-`helm upgrade keptn https://github.com/keptn/keptn/releases/download/0.13.1/keptn-0.15.1.tgz -n keptn --set=control-plane.apiGatewayNginx.type=LoadBalancer`{{execute}}
+`helm upgrade keptn https://github.com/keptn/keptn/releases/download/0.15.1/keptn-0.15.1.tgz -n keptn --set=control-plane.apiGatewayNginx.type=LoadBalancer`{{execute}}
 
-# Traffic Port Accessor 
+### Traffic Port Accessor 
 
 <!-- `kubectl port-forward --address 0.0.0.0 service/api-gateway-nginx 80:80 -n keptn`{{execute}} -->
 
 Get Keptn endpoint: Get the EXTERNAL-IP of the api-gateway-ngix using the command below. The Keptn API endpoint is: `http://<ENDPOINT_OF_API_GATEWAY>/api`
 
-`export KEPTN_ENDPOINT=$(kubectl -n keptn get ingress api-keptn-ingress -ojsonpath='{.spec.rules[0].host}')`{{execute}}
+`export KEPTN_ENDPOINT=$(kubectl get services -n keptn api-gateway-nginx -o=jsonpath='{.status.loadBalancer.ingress[0].ip}')`{{execute}}
+
+`export KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 -d)`{{execute}}
 
 `echo "Keptn Available at: http://$KEPTN_ENDPOINT"`{{execute}}
 
 This may take a while to get an access to the the `keptn bridge endpoint`. The expected outcome is something like `Keptn Available at: http://172.X.Y.Z`.
 
-# Authenticate Keptn CLI
+### Authenticate Keptn CLI
 
 Please make sure you get the endpoint as above before you encounter this command.
 
-`keptn auth --endpoint=$KEPTN_ENDPOINT`{{execute}}
+`keptn auth --endpoint=$KEPTN_ENDPOINT --api-token=`{{execute}}
