@@ -29,9 +29,9 @@ You can also view the trigerred result in a UI
 - Create a blank (uninitialised) repository for Keptn to work with. Do not add any files (not even a readme)
 - Set some environment variables like below
 
-`export GIT_USER=<YourGitUsername>
-export GIT_REPO=https://github.com/<YourGitUserName>/<YourRepo>
-export GIT_TOKEN=ghp_****`
+`export GIT_USER=<YourGitUsername>`
+`export GIT_REPO=https://github.com/<YourGitUserName>/<YourRepo>`
+`export GIT_TOKEN=ghp_****`
 
 ## Configure Keptn
 
@@ -39,9 +39,10 @@ To configure the keptn, we need to create a shipyard.yaml file
 
 `nano shipyard.yaml`{{execute}}
 
-Add the following yaml to that file
+Copy the following `shipyard` yaml to that file and save it
 
-```apiVersion: "spec.keptn.sh/0.2.2"
+```
+apiVersion: "spec.keptn.sh/0.2.2"
 kind: "Shipyard"
 metadata:
   name: "shipyard-delivery"
@@ -83,14 +84,16 @@ In the web terminal, clone Christian’s PoC repo to download all necessary file
 
 `git clone https://github.com/christian-kreuzberger-dtx/keptn-job-executor-delivery-poc.git`{{execute}}
 
-Add the helm chart (this is the real application we will deploy). The --resource path is the path to files on disk whereas --resourceUri is the Git target folder. Do not change these. Notice also we’re uploading a helm chart with a name matching the keptn service: helloservice.tgz
+Add the helm chart (this is the real application we will deploy). The `--resource` path is the path to files on disk whereas `--resourceUri` is the Git target folder. Do not change these. Notice also we’re uploading a helm chart with a name matching the keptn service: `helloservice.tgz`
 
 `cd keptn-job-executor-delivery-poc`{{execute}}
+
 `keptn add-resource --project=fulltour --service=helloservice --all-stages --resource=./helm/helloservice.tgz --resourceUri=charts/helloservice.tgz`{{execute}}
 
 Add the files that locust needs:
 
 `keptn add-resource --project=fulltour --service=helloservice --stage=qa --resource=./locust/basic.py`{{execute}}
+
 `keptn add-resource --project=fulltour --service=helloservice --stage=qa --resource=./locust/locust.conf`{{execute}}
 
 Add the job executor service config file. This tells the JES what container and commands to execute for each keptn task:
@@ -115,10 +118,5 @@ You are now ready to trigger delivery of the helloservice helm chart into all st
 
 You can trigger a sequence via the keptn’s API, via the bridge UI or via the keptn CLI:
 
-`keptn trigger delivery \
---project=fulltour \
---service=helloservice \
---image="ghcr.io/podtato-head/podtatoserver:v0.1.1" \
---labels=image="ghcr.io/podtato-head/podtatoserver",version="v0.1.1"
-`{{execute}}
+`keptn trigger delivery --project=fulltour --service=helloservice --image="ghcr.io/podtato-head/podtatoserver:v0.1.1" --labels=image="ghcr.io/podtato-head/podtatoserver",version="v0.1.1"`{{execute}}
 
