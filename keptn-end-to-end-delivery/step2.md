@@ -37,8 +37,11 @@ export GIT_TOKEN=ghp_****`
 
 To configure the keptn, we need to create a shipyard.yaml file 
 
-`cat << EOF > shipyard.yaml
-apiVersion: "spec.keptn.sh/0.2.2"
+`nano shipyard.yaml`{{execute}}
+
+Add the following yaml to that file
+
+```apiVersion: "spec.keptn.sh/0.2.2"
 kind: "Shipyard"
 metadata:
   name: "shipyard-delivery"
@@ -58,7 +61,7 @@ spec:
             - event: "qa.delivery.finished"
           tasks:
             - name: "je-deployment"
-EOF`{{execute}}
+```
 
 It looks like we have created shipyard manifest to deploy to the cluster
 
@@ -69,11 +72,7 @@ Use the Keptn bridge to create the project visually
 Now, let's create the project as `fulltour` and service called `helloservice` using Keptn CLI
 `service` name must be called precisely that because the helm chart we use is called helloservice.tgz and the job executor runs helm install and relies on a file being available called helloservice.tgz.
 
-`keptn create project fulltour \
---shipyard shipyard.yaml \
---git-remote-url $GIT_REPO \
---git-user $GIT_USER \
---git-token $GIT_TOKEN && 
+`keptn create project fulltour --shipyard shipyard.yaml --git-remote-url $GIT_REPO --git-user $GIT_USER --git-token $GIT_TOKEN && 
 keptn create service helloservice --project=fulltour`{{execute}}
 
 ## Add Required Files
