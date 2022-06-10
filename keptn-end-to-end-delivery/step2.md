@@ -20,7 +20,7 @@ Now, you can click on Dashboard tab, next to terminal tab which will ask you to 
 
 You can also view the trigerred result in a UI
 
-[ACCESS KEPTN BRIDGE]({{TRAFFIC_HOST1_80}})
+[ACCESS KEPTN BRIDGE]({{TRAFFIC_HOST1_8080}})
 
 ![UI View](./assets/keptn-hello-world.jpg)
 
