@@ -74,4 +74,4 @@ This may take a while to get an access to the the `keptn bridge endpoint`. The e
 
 Please make sure you get the endpoint as above before you encounter this command.
 
-`keptn auth --endpoint=$KEPTN_ENDPOINT --api-token=`{{execute}}
+`keptn auth --endpoint=$KEPTN_ENDPOINT --api-token=$KEPTN_API_TOKEN`{{execute}}
