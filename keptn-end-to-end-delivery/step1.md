@@ -44,7 +44,9 @@ You can check all the pods if running with this below command:
 
 It allows you to run customizable tasks with Keptn as Kubernetes Jobs
 
-`KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 -d)`{{execute}}
+`export KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 -d)`{{execute}}
+
+`export JOB_EXECUTOR_SERVICE_VERSION=0.2.0`{{execute}}
 
 `helm install \
 --namespace keptn-jes --create-namespace \
