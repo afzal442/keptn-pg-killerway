@@ -48,13 +48,7 @@ It allows you to run customizable tasks with Keptn as Kubernetes Jobs
 
 `export JOB_EXECUTOR_SERVICE_VERSION=0.2.0`{{execute}}
 
-`helm install \
---namespace keptn-jes --create-namespace \
---wait --timeout=10m \
---set=remoteControlPlane.api.hostname=api-gateway-nginx.keptn \
---set=remoteControlPlane.api.token=$KEPTN_API_TOKEN \
---set=remoteControlPlane.topicSubscription="sh.keptn.event.hello-world.triggered" \
-job-executor-service https://github.com/keptn-contrib/job-executor-service/releases/download/$JOB_EXECUTOR_SERVICE_VERSION/job-executor-service-$JOB_EXECUTOR_SERVICE_VERSION.tgz`{{execute}}
+`helm install --namespace keptn-jes --create-namespace --timeout=10m --set=remoteControlPlane.api.hostname=api-gateway-nginx.keptn --set=remoteControlPlane.api.token=$KEPTN_API_TOKEN --set=remoteControlPlane.topicSubscription="sh.keptn.event.hello-world.triggered" job-executor-service https://github.com/keptn-contrib/job-executor-service/releases/download/$JOB_EXECUTOR_SERVICE_VERSION/job-executor-service-$JOB_EXECUTOR_SERVICE_VERSION.tgz`{{execute}}
 
 ### Expose Keptn via an Ingress:
 
