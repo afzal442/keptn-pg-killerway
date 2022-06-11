@@ -2,8 +2,9 @@ In this step an automated go / no-go decision step will be added. If, based on y
 
 If the evaluation is a `failure`, the release will be blocked.
 
-## Add Prometheus
-To monitor the deployments, we need to add a monitoring provider. This tutorial will use Prometheus. Keptn currently supports the following providers:
+Prometheus has already been installed on the cluster, running in the `monitoring` namespace.
+
+Keptn currently supports the following providers:
 
 - Prometheus
 - Dynatrace
@@ -13,16 +14,6 @@ To monitor the deployments, we need to add a monitoring provider. This tutorial 
 Keptn is unopinionated on the observability platform that provides metrics for the quality evaluations.
 
 Each observability provider will, of course, have strengths, weaknesses and slightly differing setups but overall, the big picture of what can be acheived with Keptn remains the same.
-
-Install Prometheus on the cluster:
-
-```
-kubectl create namespace monitoring
-helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-helm install prometheus prometheus-community/prometheus --namespace monitoring
-```{{exec}}
-
-Prometheus is now installed and running in the `monitoring` namespace.
 
 ## Keptn Retrieves SLIs from Prometheus
 
@@ -51,21 +42,6 @@ Add these two important files now using the following commands OR create and upl
 cd ~/keptn-job-executor-delivery-poc
 keptn add-resource --project=fulltour --service=helloservice --stage=qa --resource=prometheus/sli.yaml --resourceUri=prometheus/sli.yaml
 keptn add-resource --project=fulltour --service=helloservice --stage=qa --resource=slo.yaml --resourceUri=slo.yaml
-```{{exec}}
-
-![sli and slo files in repo](./assets/sli-slo-repo.jpg)
-
-----
-
-## Tell Keptn to Use Prometheus Service for Project
-
-Prometheus is installed, the prometheus SLI provider service is installed and the metrics and SLO file are present in the Git repo.
-
-However, we still haven't told Keptn to use Prometheus for the `helloservice` of the `fulltour` project.
-
-Do so now:
-
-```
 keptn configure monitoring prometheus --project=fulltour --service=helloservice
 ```{{exec}}
 
