@@ -20,14 +20,17 @@ Now, you can click on Dashboard tab, next to terminal tab which will ask you to 
 
 You can also view the trigerred result in a UI
 
-[ACCESS KEPTN BRIDGE]({{TRAFFIC_HOST1_8080}})
+[Access Keptns Bridge (UI)]({{TRAFFIC_HOST1_8080}})
 
 ![UI View](./assets/keptn-hello-world.jpg)
 
-## Create Github stuff
+## Create and Gather Github Details
+
+![git repo](./assets/repo-token.png)
+
 - Create a GitHub PAT with full repo scope. Keptn will use this token to ensure all files and changes are synced to the upstream repo.
 - Create a blank (uninitialised) repository for Keptn to work with. Do not add any files (not even a readme)
-- Set some environment variables like below
+- Set these details as environment variables
 
 `export GIT_USER=<YourGitUsername>`
 `export GIT_REPO=https://github.com/<YourGitUserName>/<YourRepo>`
@@ -35,13 +38,13 @@ You can also view the trigerred result in a UI
 
 ## Configure Keptn
 
-To configure the keptn, we need to create a shipyard.yaml file 
+To configure Keptn, we need to create a `shipyard.yaml` file. A shipyard file defines the Keptn environment.
 
-`nano shipyard.yaml`{{execute}}
-
-Copy the following `shipyard` yaml to that file and save it
+Run the following to create a `shipyard.yaml` file on disk:
 
 ```
+cd ~
+cat << EOF > shipyard.yaml
 apiVersion: "spec.keptn.sh/0.2.2"
 kind: "Shipyard"
 metadata:
@@ -62,25 +65,25 @@ spec:
             - event: "qa.delivery.finished"
           tasks:
             - name: "je-deployment"
+EOF
 ```
 
-It looks like we have created shipyard manifest to deploy to the cluster
+Now, create the project as `fulltour` and service called `helloservice` using Keptn CLI
+`service` name must be called precisely that because the helm chart we use is called `helloservice.tgz` and the job executor runs `helm install` and relies on a file being available called `helloservice.tgz`.
 
-OR
 
-Use the Keptn bridge to create the project visually
+```
+keptn create project fulltour --shipyard shipyard.yaml --git-remote-url $GIT_REPO --git-user $GIT_USER --git-token $GIT_TOKEN
+keptn create service helloservice --project=fulltour
+```{{exec}}
 
-Now, let's create the project as `fulltour` and service called `helloservice` using Keptn CLI
-`service` name must be called precisely that because the helm chart we use is called helloservice.tgz and the job executor runs helm install and relies on a file being available called helloservice.tgz.
-
-`keptn create project fulltour --shipyard shipyard.yaml --git-remote-url $GIT_REPO --git-user $GIT_USER --git-token $GIT_TOKEN && 
-keptn create service helloservice --project=fulltour`{{execute}}
+Note you can also achieve this via the [API]({{TRAFFIC_HOST1_8080/api}}) or the [Bridge (UI)]({{TRAFFIC_HOST1_8080/bridge}})
 
 ## Retrieve Required Files
 
 Provide keptn with the important files it needs during the sequence execution. Your choice: Either upload directly to the upstream Git repo or use the keptn add resource commands. The result is the same. keptn add resource is just a helpful wrapper around git add / commit / push
 
-In the web terminal, clone Christian’s PoC repo to download all necessary files:
+In the web terminal, download all necessary files for this tutorial:
 
 `git clone https://github.com/christian-kreuzberger-dtx/keptn-job-executor-delivery-poc.git`{{execute}}
 
