@@ -1,5 +1,3 @@
-## Automating a Go or No Go Production Decision
-
 In this step an automated go / no-go decision step will be added. If, based on your criteria, Keptn decides the artifact is a `pass`, the release will be automatically promoted to production.
 
 If the evaluation is a `failure`, the release will be blocked.
