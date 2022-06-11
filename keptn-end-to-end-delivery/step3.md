@@ -1,5 +1,3 @@
-# Add Manual Production Approval Step
-
 Add a step to the delivery sequence which enforces that a user must manually click ✅ before an artifact is promoted to production.
 
 In your Git upstream repo, modify `shipyard.yaml` on the `main` branch. Add a new task in `production` before the `je-deployment` task:
