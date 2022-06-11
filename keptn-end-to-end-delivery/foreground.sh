@@ -3,7 +3,7 @@
 # -----------------------------------------#
 K3D_VERSION=v5.3.0
 KUBECTL_VERSION=v1.22.6
-KEPTN_VERSION=0.16.0
+KEPTN_VERSION=0.15.1
 JOB_EXECUTOR_SERVICE_VERSION=0.2.0
 
 # -----------------------------------------#
