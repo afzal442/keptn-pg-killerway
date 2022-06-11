@@ -1,3 +1,12 @@
+# Authenticate Keptn CLI
+
+Much like `kubectl`, the `keptn` CLI can be used to interact with the control plane.
+
+Authenticate it now:
+```
+keptn auth --endpoint={{TRAFFIC_HOST1_8080}}/api --api-token=$(kubectl get secret keptn-api-token -n keptn -ojsonpath='{.data.keptn-api-token}' | base64 -d)
+```{{exec}}
+
 # View Keptns Bridge
 
 The Keptns bridge is the web-based interface for Keptn.
