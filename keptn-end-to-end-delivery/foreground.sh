@@ -8,14 +8,14 @@ KEPTN_VERSION=0.15.1
 JOB_EXECUTOR_SERVICE_VERSION=0.2.0
 
 # -----------------------------------------#
-#    Step 2/9: Installing GitHub CLI       #
+#    Step 1/9: Installing GitHub CLI       #
 # -----------------------------------------#
 wget -q https://github.com/cli/cli/releases/download/v${GH_CLI_VERSION}/gh_${GH_CLI_VERSION}_linux_amd64.deb
 chmod +x gh_${GH_CLI_VERSION}_linux_amd64.deb
 dpkg -i gh_${GH_CLI_VERSION}_linux_amd64.deb
 
 # -----------------------------------------#
-#    Step 1/9: Retrieving demo files       #
+#    Step 2/9: Retrieving demo files       #
 # -----------------------------------------#
 git clone https://github.com/christian-kreuzberger-dtx/keptn-job-executor-delivery-poc.git
 
