@@ -90,6 +90,8 @@ Trigger a sequence via the Keptns API, via the bridge UI or via the keptn CLI:
 keptn trigger delivery --project=fulltour --service=helloservice --image="ghcr.io/podtato-head/podtatoserver:v0.1.1" --labels=image="ghcr.io/podtato-head/podtatoserver",version="v0.1.1"
 ```{{exec}}
 
+![deployed](./assets/deployed.png)
+
 ## Verify QA and Production Deployments
 
 When the Keptn sequence has completed, two new namespaces will exist: `fulltour-qa` and `fulltour-production`. The `podtatohead` application will be deploy in each namespace. These mimic our environments.
