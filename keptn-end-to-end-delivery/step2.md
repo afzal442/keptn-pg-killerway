@@ -76,13 +76,20 @@ Now, let's create the project as `fulltour` and service called `helloservice` us
 `keptn create project fulltour --shipyard shipyard.yaml --git-remote-url $GIT_REPO --git-user $GIT_USER --git-token $GIT_TOKEN && 
 keptn create service helloservice --project=fulltour`{{execute}}
 
-## Add Required Files
+## Retrieve Required Files
 
 Provide keptn with the important files it needs during the sequence execution. Your choice: Either upload directly to the upstream Git repo or use the keptn add resource commands. The result is the same. keptn add resource is just a helpful wrapper around git add / commit / push
 
 In the web terminal, clone Christian’s PoC repo to download all necessary files:
 
 `git clone https://github.com/christian-kreuzberger-dtx/keptn-job-executor-delivery-poc.git`{{execute}}
+
+## Provide additional permissions for Job Executor Service
+This gives the `helm deploy` task full cluster-admin access to your Kubernetes cluster. This is not recommended for production setups, but it is needed for this demo to work (e.g., `helm upgrade` needs to be able to create namespaces, secrets, …)
+
+`kubectl apply -f ~/keptn-job-executor-delivery-poc/job-executor/workloadClusterRoles.yaml`{{execute}}
+
+## Add Application Helm Chart
 
 Add the helm chart (this is the real application we will deploy). The `--resource` path is the path to files on disk whereas `--resourceUri` is the Git target folder. Do not change these. Notice also we’re uploading a helm chart with a name matching the keptn service: `helloservice.tgz`
 
