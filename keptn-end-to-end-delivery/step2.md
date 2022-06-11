@@ -110,18 +110,6 @@ Add the job executor service config file. This tells the JES what container and 
 
 `keptn add-resource --project=fulltour --service=helloservice --all-stages --resource=job-executor-config.yaml --resourceUri=job/config.yaml`{{execute}}
 
-## Job Executor Must Listen for Events
-
-The job executor service is currently configured to only listen and react on the sh.keptn.event.hello-world.triggered event. This was set during the initial installation.
-
-We need the JES to fire on our new task events: `sh.keptn.event.je-deployment.triggered` and `sh.keptn.event.je-test.triggered`
-
-Go to the integration page and add two new integrations for `je-deployment.triggered` and `je-test.triggered`.
-
-The job executor service subscriptions should look like this:
-
-![keptn-subs](./assets/3_subscriptions.jpg)
-
 ## 🎉 Trigger Delivery
 
 You are now ready to trigger delivery of the helloservice helm chart into all stages, testing along the way with locust:
