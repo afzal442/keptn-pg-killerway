@@ -17,7 +17,7 @@ kubectl get nodes
 
 ```
 curl -sL https://get.keptn.sh | KEPTN_VERSION=0.16.0 bash
-helm install keptn https://github.com/keptn/keptn/releases/download/0.16.0/keptn-0.16.0.tgz -n keptn --create-namespace --set=control-plane.apiGatewayNginx.type=LoadBalancer
+helm install keptn https://github.com/keptn/keptn/releases/download/0.16.0/keptn-0.16.0.tgz -n keptn --create-namespace --set=control-plane.apiGatewayNginx.type=LoadBalancer --wait
 ```{{exec}}
 
 Note: During installation the Keptn pods [are known](https://github.com/keptn/keptn/issues/7580) to `Error` and `CrashLoopBackOff` until everything "settles down". So expect errors for the first few minutes. After a few moments everything will be in a `Running` state.
