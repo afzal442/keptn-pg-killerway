@@ -15,6 +15,11 @@ The tutorial will progress in steps:
 3. Add Prometheus to the cluster to monitor the workloads. Add SLO-based quality evaluations to ensure no bad build ever makes it to production.
 4. Add a quality evaluation in production, post rollout. If a bad deployment occurs, the evaluation will fail and remediation actions (scaling) will be actioned (using `helm` to `helm upgrade` the application).
 
-<b>Note:</b>  Please hang around until you see the text `Installation Completed 🎉. Please proceed now.` in the console.
+
+## Relax
+
+While you have been reading, we have been busy installing everything. It is still happening but it should only take a few minutes.
+
+Please wait here until you see the text `Installation Completed 🎉. Please proceed now.` in the console.
 
 ![keptn-cloud-native](./assets/overview_image.drawio.png)
