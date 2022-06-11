@@ -19,7 +19,7 @@ Install Prometheus on the cluster:
 ```
 kubectl create namespace monitoring
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-helm install prometheus prometheus-community/prometheus --namespace monitoring --wait
+helm install prometheus prometheus-community/prometheus --namespace monitoring
 ```{{exec}}
 
 Prometheus is now installed and running in the `monitoring` namespace.
@@ -31,7 +31,7 @@ Keptn needs to know how to interact with Prometheus; a Keptn SLI provider servic
 This service "knows" how to retrieve metrics from Prometheus so we need this **in addition to** Prometheus itself.
 
 ```
-helm install -n keptn prometheus-service https://github.com/keptn-contrib/prometheus-service/releases/download/0.8.0/prometheus-service-0.8.0.tgz --wait --set resources.requests.cpu=25m
+helm install -n keptn prometheus-service https://github.com/keptn-contrib/prometheus-service/releases/download/0.8.0/prometheus-service-0.8.0.tgz --set resources.requests.cpu=25m
 kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/0.8.0/deploy/role.yaml -n monitoring
 ```{{exec}}
 
@@ -85,9 +85,9 @@ Change the properties of the production `approval` task to automatically approve
 
 If the evaluation is a failure, the release will be blocked and the delivery sequence will fail (as it should because the artifact is bad).
 
-The shipyard should now look like this:
-
 ```
+cd ~/$GIT_NEW_REPO_NAME
+cat << EOF > ~/$GIT_NEW_REPO_NAME/shipyard.yaml
 apiVersion: "spec.keptn.sh/0.2.2"
 kind: "Shipyard"
 metadata:
@@ -115,7 +115,14 @@ spec:
                 pass: "automatic"
                 warning: "automatic"
             - name: "je-deployment"
-```{{copy}}
+EOF
+git remote set-url origin https://$GIT_USER:$GITHUB_TOKEN@github.com/$GIT_USER/$GIT_NEW_REPO_NAME.git
+git config --global user.email "keptn@keptn.sh"
+git config --global user.name "Keptn"
+git add -A
+git commit -m "add quality evaluation to qa"
+git push
+```{{exec}}
 
 ## 🎉 Trigger Delivery
 
