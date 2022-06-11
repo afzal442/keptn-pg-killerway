@@ -19,6 +19,8 @@ curl -sL https://get.keptn.sh | KEPTN_VERSION=0.15.1 bash
 helm install keptn https://github.com/keptn/keptn/releases/download/0.15.1/keptn-0.15.1.tgz -n keptn --create-namespace --set=control-plane.apiGatewayNginx.type=LoadBalancer
 ```{{exec}}
 
+Note: During installation the Keptn pods [are known](https://github.com/keptn/keptn/issues/7580) to `Error` and `CrashLoopBackOff` until everything "settles down". So expect errors for the first few minutes. After a few moments everything will be in a `Running` state.
+
 Once you have all pods running on the cluster as below, you can go ahead and execute the next command:
 ```
 NAME                         READY   STATUS
@@ -38,7 +40,7 @@ shipyard-controller-*        2/2     Running
 statistics-service-*         2/2     Running
 ```
 
-You can check all the pods if running with this below command:
+You can check all the pods if running with this below command (`ctrl + c` to exit):
 `watch kubectl get pods -n keptn`{{execute}}
 
 ## Install Job Executor Service
