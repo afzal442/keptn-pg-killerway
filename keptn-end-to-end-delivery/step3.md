@@ -22,6 +22,7 @@ In the Keptn `production` before the `je-deployment` task:
 ```
 
 ```
+cd ~/$GIT_NEW_REPO_NAME
 cat << EOF > ~/$GIT_NEW_REPO_NAME/shipyard.yaml
 apiVersion: "spec.keptn.sh/0.2.2"
 kind: "Shipyard"
@@ -48,6 +49,12 @@ spec:
                 warning: "manual"
             - name: "je-deployment"
 EOF
+git remote set-url origin https://$GIT_USER:$GITHUB_TOKEN@github.com/$GIT_USER/$GIT_NEW_REPO_NAME.git
+git config --global user.email "keptn@keptn.sh"
+git config --global user.name "Keptn"
+git add -A
+git commit -m "add approval step to production"
+git push
 ```{{exec}}
 
 ## Deliver Artifact
