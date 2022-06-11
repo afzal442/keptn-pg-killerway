@@ -22,8 +22,8 @@ k3d cluster create mykeptn -p "8080:80@loadbalancer" --k3s-arg "--no-deploy=trae
 # -----------------------------------------#
 #    Step 3/9: Initialising Kubernetes     #
 # -----------------------------------------#
-wget https://github.com/cli/cli/releases/download/v$GH_CLI_VERSION/gh_$GH_CLI_VERSION_linux_amd64.deb
-apt install ./gh_$GH_CLI_VERSION_linux_amd64.deb
+wget https://github.com/cli/cli/releases/download/v$GH_CLI_VERSION/gh_${GH_CLI_VERSION}_linux_amd64.deb
+apt install ./gh_${GH_CLI_VERSION}_linux_amd64.deb
 
 # ----------------------------------------#
 #      Step 4/9: Installing Kubectl       #
