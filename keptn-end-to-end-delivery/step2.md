@@ -104,6 +104,8 @@ keptn trigger delivery \
 --labels=image="ghcr.io/podtato-head/podtatoserver",version="v0.1.1"
 ```{{exec}}
 
+Locust runs for 2 minutes (configurable) each time it responds to `je-test.triggered`. Load is generated once per stage so expect the end-to-end delivery with Locust load tests to take about 5 minutes.
+
 View the delivery sequence [in the bridge]({{TRAFFIC_HOST1_8080}}/bridge/project/fulltour/sequence)
 
 ![deployed](./assets/trigger-delivery-2.jpg)
