@@ -9,4 +9,4 @@ In this tutorial we'll set up the Podtato-head demo application which will featu
 
 The full setup that we are going to deploy is sketched in the following image.
 
-![keptn-cloud-native](./assets/keptn-multi-stage.jpg)
+![keptn-cloud-native](./assets/overview_image.drawio.png)
