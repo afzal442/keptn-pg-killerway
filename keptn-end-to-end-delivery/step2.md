@@ -42,8 +42,6 @@ keptn create project fulltour --shipyard shipyard.yaml --git-remote-url $GIT_REP
 keptn create service helloservice --project=fulltour
 ```{{exec}}
 
-You can also achieve this via the [API]({{TRAFFIC_HOST1_8080}}/api) or the [Bridge (UI)]({{TRAFFIC_HOST1_8080}}/bridge)
-
 ## Add Application Helm Chart
 
 Add the helm chart (this is the real application we will deploy). The `--resource` path is the path to files on disk whereas `--resourceUri` is the Git target folder. Do not change these. Notice also we’re uploading a helm chart with a name matching the keptn service: `helloservice.tgz`
@@ -64,7 +62,7 @@ Add the job executor service config file. This tells the JES what container and 
 
 ```
 keptn add-resource --project=fulltour --service=helloservice --all-stages --resource=job-executor-config.yaml --resourceUri=job/config.yaml
-```{{execute}}
+```{{exec}}
 
 ## 🎉 Trigger Delivery
 
