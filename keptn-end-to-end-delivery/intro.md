@@ -13,6 +13,8 @@ The tutorial will progress in steps:
 1. Automated testing and releases into `qa` and `production` stages
 2. An approval step will be added to ensure a human must always click “go” before a production release
 3. Add Prometheus to the cluster to monitor the workloads. Add SLO-based quality evaluations to ensure no bad build ever makes it to production.
-4. Add a quality evaluation in production, post rollout. If a bad deployment occurs, the evaluation will fail and remediation actions (scaling) will be actioned (using `helm` to `helm upgrade` the application). 
+4. Add a quality evaluation in production, post rollout. If a bad deployment occurs, the evaluation will fail and remediation actions (scaling) will be actioned (using `helm` to `helm upgrade` the application).
+
+<b>Note:</b>  Please hang around until you see the text `Installation Completed 🎉. Please proceed now.` in the console.
 
 ![keptn-cloud-native](./assets/overview_image.drawio.png)
