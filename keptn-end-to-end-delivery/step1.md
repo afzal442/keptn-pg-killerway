@@ -63,3 +63,32 @@ export KEPTN_ENDPOINT=$(kubectl get services -n keptn api-gateway-nginx -o=jsonp
 export KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 -d)
 keptn auth --endpoint=$KEPTN_ENDPOINT --api-token=$KEPTN_API_TOKEN
 ```{{execute}}
+
+This command is also available in the Keptns Bridge if you ever forget it.
+
+`keptn get status`{{exec}} should show:
+
+```
+$ keptn status
+Starting to authenticate
+Successfully authenticated against the Keptn cluster http://172.18.0.3/api
+Bridge URL: http://172.18.0.3/bridge
+Using a file-based storage for the key because the password-store seems to be not set up.
+```
+
+The [Bridge]({{TRAFFIC_HOST1_8080}}) and [API]({{TRAFFIC_HOST1_8080}}/api) are available in Killercoda.
+
+1. Navigate to the menu icon (three lines on the top right)
+2. Select `Traffic and Ports`
+3. Click Port `8080` to access the bridge
+
+To retrieve the Keptn bridge username (defaults to `keptn`):
+
+```
+kubectl get secret -n keptn bridge-credentials -o jsonpath="{.data.BASIC_AUTH_USERNAME}" | base64 --decode{{execute}} ; echo
+```
+
+To retrieve the Keptn bridge password (randomly generated during installation):
+```
+kubectl get secret -n keptn bridge-credentials -o jsonpath="{.data.BASIC_AUTH_PASSWORD}" | base64 --decode{{execute}} ; echo
+```
