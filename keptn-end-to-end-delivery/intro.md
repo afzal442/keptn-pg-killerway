@@ -17,7 +17,7 @@ The tutorial will progress in steps:
 2. An approval step will be added to ensure a human must always click “go” before a production release
 3. Improve on the manual approval step and instead use an automated quality gate. Add Prometheus to the cluster to monitor the workloads. Add SLO-based quality evaluations to ensure no bad build ever makes it to production.
 4. Add a quality evaluation in production, post rollout.
-5. When a bad deployment occurs, the evaluation will fail and a remediation action will be taken by a remediation provider. In the demo this mean `helm` scales the deployment.
+5. When a bad deployment occurs, the evaluation will fail and a remediation action will be taken by a remediation provider. In the demo this means `helm` scales the deployment.
 
 ## While You're Waiting...
 
