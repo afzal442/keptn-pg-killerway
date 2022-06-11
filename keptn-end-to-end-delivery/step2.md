@@ -44,20 +44,6 @@ keptn create service helloservice --project=fulltour
 
 You can also achieve this via the [API]({{TRAFFIC_HOST1_8080}}/api) or the [Bridge (UI)]({{TRAFFIC_HOST1_8080}}/bridge)
 
-## Retrieve Required Files
-
-Provide keptn with the important files it needs during the sequence execution. Your choice: Either upload directly to the upstream Git repo or use the `keptn add-resource` commands. The result is the same. `keptn add-resource` is just a helpful wrapper around `git add / commit / push`
-
-In the web terminal, download all necessary files for this tutorial:
-
-`git clone https://github.com/christian-kreuzberger-dtx/keptn-job-executor-delivery-poc.git`{{execute}}
-
-## Job Executor Service: Add Additional Permissions
-
-For this tutorial, helm needs full `cluster-admin` access. This is not recommended for production setups, but it is needed for this demo to work (e.g., `helm upgrade` needs to be able to create namespaces, secrets, …)
-
-`kubectl apply -f ~/keptn-job-executor-delivery-poc/job-executor/workloadClusterRoles.yaml`{{exec}}
-
 ## Add Application Helm Chart
 
 Add the helm chart (this is the real application we will deploy). The `--resource` path is the path to files on disk whereas `--resourceUri` is the Git target folder. Do not change these. Notice also we’re uploading a helm chart with a name matching the keptn service: `helloservice.tgz`
