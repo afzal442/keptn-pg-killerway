@@ -92,9 +92,25 @@ keptn trigger delivery --project=fulltour --service=helloservice --image="ghcr.i
 
 ![deployed](./assets/trigger-delivery-2.jpg)
 
-## Verify QA and Production Deployments
+## What Happened?
 
-When the Keptn sequence has completed, two new namespaces will exist: `fulltour-qa` and `fulltour-production`. The `podtatohead` application will be deploy in each namespace. These mimic our environments.
+Run `kubectl get namespaces`{{exec}}
+
+Notice the 2 new namespaces: `fulltour-qa` and `fulltour-production`. Your app `helloservice.tgz` is deployed into each namespace thanks to the job executor service that ran `helm` (look at the `qa` and `production` branches in your repo at `helloservice/job/config.yaml`).
+
+Helm is told to deploy `$(KEPTN_STAGE).tgz` (ie. `helloservice.tgz`).
+
+```
+NAME                  STATUS
+default               Active
+kube-system           Active
+kube-public           Active
+kube-node-lease       Active 
+keptn                 Active  
+keptn-jes             Active   
+fulltour-qa           Active   2m
+fulltour-production   Active   2m
+```
 
 Validate that pods version `v0.1.1` is running in both environments.
 
@@ -102,3 +118,16 @@ Validate that pods version `v0.1.1` is running in both environments.
 kubectl -n fulltour-qa describe pod -l app=helloservice | grep Image:
 kubectl -n fulltour-production describe pod -l app=helloservice | grep Image:
 ```{{exec}}
+
+
+Also notice that during the `je-test` task, locust was executed. The `job/config.yaml` file in the Git upstream also shows how this was done.
+
+Result: Keptn orchestrated your deployment which was acheived using `helm` and `locust` to generate load.
+
+----
+
+## What's Next?
+
+Your application is being deployed into both QA and Production. This is great and indeed Keptn works with ArgoCD and Flux in the same way to ensure code is always up to date.
+
+Sometimes, a manual approval step is required before an artifact is promoted to production. This is especially important right now as we are not testing the quality of the `helloservice` artifact. We will now add this.
