@@ -29,7 +29,7 @@ echo "New Git Repo to be created: $GIT_NEW_REPO_NAME"
 echo "URL of new Git Repo: $GIT_REPO"
 ```{{exec}}
 
-## Create New Private Repository
+## Create New Repository
 
 The demo environment has the GitHub CLI. The CLI will automatically use the `GIT_TOKEN` environment variable to authenticate.
 
@@ -42,7 +42,7 @@ gh repo list
 Now create the new private repository:
 
 ```
-gh repo create --private $GIT_NEW_REPO_NAME
+gh repo create $GIT_NEW_REPO_NAME --public
 ```
 
 If it worked, you will see:
@@ -88,19 +88,34 @@ EOF
 Create the project: `fulltour` and service called `helloservice` using the Keptn CLI.
 
 The Keptn service name must be called precisely `helloservice` because the helm chart we use in this demo is called `helloservice.tgz` and the job executor runs `helm install` and relies on a file being available called `helloservice.tgz`.
-
-
+  
 ```
 keptn create project fulltour --shipyard shipyard.yaml --git-remote-url $GIT_REPO --git-user $GIT_USER --git-token $GITHUB_TOKEN
 keptn create service helloservice --project=fulltour
 ```{{exec}}
+  
+## Clone Repo
+Clone the repo locally so we can work with it:
+```
+gh repo clone $GIT_USER/$GIT_NEW_REPO_NAME
+```{{exec}}
+
+You should see:
+```
+Cloning into 'keptndemo'...
+remote: Enumerating objects: 14, done.
+remote: Counting objects: 100% (14/14), done.
+remote: Compressing objects: 100% (11/11), done.
+remote: Total 14 (delta 1), reused 13 (delta 0), pack-reused 0
+Unpacking objects: 100% (14/14), 1.38 KiB | 236.00 KiB/s, done.
+```
 
 ## Add Application Helm Chart
 
 Add the helm chart (this is the real application we will deploy). The `--resource` path is the path to files on disk whereas `--resourceUri` is the Git target folder. Do not change these. Notice also we’re uploading a helm chart with a name matching the Keptn service: `helloservice.tgz`
 
 ```
-cd keptn-job-executor-delivery-poc
+cd ~/keptn-job-executor-delivery-poc
 keptn add-resource --project=fulltour --service=helloservice --all-stages --resource=./helm/helloservice.tgz --resourceUri=charts/helloservice.tgz
 ```{{exec}}
 
@@ -136,6 +151,16 @@ Locust runs for 2 minutes (configurable) each time it responds to `je-test.trigg
 View the delivery sequence [in the bridge]({{TRAFFIC_HOST1_8080}}/bridge/project/fulltour/sequence)
 
 ![deployed](./assets/trigger-delivery-2.jpg)
+  
+## While You Wait
+
+While you are waiting for the release and load test to finish, why not pull the changes from GitHub and explore how the repository is set up.
+
+The `keptn add-resource` command is a helper which ensures files are stored on the correct branches and in the correct folders. However, it is not mandatory to use this function; you could choose to upload directly to Git if you know your way around.
+
+```
+gh repo clone $GIT_USER/$GIT_NEW_REPO_NAME
+```
 
 ## What Happened?
 
