@@ -76,7 +76,7 @@ The `approval.finished` event will not be sent back to keptn until user input ha
 
 ----
 
-## Next Steps
+## What Next?
 
 Blindly promoting artifacts to production and requiring manual approvals before each deployment are at opposite ends of the spectrum. One is dangerous, the other slows innovation. Is there a safer middle ground?
 
