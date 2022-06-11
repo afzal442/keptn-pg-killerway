@@ -77,7 +77,7 @@ keptn create project fulltour --shipyard shipyard.yaml --git-remote-url $GIT_REP
 keptn create service helloservice --project=fulltour
 ```{{exec}}
 
-Note you can also achieve this via the [API]({{TRAFFIC_HOST1_8080/api}}) or the [Bridge (UI)]({{TRAFFIC_HOST1_8080/bridge}})
+Note you can also achieve this via the [API]({{TRAFFIC_HOST1_8080}}/api) or the [Bridge (UI)]({{TRAFFIC_HOST1_8080}}/bridge)
 
 ## Retrieve Required Files
 
