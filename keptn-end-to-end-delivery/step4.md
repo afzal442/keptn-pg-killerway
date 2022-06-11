@@ -115,7 +115,7 @@ spec:
                 pass: "automatic"
                 warning: "automatic"
             - name: "je-deployment"
-```
+```{{copy}}
 
 ## 🎉 Trigger Delivery
 
