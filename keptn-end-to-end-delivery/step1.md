@@ -86,10 +86,10 @@ The [Bridge]({{TRAFFIC_HOST1_8080}}) and [API]({{TRAFFIC_HOST1_8080}}/api) are a
 To retrieve the Keptn bridge username (defaults to `keptn`):
 
 ```
-kubectl get secret -n keptn bridge-credentials -o jsonpath="{.data.BASIC_AUTH_USERNAME}" | base64 --decode{{execute}} ; echo
+kubectl get secret -n keptn bridge-credentials -o jsonpath="{.data.BASIC_AUTH_USERNAME}" | base64 --decode ; echo
 ```{{exec}}
 
 To retrieve the Keptn bridge password (randomly generated during installation):
 ```
-kubectl get secret -n keptn bridge-credentials -o jsonpath="{.data.BASIC_AUTH_PASSWORD}" | base64 --decode{{execute}} ; echo
+kubectl get secret -n keptn bridge-credentials -o jsonpath="{.data.BASIC_AUTH_PASSWORD}" | base64 --decode ; echo
 ```{{exec}}
