@@ -14,7 +14,7 @@ Retrieve the password for the Keptn's bridge (randomly generated during installa
 kubectl get secret -n keptn bridge-credentials -o jsonpath="{.data.BASIC_AUTH_PASSWORD}" | base64 --decode ; echo
 ```{{exec}}
 
-Visit [the Bridge]({{TRAFFIC_HOST1_8080}}/bridge) and login.
+Visit [the Bridge]({{TRAFFIC_HOST1_8080}}/bridge) (opens in a new tab). Login and come back here.
 
 The Bridge and API are available at any time from the Killercoda interface:
 
