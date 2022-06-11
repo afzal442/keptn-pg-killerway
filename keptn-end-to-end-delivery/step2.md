@@ -1,23 +1,3 @@
-## 🎉 Congratulations! Keptn is Installed
-
-Now you are ready to proceed with Keptn.
-
-Start by gathering some necessary Git details.
-
-## Create and Gather GitHub Details
-
-![git repo](./assets/repo-token.png)
-
-- Create a GitHub PAT with full repo scope. Keptn will use this token to ensure all files and changes are synced to the upstream repo.
-- Create a blank (uninitialised) repository for Keptn to work with. Do not add any files (not even a readme)
-- Set these details as environment variables
-
-```
-export GIT_USER=<YourGitUsername>
-export GIT_REPO=https://github.com/<YourGitUserName>/<YourRepo>
-export GIT_TOKEN=<YourGitPATToken>
-```
-
 ## Create Keptn Project
 
 A Keptn project is a high level logical container. A project contains stages (which mimic your environment eg. `dev` and `production`) and services (which mimic your microservices).
@@ -52,7 +32,7 @@ spec:
 EOF
 ```{{exec}}
 
-Now, create the project: `fulltour` and service called `helloservice` using the Keptn CLI.
+Create the project: `fulltour` and service called `helloservice` using the Keptn CLI.
 
 The Keptn service name must be called precisely `helloservice` because the helm chart we use in this demo is called `helloservice.tgz` and the job executor runs `helm install` and relies on a file being available called `helloservice.tgz`.
 
@@ -66,16 +46,17 @@ You can also achieve this via the [API]({{TRAFFIC_HOST1_8080}}/api) or the [Brid
 
 ## Retrieve Required Files
 
-Provide keptn with the important files it needs during the sequence execution. Your choice: Either upload directly to the upstream Git repo or use the keptn add resource commands. The result is the same. keptn add resource is just a helpful wrapper around git add / commit / push
+Provide keptn with the important files it needs during the sequence execution. Your choice: Either upload directly to the upstream Git repo or use the `keptn add-resource` commands. The result is the same. `keptn add-resource` is just a helpful wrapper around `git add / commit / push`
 
 In the web terminal, download all necessary files for this tutorial:
 
 `git clone https://github.com/christian-kreuzberger-dtx/keptn-job-executor-delivery-poc.git`{{execute}}
 
-## Provide additional permissions for Job Executor Service
-This gives the `helm deploy` task full cluster-admin access to your Kubernetes cluster. This is not recommended for production setups, but it is needed for this demo to work (e.g., `helm upgrade` needs to be able to create namespaces, secrets, …)
+## Job Executor Service: Add Additional Permissions
 
-`kubectl apply -f ~/keptn-job-executor-delivery-poc/job-executor/workloadClusterRoles.yaml`{{execute}}
+For this tutorial, helm needs full `cluster-admin` access. This is not recommended for production setups, but it is needed for this demo to work (e.g., `helm upgrade` needs to be able to create namespaces, secrets, …)
+
+`kubectl apply -f ~/keptn-job-executor-delivery-poc/job-executor/workloadClusterRoles.yaml`{{exec}}
 
 ## Add Application Helm Chart
 
@@ -84,13 +65,14 @@ Add the helm chart (this is the real application we will deploy). The `--resourc
 ```
 cd keptn-job-executor-delivery-poc
 keptn add-resource --project=fulltour --service=helloservice --all-stages --resource=./helm/helloservice.tgz --resourceUri=charts/helloservice.tgz
-```{{execute}}
+```{{exec}}
 
 Add the files that locust needs:
 
-`keptn add-resource --project=fulltour --service=helloservice --stage=qa --resource=./locust/basic.py`{{execute}}
-
-`keptn add-resource --project=fulltour --service=helloservice --stage=qa --resource=./locust/locust.conf`{{execute}}
+```
+keptn add-resource --project=fulltour --service=helloservice --stage=qa --resource=./locust/basic.py
+keptn add-resource --project=fulltour --service=helloservice --stage=qa --resource=./locust/locust.conf
+```{{exec}}
 
 Add the job executor service config file. This tells the JES what container and commands to execute for each keptn task:
 
@@ -100,13 +82,13 @@ keptn add-resource --project=fulltour --service=helloservice --all-stages --reso
 
 ## 🎉 Trigger Delivery
 
-You are now ready to trigger delivery of the helloservice helm chart into all stages, testing along the way with locust:
+You are now ready to trigger delivery of the `helloservice` helm chart into all stages, testing along the way with locust:
 
-You can trigger a sequence via the keptn’s API, via the bridge UI or via the keptn CLI:
+Trigger a sequence via the Keptns API, via the bridge UI or via the keptn CLI:
 
 ```
 keptn trigger delivery --project=fulltour --service=helloservice --image="ghcr.io/podtato-head/podtatoserver:v0.1.1" --labels=image="ghcr.io/podtato-head/podtatoserver",version="v0.1.1"
-```{{execute}}
+```{{exec}}
 
 ## Verify QA and Production Deployments
 
