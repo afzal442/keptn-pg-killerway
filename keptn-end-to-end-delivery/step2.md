@@ -31,7 +31,7 @@ echo "URL of new Git Repo: $GIT_REPO"
 
 ## Create New Repository
 
-The demo environment has the GitHub CLI. The CLI will automatically use the `GIT_TOKEN` environment variable to authenticate.
+The demo environment has the GitHub CLI. The CLI will automatically use the `GITHUB_TOKEN` environment variable to authenticate.
 
 Ensure the GitHub CLI works by listing your existing repositories which should show all existing repositories on your account:
 
