@@ -7,45 +7,40 @@ GH_CLI_VERSION=2.12.1
 KEPTN_VERSION=0.15.1
 JOB_EXECUTOR_SERVICE_VERSION=0.2.0
 
-apt update
-echo "temp: done. exit"
-exit
-
 # -----------------------------------------#
-#    Step 1/9: Retrieving required files   #
+#    Step 1/9: Retrieving demo files       #
 # -----------------------------------------#
 git clone https://github.com/christian-kreuzberger-dtx/keptn-job-executor-delivery-poc.git
 
 # -----------------------------------------#
-#    Step 2/9: Initialising Kubernetes     #
+#    Step 2/9: Installing GitHub CLI       #
 # -----------------------------------------#
-curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=$K3D_VERSION bash
-k3d cluster create mykeptn -p "8080:80@loadbalancer" --k3s-arg "--no-deploy=traefik@server:*"
+curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+apt update && apt install gh
 
-
 # -----------------------------------------#
-#    Step 3/9: Installing GitHub CLI       #
+#      Step 3/9: Installing Keptn CLI      #
 # -----------------------------------------#
-#wget https://github.com/cli/cli/releases/download/v$GH_CLI_VERSION/gh_${GH_CLI_VERSION}_linux_amd64.deb
-#apt install ./gh_${GH_CLI_VERSION}_linux_amd64.deb
+curl -sL https://get.keptn.sh | KEPTN_VERSION=$KEPTN_VERSION bash
 
 # ----------------------------------------#
-#      Step 4/9: Installing Kubectl       #
-# ----------------------------------------#
-curl -LO https://dl.k8s.io/release/$KUBECTL_VERSION/bin/linux/amd64/kubectl
-sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
-
-# ----------------------------------------#
-#      Step 5/9: Installing Helm          #
+#      Step 4/9: Installing Helm          #
 # ----------------------------------------#
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 && chmod 700 get_helm.sh
 ./get_helm.sh
 
-# -----------------------------------------#
-#      Step 6/9: Installing Keptn CLI      #
-# -----------------------------------------#
-curl -sL https://get.keptn.sh | KEPTN_VERSION=$KEPTN_VERSION bash
+# ----------------------------------------#
+#      Step 5/9: Installing Kubectl       #
+# ----------------------------------------#
+curl -LO https://dl.k8s.io/release/$KUBECTL_VERSION/bin/linux/amd64/kubectl
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 
+# -----------------------------------------#
+#    Step 6/9: Initialising Kubernetes     #
+# -----------------------------------------#
+curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=$K3D_VERSION bash
+k3d cluster create mykeptn -p "8080:80@loadbalancer" --k3s-arg "--no-deploy=traefik@server:*"
 
 # -------------------------------------------#
 # Step 7/9: Installing Keptn Control Plane   #
