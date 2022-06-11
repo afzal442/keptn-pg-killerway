@@ -1,12 +1,18 @@
-In this tutorial we'll set up the Podtato-head demo application which will feature different Prometheus metrics and deploy the application using multistage delivery. We will then use Keptn quality gates to evaluate the quality of the application based on SLO-driven quality gates.
+# Goal
+The goal of this tutorial is to:
 
-# What we will cover:
+- Deploy a microservice (using [helm](https://helm.sh))
+- Generate load on the deployed service (using [locust](https://locust.io))
 
-- How to create a sample project and create a sample service
-- How to setup quality gates
-- How to use Prometheus metrics in our SLIs & SLOs
-- How to prevent bad builds of your microservice to reach production
+Keptn is unopinionated about tooling. A key strength of Keptn is it allows you to bring the tooling you already use and with which you are familiar.
 
-The full setup that we are going to deploy is sketched in the following image.
+That said, we needed to pick some tools and Helm + Locust are two modern and widely used tools.
+
+The tutorial will progress in steps:
+
+1. Automated testing and releases into `qa` and `production` stages
+2. An approval step will be added to ensure a human must always click “go” before a production release
+3. Add Prometheus to the cluster to monitor the workloads. Add SLO-based quality evaluations to ensure no bad build ever makes it to production.
+4. Add a quality evaluation in production, post rollout. If a bad deployment occurs, the evaluation will fail and remediation actions (scaling) will be actioned (using `helm` to `helm upgrade` the applicaiton). 
 
 ![keptn-cloud-native](./assets/overview_image.drawio.png)
