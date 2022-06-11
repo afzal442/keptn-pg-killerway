@@ -1,6 +1,7 @@
 # -----------------------------------------#
 #        Setting Global variables          #
 # -----------------------------------------#
+DEBUG_TUTORIAL_VERSION=1
 K3D_VERSION=v5.3.0
 KUBECTL_VERSION=v1.22.6
 KEPTN_VERSION=0.16.0
@@ -36,7 +37,7 @@ curl -sL https://get.keptn.sh | KEPTN_VERSION=$KEPTN_VERSION bash
 # -------------------------------------------#
 # Step 5/6: Installing Keptn Control Plane #
 # -------------------------------------------#
-helm install keptn https://github.com/keptn/keptn/releases/download/$KEPTN_VERSION/keptn-$KEPTN_VERSION.tgz -n keptn --timeout=2m --create-namespace --set=control-plane.apiGatewayNginx.type=LoadBalancer
+helm install keptn https://github.com/keptn/keptn/releases/download/$KEPTN_VERSION/keptn-$KEPTN_VERSION.tgz -n keptn --timeout=5m --wait --create-namespace --set=control-plane.apiGatewayNginx.type=LoadBalancer
 
 # --------------------------------------------#
 # Step 6/6: Installing Job Executor Service #
