@@ -29,7 +29,7 @@ Keptn needs to know how to interact with Prometheus; a Keptn SLI provider servic
 This service "knows" how to retrieve metrics from Prometheus so we need this **in addition to** Prometheus itself.
 
 ```
-helm install -n keptn prometheus-service https://github.com/keptn-contrib/prometheus-service/releases/download/0.8.0/prometheus-service-0.8.0.tgz --wait
+helm install -n keptn prometheus-service https://github.com/keptn-contrib/prometheus-service/releases/download/0.8.0/prometheus-service-0.8.0.tgz --wait --set resources.requests.cpu=25m
 kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/0.8.0/deploy/role.yaml -n monitoring
 ```{{exec}}
 
