@@ -43,7 +43,7 @@ Now create the new private repository:
 
 ```
 gh repo create $GIT_NEW_REPO_NAME --public
-```
+```{{exec}}
 
 If it worked, you will see:
 
