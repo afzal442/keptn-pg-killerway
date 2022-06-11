@@ -35,7 +35,7 @@ spec:
                 pass: "manual"
                 warning: "manual"
             - name: "je-deployment"
-```
+```{{copy}}
 
 ## Deliver Artifact
 
