@@ -51,7 +51,7 @@ spec:
             - name: "je-deployment"
 EOF
 ```{{exec}}
-
+```
 Now, create the project: `fulltour` and service called `helloservice` using the Keptn CLI.
 
 The Keptn service name must be called precisely `helloservice` because the helm chart we use in this demo is called `helloservice.tgz` and the job executor runs `helm install` and relies on a file being available called `helloservice.tgz`.
@@ -61,7 +61,7 @@ The Keptn service name must be called precisely `helloservice` because the helm 
 keptn create project fulltour --shipyard shipyard.yaml --git-remote-url $GIT_REPO --git-user $GIT_USER --git-token $GIT_TOKEN
 keptn create service helloservice --project=fulltour
 ```{{exec}}
-
+```
 You can also achieve this via the [API]({{TRAFFIC_HOST1_8080}}/api) or the [Bridge (UI)]({{TRAFFIC_HOST1_8080}}/bridge)
 
 ## Retrieve Required Files
