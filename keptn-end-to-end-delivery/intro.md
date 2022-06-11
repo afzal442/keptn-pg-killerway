@@ -11,6 +11,8 @@ Keptn is unopinionated about tooling. A key strength of Keptn is it allows you t
 
 That said, we needed to pick some tools and Helm + Locust are two modern and widely used tools.
 
+We are using the Prometheus observability platform to provide data for our exercise. The process is the same if you use a different data source (integrations are currently available for Dynatrace and DataDog).
+
 The tutorial will progress in steps:
 
 1. Automated testing and releases into `qa` and `production` stages
