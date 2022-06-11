@@ -10,7 +10,7 @@ JOB_EXECUTOR_SERVICE_VERSION=0.2.0
 # -----------------------------------------#
 #    Step 2/9: Installing GitHub CLI       #
 # -----------------------------------------#
-wget https://github.com/cli/cli/releases/download/v${GH_CLI_VERSION}/gh_${GH_CLI_VERSION}_linux_amd64.deb
+wget -q https://github.com/cli/cli/releases/download/v${GH_CLI_VERSION}/gh_${GH_CLI_VERSION}_linux_amd64.deb
 chmod +x gh_${GH_CLI_VERSION}_linux_amd64.deb
 dpkg -i gh_${GH_CLI_VERSION}_linux_amd64.deb
 
