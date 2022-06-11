@@ -21,7 +21,7 @@ Verify the details are correctly set by printing them to the console:
 ```
 echo "Git Username: $GIT_USER"
 echo "Git Repo: $GIT_REPO"
-echo "GIT_TOKEN: $GIT_TOKEN"
+echo "Git Token: $GIT_TOKEN"
 ```{{exec}}
 
 ## Create Keptn Project
