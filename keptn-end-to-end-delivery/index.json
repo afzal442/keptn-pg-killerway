@@ -25,6 +25,10 @@
       {
         "title": "Release Validation",
         "text": "step5.md"
+      },
+      {
+        "title": "Self Healing",
+        "text": "step6.md"
       }
     ],
     "intro": {
