@@ -21,6 +21,10 @@
       {
         "title": "Automated Approvals",
         "text": "step4.md"
+      },
+      {
+        "title": "Release Validation",
+        "text": "step5.md"
       }
     ],
     "intro": {
