@@ -154,13 +154,11 @@ View the delivery sequence [in the bridge]({{TRAFFIC_HOST1_8080}}/bridge/project
   
 ## While You Wait
 
-While you are waiting for the release and load test to finish, why not pull the changes from GitHub and explore how the repository is set up.
+While you are waiting for the release and load test to finish, why not have a look at your repo in a browser on GitHub.com.
+  
+Notice Keptn has created a branch per stage. Inside those branches are folders for each Keptn service.
 
 The `keptn add-resource` command is a helper which ensures files are stored on the correct branches and in the correct folders. However, it is not mandatory to use this function; you could choose to upload directly to Git if you know your way around.
-
-```
-gh repo clone $GIT_USER/$GIT_NEW_REPO_NAME
-```
 
 ## What Happened?
 
