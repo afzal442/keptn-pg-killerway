@@ -9,14 +9,17 @@ We'll run Keptn on a local k3s cluster.
 In order to check the cluster just run  `kubectl cluster-info &&
 kubectl get nodes`{{execute}}
 
- ## Install keptn and expose the bridge (UI) on a loadBalancer
+ ## Install and Expose Keptn
 
  Every Keptn release provides binaries for the Keptn CLI. These binaries are available for Linux, macOS, and Windows.
  To install the latest release of Keptn with continuous delivery capabilities in your Kubernetes cluster, execute the keptn install command.
 
-`curl -sL https://get.keptn.sh | KEPTN_VERSION=0.15.1 bash &&
-helm install keptn https://github.com/keptn/keptn/releases/download/0.15.1/keptn-0.15.1.tgz -n keptn --create-namespace --set=control-plane.apiGatewayNginx.type=LoadBalancer`{{execute}}
+```
+curl -sL https://get.keptn.sh | KEPTN_VERSION=0.15.1 bash
+helm install keptn https://github.com/keptn/keptn/releases/download/0.15.1/keptn-0.15.1.tgz -n keptn --create-namespace --set=control-plane.apiGatewayNginx.type=LoadBalancer
+```{{exec}}
 
+Note: During installation the Keptn pods [are known](https://github.com/keptn/keptn/issues/7580) to `Error` and `CrashLoopBackOff` until everything "settles down". So expect errors for the first few minutes. After a few moments everything will be in a `Running` state.
 
 Once you have all pods running on the cluster as below, you can go ahead and execute the next command:
 ```
@@ -36,35 +39,27 @@ mongodb-datastore-*          2/2     Running
 shipyard-controller-*        2/2     Running
 statistics-service-*         2/2     Running
 ```
-You can check all the pods if running with this below command:
+
+You can check all the pods if running with this below command (`ctrl + c` to exit):
 `watch kubectl get pods -n keptn`{{execute}}
 
-## Install Job Executor Service 0.2.0:
+## Install Job Executor Service
 
 It allows you to run customizable tasks with Keptn as Kubernetes Jobs
 
-`export KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 -d)`{{execute}}
-
-`export JOB_EXECUTOR_SERVICE_VERSION=0.2.0`{{execute}}
-
-`helm install --namespace keptn-jes --create-namespace --timeout=10m --set=remoteControlPlane.api.hostname=api-gateway-nginx.keptn --set=remoteControlPlane.api.token=$KEPTN_API_TOKEN --set=remoteControlPlane.topicSubscription="sh.keptn.event.hello-world.triggered" job-executor-service https://github.com/keptn-contrib/job-executor-service/releases/download/$JOB_EXECUTOR_SERVICE_VERSION/job-executor-service-$JOB_EXECUTOR_SERVICE_VERSION.tgz`{{execute}}
-
-### Traffic Port Accessor 
-
-<!-- `kubectl port-forward --address 0.0.0.0 service/api-gateway-nginx 80:80 -n keptn`{{execute}} -->
-
-Get Keptn endpoint: Get the EXTERNAL-IP of the api-gateway-ngix using the command below. The Keptn API endpoint is: `http://<ENDPOINT_OF_API_GATEWAY>/api`
-
-`export KEPTN_ENDPOINT=$(kubectl get services -n keptn api-gateway-nginx -o=jsonpath='{.status.loadBalancer.ingress[0].ip}')`{{execute}}
-
-`export KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 -d)`{{execute}}
-
-`echo "Keptn Available at: http://$KEPTN_ENDPOINT"`{{execute}}
-
-This may take a while to get an access to the the `keptn bridge endpoint`. The expected outcome is something like `Keptn Available at: http://172.X.Y.Z`.
+```
+export KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 -d)
+export JOB_EXECUTOR_SERVICE_VERSION=0.2.0
+helm install --namespace keptn-jes --create-namespace --timeout=10m --set=remoteControlPlane.api.hostname=api-gateway-nginx.keptn --set=remoteControlPlane.api.token=$KEPTN_API_TOKEN --set=remoteControlPlane.topicSubscription="sh.keptn.event.je-deployment.triggered\,sh.keptn.event.je-test.triggered" \
+job-executor-service https://github.com/keptn-contrib/job-executor-service/releases/download/$JOB_EXECUTOR_SERVICE_VERSION/job-executor-service-$JOB_EXECUTOR_SERVICE_VERSION.tgz
+```{{execute}}
 
 ### Authenticate Keptn CLI
 
-Please make sure you get the endpoint as above before you encounter this command.
+The Keptn CLI needs to authenticate with the control-plane (running on the Kubernetes cluster). Authenticate it now:
 
-`keptn auth --endpoint=$KEPTN_ENDPOINT --api-token=$KEPTN_API_TOKEN`{{execute}}
+```
+export KEPTN_ENDPOINT=$(kubectl get services -n keptn api-gateway-nginx -o=jsonpath='{.status.loadBalancer.ingress[0].ip}')
+export KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 -d)
+keptn auth --endpoint=$KEPTN_ENDPOINT --api-token=$KEPTN_API_TOKEN
+```{{execute}}
