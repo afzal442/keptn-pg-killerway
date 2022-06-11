@@ -11,7 +11,7 @@ kubectl get secret -n keptn bridge-credentials -o jsonpath="{.data.BASIC_AUTH_US
 Retrieve the password for the Keptn's bridge (randomly generated during installation):
 
 ```
-kubectl get secret -n keptn bridge-credentials -o jsonpath="{.data.BASIC_AUTH_USERNAME}" | base64 --decode ; echo
+kubectl get secret -n keptn bridge-credentials -o jsonpath="{.data.BASIC_AUTH_PASSWORD}" | base64 --decode ; echo
 ```{{exec}}
 
 Visit [the Bridge]({{TRAFFIC_HOST1_8080}}/bridge) and login.
