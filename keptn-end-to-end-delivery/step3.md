@@ -83,4 +83,4 @@ Perhaps an artifact is allowed to go into production if it passes the evaluation
 
 In the next step, keptn will introduce “guard rails” in this process. The helloservice application will be monitored and releases will be programatically approved / declined based on a quality signature defined by you and calculated by keptn.
 
-Congrats! 🎉 you are done with approval part successfully, now continue to add automated quality evaluations.
+Congrats! 🎉 you are done with approval part successfully, now continue to add automated quality evaluations in our next step.
