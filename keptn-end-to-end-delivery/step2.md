@@ -50,7 +50,8 @@ spec:
           tasks:
             - name: "je-deployment"
 EOF
-```{{exec}}
+```
+{{exec}}
 
 Now, create the project: `fulltour` and service called `helloservice` using the Keptn CLI.
 
@@ -60,7 +61,8 @@ The Keptn service name must be called precisely `helloservice` because the helm 
 ```
 keptn create project fulltour --shipyard shipyard.yaml --git-remote-url $GIT_REPO --git-user $GIT_USER --git-token $GIT_TOKEN
 keptn create service helloservice --project=fulltour
-```{{exec}}
+```
+{{exec}}
 
 You can also achieve this via the [API]({{TRAFFIC_HOST1_8080}}/api) or the [Bridge (UI)]({{TRAFFIC_HOST1_8080}}/bridge)
 
@@ -84,7 +86,8 @@ Add the helm chart (this is the real application we will deploy). The `--resourc
 ```
 cd keptn-job-executor-delivery-poc
 keptn add-resource --project=fulltour --service=helloservice --all-stages --resource=./helm/helloservice.tgz --resourceUri=charts/helloservice.tgz
-```{{execute}}
+```
+{{execute}}
 
 Add the files that locust needs:
 
@@ -96,7 +99,8 @@ Add the job executor service config file. This tells the JES what container and 
 
 ```
 keptn add-resource --project=fulltour --service=helloservice --all-stages --resource=job-executor-config.yaml --resourceUri=job/config.yaml
-```{{execute}}
+```
+{{execute}}
 
 ## 🎉 Trigger Delivery
 
@@ -106,7 +110,8 @@ You can trigger a sequence via the keptn’s API, via the bridge UI or via the k
 
 ```
 keptn trigger delivery --project=fulltour --service=helloservice --image="ghcr.io/podtato-head/podtatoserver:v0.1.1" --labels=image="ghcr.io/podtato-head/podtatoserver",version="v0.1.1"
-```{{execute}}
+```
+{{execute}}
 
 ## Verify QA and Production Deployments
 
@@ -117,4 +122,5 @@ Validate that pods version `v0.1.1` is running in both environments.
 ```
 kubectl -n fulltour-qa describe pod -l app=helloservice | grep Image:
 kubectl -n fulltour-production describe pod -l app=helloservice | grep Image:
-```{{exec}}
+```
+{{exec}}
