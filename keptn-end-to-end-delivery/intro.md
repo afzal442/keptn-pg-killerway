@@ -7,7 +7,7 @@ The goal of this tutorial is to:
 - Add automated SLO-based quality evaluations both pre and post release
 - Show how keptn can orchestrate self-healing patterns and tools (like scaling a helm deployment)
 
-Keptn is unopinionated about tooling. A key strength of Keptn is it allows you to bring the tooling you already use and with which you are familiar.
+Keptn is unopinionated about tooling. A key strength of Keptn is it allows you to bring the tooling and observability platforms you already use and with which you are familiar.
 
 That said, we needed to pick some tools and Helm + Locust are two modern and widely used tools.
 
@@ -15,8 +15,9 @@ The tutorial will progress in steps:
 
 1. Automated testing and releases into `qa` and `production` stages
 2. An approval step will be added to ensure a human must always click “go” before a production release
-3. Add Prometheus to the cluster to monitor the workloads. Add SLO-based quality evaluations to ensure no bad build ever makes it to production.
-4. Add a quality evaluation in production, post rollout. If a bad deployment occurs, the evaluation will fail and remediation actions (scaling) will be actioned (using `helm` to `helm upgrade` the application).
+3. Improve on the manual approval step and instead use an automated quality gate. Add Prometheus to the cluster to monitor the workloads. Add SLO-based quality evaluations to ensure no bad build ever makes it to production.
+4. Add a quality evaluation in production, post rollout.
+5. When a bad deployment occurs, the evaluation will fail and a remediation action will be taken by a remediation provider. In the demo this mean `helm` scales the deployment.
 
 ## While You're Waiting...
 
