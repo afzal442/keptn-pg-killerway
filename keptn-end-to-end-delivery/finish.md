@@ -1,7 +1,21 @@
-You’ve successfully split the process from the tooling. You’ve hidden the complexities of tooling API interaction. There are thousands of tool integrations already written for Keptn or write your own. Keptn comes out-of-the-box with microservices dedicated to self-healing and code quality gate workflows.
+## 🎉 Congratulations 🎉
+You have used Keptn to build a fortified end-to-end delivery orchestration whilst avoiding tool and vendor lock in.
 
-With Keptn it is incredibly easy to build complex task sequences whilst no longer worrying about the tooling that will implement those tasks.
+The delivery orchestration you have built:
 
-- Try adding further tasks to your sequence
-- Try sending a webhook to a third party tool instead of using the job executor service
-- Build a full end-to-end delivery pipeline or any other sequence of tasks you can dream up
+1. Uses the tooling you like
+2. Prevents bad code, automatically stopping deployments if quality checks fail.
+3. Can accomodate manual approvals if required
+4. Can self-heal by taking actions in production, again using the tooling you want
+
+### So What Next?
+
+[Deploy Keptn properly](https://keptn.sh/docs/0.16.x/operate/install/) on your cluster to free your SRE and DevOps teams from toil. [Star Keptn on GitHub](https://github.com/keptn/keptn)
+
+Need help? Ask in the [Keptn Slack channel](https://slack.keptn.sh)
+
+Found a bug or issue? [Create an issue on GitHub](https://github.com/)
+
+It is almost guaranteed that Keptn works with your tool. Want to know if someone has gone before you? See all [publicly documented integrations here](https://keptn.sh/docs/integrations).
+
+Want to suggest (or submit) a new tooling integration that Keptn could / should work with? [Ask for it or submit it here](https://github.com/keptn/integrations/issues).
