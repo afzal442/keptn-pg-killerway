@@ -22,6 +22,8 @@ helm repo add prometheus-community https://prometheus-community.github.io/helm-c
 helm install prometheus prometheus-community/prometheus --namespace monitoring --wait
 ```{{exec}}
 
+Prometheus is now installed and running in the `monitoring` namespace.
+
 ## Keptn Retrieves SLIs from Prometheus
 
 Keptn needs to know how to interact with Prometheus; a Keptn SLI provider service is used.
@@ -32,8 +34,6 @@ This service "knows" how to retrieve metrics from Prometheus so we need this **i
 helm install -n keptn prometheus-service https://github.com/keptn-contrib/prometheus-service/releases/download/0.8.0/prometheus-service-0.8.0.tgz --wait --set resources.requests.cpu=25m
 kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/0.8.0/deploy/role.yaml -n monitoring
 ```{{exec}}
-
-Prometheus is now installed and running in the `monitoring` namespace.
 
 The Keptn Prometheus service is installed in the `keptn` namespace.
 
