@@ -147,7 +147,11 @@ Now attempt to release a slow build. Keptn will release the artifact to `qa` as 
 The quality evaluation before production will fail (as it should), thus the slow artifact is never released to production - protecting users.
 
 ```
-keptn trigger delivery --project=fulltour --service=helloservice --image="ghcr.io/podtato-head/podtatoserver:v0.1.2" --labels=image="ghcr.io/podtato-head/podtatoserver",version="v0.1.2"
+keptn trigger delivery \
+--project=fulltour \
+--service=helloservice \
+--image="ghcr.io/podtato-head/podtatoserver:v0.1.2" \
+--labels=image="ghcr.io/podtato-head/podtatoserver",version="v0.1.2"
 ```{{exec}}
 
 ![slow build failed](./assets/failed_build.jpg)
