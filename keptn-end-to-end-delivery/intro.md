@@ -41,4 +41,8 @@ You have everything you need now and just need to wait for us to finish the inst
 
 Please wait here until you see the text `Installation Completed 🎉. Please proceed now.` in the console.
 
+While you wait, here is a visual of what you are about to build.
+
 ![keptn-cloud-native](./assets/overview_image.drawio.png)
+
+It should only take a few more minutes...
