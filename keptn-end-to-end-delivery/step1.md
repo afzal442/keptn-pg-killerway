@@ -11,21 +11,21 @@ keptn auth --endpoint={{TRAFFIC_HOST1_8080}}/api --api-token=$(kubectl get secre
 
 The Keptns bridge is the web-based interface for Keptn.
 
-Retrieve the username for the Keptn's bridge (defaults to `keptn`):
+Retrieve the username for the bridge (defaults to `keptn`):
 
 ```
 kubectl get secret -n keptn bridge-credentials -o jsonpath="{.data.BASIC_AUTH_USERNAME}" | base64 --decode ; echo
 ```{{exec}}
 
-Retrieve the password for the Keptn's bridge (randomly generated during installation):
+Retrieve the password for the bridge (randomly generated during installation):
 
 ```
 kubectl get secret -n keptn bridge-credentials -o jsonpath="{.data.BASIC_AUTH_PASSWORD}" | base64 --decode ; echo
 ```{{exec}}
 
-Visit [the Bridge]({{TRAFFIC_HOST1_8080}}/bridge) (opens in a new tab). Login and come back here.
+Visit [the bridge]({{TRAFFIC_HOST1_8080}}/bridge) (opens in a new tab). Login and come back here.
 
-The Bridge and API are available at any time from the Killercoda interface:
+The bridge and API are available at any time from the Killercoda interface:
 
 1. Navigate to the menu icon (three lines on the top right)
 2. Select `Traffic / Ports`
