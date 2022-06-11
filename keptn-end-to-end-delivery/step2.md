@@ -1,30 +1,10 @@
-After installing and exposing Keptn, you can access the Keptn Bridge by using a browser and navigating to the Keptn endpoint without the api path at the end of the URL. You can also use the Keptn CLI to retrieve the Bridge URL using:
+## 🎉 Congratulations! Keptn is Installed
 
-`keptn status`{{execute}}
+Now you are ready to proceed with Keptn.
 
-## Authenticate Keptn Bridge
+Start by gathering some necessary Git details.
 
-The Keptn Bridge has basic authentication enabled by default and the default user is keptn with an automatically generated password.
-
-To get the username for authentication, execute:
-
-`kubectl get secret -n keptn bridge-credentials -o jsonpath="{.data.BASIC_AUTH_USERNAME}" | base64 --decode`{{execute}}
-
-To get the password for authentication, execute:
-
-`kubectl get secret -n keptn bridge-credentials -o jsonpath="{.data.BASIC_AUTH_PASSWORD}" | base64 --decode`{{execute}}
-
-Now, you can click on Dashboard tab, next to terminal tab which will ask you to authenticate the UI.
-
-## Visualization 
-
-You can also view the trigerred result in a UI
-
-[Access Keptns Bridge (UI)]({{TRAFFIC_HOST1_8080}})
-
-![UI View](./assets/keptn-hello-world.jpg)
-
-## Create and Gather Github Details
+## Create and Gather GitHub Details
 
 ![git repo](./assets/repo-token.png)
 
@@ -32,13 +12,17 @@ You can also view the trigerred result in a UI
 - Create a blank (uninitialised) repository for Keptn to work with. Do not add any files (not even a readme)
 - Set these details as environment variables
 
-`export GIT_USER=<YourGitUsername>`
-`export GIT_REPO=https://github.com/<YourGitUserName>/<YourRepo>`
-`export GIT_TOKEN=ghp_****`
+```
+export GIT_USER=<YourGitUsername>
+export GIT_REPO=https://github.com/<YourGitUserName>/<YourRepo>
+export GIT_TOKEN=<YourGitPATToken>
+```
 
-## Configure Keptn
+## Create Keptn Project
 
-To configure Keptn, we need to create a `shipyard.yaml` file. A shipyard file defines the Keptn environment.
+A Keptn project is a high level logical container. A project contains stages (which mimic your environment eg. `dev` and `production`) and services (which mimic your microservices).
+
+A Keptn project is modelled by a `shipyard.yaml` file which you must define.
 
 Run the following to create a `shipyard.yaml` file on disk:
 
@@ -68,8 +52,9 @@ spec:
 EOF
 ```{{exec}}
 
-Now, create the project as `fulltour` and service called `helloservice` using Keptn CLI
-`service` name must be called precisely that because the helm chart we use is called `helloservice.tgz` and the job executor runs `helm install` and relies on a file being available called `helloservice.tgz`.
+Now, create the project: `fulltour` and service called `helloservice` using the Keptn CLI.
+
+The Keptn service name must be called precisely `helloservice` because the helm chart we use in this demo is called `helloservice.tgz` and the job executor runs `helm install` and relies on a file being available called `helloservice.tgz`.
 
 
 ```
@@ -77,7 +62,7 @@ keptn create project fulltour --shipyard shipyard.yaml --git-remote-url $GIT_REP
 keptn create service helloservice --project=fulltour
 ```{{exec}}
 
-Note you can also achieve this via the [API]({{TRAFFIC_HOST1_8080}}/api) or the [Bridge (UI)]({{TRAFFIC_HOST1_8080}}/bridge)
+You can also achieve this via the [API]({{TRAFFIC_HOST1_8080}}/api) or the [Bridge (UI)]({{TRAFFIC_HOST1_8080}}/bridge)
 
 ## Retrieve Required Files
 
