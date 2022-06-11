@@ -87,9 +87,9 @@ To retrieve the Keptn bridge username (defaults to `keptn`):
 
 ```
 kubectl get secret -n keptn bridge-credentials -o jsonpath="{.data.BASIC_AUTH_USERNAME}" | base64 --decode{{execute}} ; echo
-```
+```{{exec}}
 
 To retrieve the Keptn bridge password (randomly generated during installation):
 ```
 kubectl get secret -n keptn bridge-credentials -o jsonpath="{.data.BASIC_AUTH_PASSWORD}" | base64 --decode{{execute}} ; echo
-```
+```{{exec}}
