@@ -1,4 +1,4 @@
 # ------------------------------------------#
-#       🎉 Installation Completed 🎉        #
+#       🎉 xInstallation Completed 🎉        #
 #           Please proceed now...           #
 # ------------------------------------------#
