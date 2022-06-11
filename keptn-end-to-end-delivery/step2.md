@@ -1,28 +1,55 @@
 ## Set Git Details As Environment Variables
 
-Set your GitHub details as environment variables like this:
+Keptn needs a brand new, uninitialised repo to store and manage configuration. We will create it automatically now.
+
+Decide on a new repo name you'd like to use and set it as an environment variable:
 
 ```
 export GIT_USER=<YourUserName>
-export GIT_REPO=https://github.com/<You>/<YourNewRepo>.git
-export GIT_TOKEN=<YourGitPATToken>
+export GITHUB_TOKEN=<YourGitPATToken>
+export GIT_NEW_REPO_NAME=keptndemo
+export GIT_REPO=https://github.com/$GIT_USER/$GIT_NEW_REPO_NAME.git
 ```
 
 For example (don't use this!):
 
 ```
 export GIT_USER=dummyuser
-export GIT_REPO=https://github.com/dummyuser/dummyrepo.git
-export GIT_TOKEN=ghp_abcDEF123XYZ
+export GITHUB_TOKEN=ghp_abcDEF123XYZ
+export GIT_NEW_REPO_NAME=keptndemo
+export GIT_REPO=https://github.com/$GIT_USER/$GIT_NEW_REPO_NAME.git
 ```
 
 Verify the details are correctly set by printing them to the console:
 
 ```
 echo "Git Username: $GIT_USER"
-echo "Git Repo: $GIT_REPO"
-echo "Git Token: $GIT_TOKEN"
+echo "Git Token: $GITHUB_TOKEN"
+echo "New Git Repo to be created: $GIT_NEW_REPO_NAME"
+echo "URL of new Git Repo: $GIT_REPO"
 ```{{exec}}
+
+## Create New Private Repository
+
+The demo environment has the GitHub CLI. The CLI will automatically use the `GIT_TOKEN` environment variable to authenticate.
+
+Ensure the GitHub CLI works by listing your existing repositories which should show all existing repositories on your account:
+
+```
+gh repo list
+```{{exec}}
+
+Now create the new private repository:
+
+```
+gh repo create --private $GIT_NEW_REPO_NAME
+```
+
+If it worked, you will see:
+
+```
+✓ Created repository <YourUserName>/keptndemo on GitHub
+```
 
 ## Create Keptn Project
 
@@ -64,7 +91,7 @@ The Keptn service name must be called precisely `helloservice` because the helm 
 
 
 ```
-keptn create project fulltour --shipyard shipyard.yaml --git-remote-url $GIT_REPO --git-user $GIT_USER --git-token $GIT_TOKEN
+keptn create project fulltour --shipyard shipyard.yaml --git-remote-url $GIT_REPO --git-user $GIT_USER --git-token $GITHUB_TOKEN
 keptn create service helloservice --project=fulltour
 ```{{exec}}
 
