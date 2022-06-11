@@ -77,7 +77,7 @@ keptn create project fulltour --shipyard shipyard.yaml --git-remote-url $GIT_REP
 keptn create service helloservice --project=fulltour
 ```{{exec}}
 
-Note you can also achieve this via the [API]({{TRAFFIC_HOST1_8080/api}}) or the [Bridge (UI)]({{TRAFFIC_HOST1_8080/bridge}})
+Note you can also achieve this via the [API]({{TRAFFIC_HOST1_8080}}/api) or the [Bridge (UI)]({{TRAFFIC_HOST1_8080}}/bridge)
 
 ## Retrieve Required Files
 
@@ -116,7 +116,7 @@ The job executor service is currently configured to only listen and react on the
 
 We need the JES to fire on our new task events: `sh.keptn.event.je-deployment.triggered` and `sh.keptn.event.je-test.triggered`
 
-Go to the [integration page]({{TRAFFIC_HOST1_8080/bridge/project/fulltour/settings/uniform/integrations}}) and add two new integrations for `je-deployment.triggered` and `je-test.triggered`.
+Go to the [integration page]({{TRAFFIC_HOST1_8080}}/bridge/project/fulltour/settings/uniform/integrations) and add two new integrations for `je-deployment.triggered` and `je-test.triggered`.
 
 The job executor service subscriptions should look like this:
 
