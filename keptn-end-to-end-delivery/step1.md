@@ -1,6 +1,6 @@
-# View Keptn's Bridge
+# View Keptns Bridge
 
-The Keptn's bridge is the web-based interface for Keptn.
+The Keptns bridge is the web-based interface for Keptn.
 
 Retrieve the username for the Keptn's bridge (defaults to `keptn`):
 
