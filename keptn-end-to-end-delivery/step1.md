@@ -77,11 +77,12 @@ Bridge URL: http://172.18.0.3/bridge
 Using a file-based storage for the key because the password-store seems to be not set up.
 ```
 
-The [Bridge]({{TRAFFIC_HOST1_8080}}) and [API]({{TRAFFIC_HOST1_8080}}/api) are available in Killercoda.
+The Bridge and API are available in Killercoda:
 
 1. Navigate to the menu icon (three lines on the top right)
-2. Select `Traffic and Ports`
+2. Select `Traffic / Ports`
 3. Click Port `8080` to access the bridge
+4. A link to the API is found under the "little person" icon (top right)
 
 To retrieve the Keptn bridge username (defaults to `keptn`):
 
