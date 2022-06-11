@@ -67,7 +67,7 @@ keptn auth --endpoint=$KEPTN_ENDPOINT --api-token=$KEPTN_API_TOKEN
 
 This command is also available in the Keptns Bridge if you ever forget it.
 
-`keptn get status`{{exec}} should show:
+`keptn status`{{exec}} should show:
 
 ```
 $ keptn status
