@@ -15,11 +15,11 @@ We are using the Prometheus observability platform to provide data for our exerc
 
 The tutorial will progress in steps:
 
-1. Automated testing and releases into `qa` and `production` stages
-2. An approval step will be added to ensure a human must always click “go” before a production release
-3. Improve on the manual approval step and instead use an automated quality gate. Add Prometheus to the cluster to monitor the workloads. Add SLO-based quality evaluations to ensure no bad build ever makes it to production.
-4. Add a quality evaluation in production, post rollout.
-5. When a bad deployment occurs, the evaluation will fail and a remediation action will be taken by a remediation provider. In the demo this means `helm` scales the deployment.
+1. Run automated tests the release our software into qa and production stage
+2. Add an approval step to ensure a human must always click “go” before a production release
+3. Replace the manual approval step with an automated quality gate. Add Prometheus to the cluster to monitor the workloads. Add SLO-based quality evaluations to ensure no bad build ever makes it to production
+5. Add a quality evaluation in production, post rollout
+6. Add a remediation action that will be taken by a remediation provider if an evaluation of the production stage fails. In the demo, this means helm scales the deployment
 
 ## While You're Waiting...
 
