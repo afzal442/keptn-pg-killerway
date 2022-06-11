@@ -1,3 +1,29 @@
+## Set Git Details As Environment Variables
+
+Set your GitHub details as environment variables like this:
+
+```
+export GIT_USER=<YourUserName>
+export GIT_REPO=https://github.com/<You>/<YourNewRepo>.git
+export GIT_TOKEN=<YourGitPATToken>
+```
+
+For example (don't use this!):
+
+```
+export GIT_USER=dummyuser
+export GIT_REPO=https://github.com/dummyuser/dummyrepo.git
+export GIT_TOKEN=ghp_abcDEF123XYZ
+```
+
+Verify the details are correctly set by printing them to the console:
+
+```
+echo "Git Username: $GIT_USER"
+echo "Git Repo: $GIT_REPO"
+echo "GIT_TOKEN: $GIT_TOKEN"
+```{{exec}}
+
 ## Create Keptn Project
 
 A Keptn project is a high level logical container. A project contains stages (which mimic your environment eg. `dev` and `production`) and services (which mimic your microservices).
