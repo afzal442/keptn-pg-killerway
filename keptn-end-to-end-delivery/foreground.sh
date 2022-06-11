@@ -1,6 +1,7 @@
 # -----------------------------------------#
 #        Setting Global variables          #
 # -----------------------------------------#
+DEBUG=v1
 K3D_VERSION=v5.3.0
 KUBECTL_VERSION=v1.22.6
 GH_CLI_VERSION=2.12.1
@@ -17,8 +18,10 @@ git clone https://github.com/christian-kreuzberger-dtx/keptn-job-executor-delive
 # -----------------------------------------#
 curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
-apt update
-apt install gh -y
+sudo apt update
+sudo apt install gh -y
+
+echo "got here..."
 
 # -----------------------------------------#
 #      Step 3/9: Installing Keptn CLI      #
