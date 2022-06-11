@@ -33,6 +33,10 @@ helm install -n keptn prometheus-service https://github.com/keptn-contrib/promet
 kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/0.8.0/deploy/role.yaml -n monitoring
 ```{{exec}}
 
+Prometheus is now installed and running in the `monitoring` namespace.
+
+The Keptn Prometheus service is installed in the `keptn` namespace.
+
 ## Add Prometheus SLIs and SLOs
 
 The Keptn prometheus service needs to know the metrics (or SLIs) to retrieve from Prometheus.
