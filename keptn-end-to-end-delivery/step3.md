@@ -59,12 +59,12 @@ Manual interaction is required.
 
 The sequence will pause here for as long as required.
 
-![artifact-approval-1](assets/approval-step-1.jpg)
-![artifact-approval-1](assets/approval-step-2.jpg)
+![artifact-approval-1](./assets/approval-step-1.jpg)
+![artifact-approval-1](./assets/approval-step-2.jpg)
 
 Click the `production` link then inside the approval step, click ✅ to approve the build. Watch as the deployment begins, again via `helm`, facilitated by the job executor service.
 
-![production approval](assets/production-approval.jpg)
+![production approval](./assets/production-approval.jpg)
 
 ----
 
