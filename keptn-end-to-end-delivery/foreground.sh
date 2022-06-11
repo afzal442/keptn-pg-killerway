@@ -35,12 +35,12 @@ curl -sL https://get.keptn.sh | KEPTN_VERSION=$KEPTN_VERSION bash
 
 
 # -------------------------------------------#
-# Step 5/6: Installing Keptn Control Plane #
+# Step 5/6: Installing Keptn Control Plane   #
 # -------------------------------------------#
 helm install keptn https://github.com/keptn/keptn/releases/download/$KEPTN_VERSION/keptn-$KEPTN_VERSION.tgz -n keptn --timeout=5m --wait --create-namespace --set=control-plane.apiGatewayNginx.type=LoadBalancer
 
 # --------------------------------------------#
-# Step 6/6: Installing Job Executor Service #
+# Step 6/6: Installing Job Executor Service   #
 # --------------------------------------------#
 KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 -d)
 helm install --namespace keptn-jes --create-namespace --wait --timeout=4m --set=remoteControlPlane.api.hostname=api-gateway-nginx.keptn --set=remoteControlPlane.api.token=$KEPTN_API_TOKEN --set=remoteControlPlane.topicSubscription="sh.keptn.event.je-deployment.triggered\,sh.keptn.event.je-test.triggered" \
