@@ -1,9 +1,6 @@
-Keptn uses a declarative approach to build scalable automation for delivery and operations which can be scaled to a large number of services.
 
-This Killercoda scenario comes pre installed with helm3, a single node K3d cluster installed. 
+First, check the cluster is up and running then install and configure Keptn.
 
-First of all, you will need to create a cluster for Keptn, and then install and configure Keptn itself.
-We'll run Keptn on a local k3s cluster.
 ## Check the cluster
 
 In order to check the cluster just run:
