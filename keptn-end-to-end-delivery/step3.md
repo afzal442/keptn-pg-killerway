@@ -1,6 +1,18 @@
 Add a step to the delivery sequence which enforces that a user must manually click ✅ before an artifact is promoted to production.
 
-In your Git upstream repo, modify `shipyard.yaml` on the `main` branch. Add a new task in `production` before the `je-deployment` task:
+# Clone keptndemo Repo
+
+Clone your demo repo locally so we can work with it:
+
+```
+cd ~
+gh repo clone $GIT_REPO
+```
+
+
+Add a new task to the shipyard.yaml file on `main` branch.
+
+In the Keptn `production` before the `je-deployment` task:
 
 ```
 - name: "approval"
@@ -9,8 +21,8 @@ In your Git upstream repo, modify `shipyard.yaml` on the `main` branch. Add a ne
     warning: "manual"
 ```
 
-Your shipyard should now look like this:
 ```
+cat << EOF > ~/$GIT_NEW_REPO_NAME/shipyard.yaml
 apiVersion: "spec.keptn.sh/0.2.2"
 kind: "Shipyard"
 metadata:
@@ -35,7 +47,8 @@ spec:
                 pass: "manual"
                 warning: "manual"
             - name: "je-deployment"
-```{{copy}}
+EOF
+```{{exec}}
 
 ## Deliver Artifact
 
