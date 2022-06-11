@@ -6,8 +6,12 @@ First of all, you will need to create a cluster for Keptn, and then install and 
 We'll run Keptn on a local k3s cluster.
 ## Check the cluster
 
-In order to check the cluster just run  `kubectl cluster-info &&
-kubectl get nodes`{{execute}}
+In order to check the cluster just run:
+
+```
+kubectl cluster-info
+kubectl get nodes
+```{{exec}}
 
  ## Install and Expose Keptn
 
@@ -15,8 +19,8 @@ kubectl get nodes`{{execute}}
  To install the latest release of Keptn with continuous delivery capabilities in your Kubernetes cluster, execute the keptn install command.
 
 ```
-curl -sL https://get.keptn.sh | KEPTN_VERSION=0.15.1 bash
-helm install keptn https://github.com/keptn/keptn/releases/download/0.15.1/keptn-0.15.1.tgz -n keptn --create-namespace --set=control-plane.apiGatewayNginx.type=LoadBalancer
+curl -sL https://get.keptn.sh | KEPTN_VERSION=0.16.0 bash
+helm install keptn https://github.com/keptn/keptn/releases/download/0.16.0/keptn-0.16.0.tgz -n keptn --create-namespace --set=control-plane.apiGatewayNginx.type=LoadBalancer
 ```{{exec}}
 
 Note: During installation the Keptn pods [are known](https://github.com/keptn/keptn/issues/7580) to `Error` and `CrashLoopBackOff` until everything "settles down". So expect errors for the first few minutes. After a few moments everything will be in a `Running` state.
