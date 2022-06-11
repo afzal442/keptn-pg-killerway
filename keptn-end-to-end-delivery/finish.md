@@ -3,19 +3,19 @@ You have used Keptn to build a fortified end-to-end delivery orchestration whils
 
 The delivery orchestration you have built:
 
-1. Uses the tooling you like
+1. Uses the tooling you already know and love
 2. Prevents bad code, automatically stopping deployments if quality checks fail.
 3. Can accomodate manual approvals if required
 4. Can self-heal by taking actions in production, again using the tooling you want
 
 ### So What Next?
 
-[Deploy Keptn properly](https://keptn.sh/docs/0.16.x/operate/install/) on your cluster to free your SRE and DevOps teams from toil. [Star Keptn on GitHub](https://github.com/keptn/keptn)
+[Deploy Keptn properly](https://keptn.sh/docs/0.16.x/operate/install/) on your cluster to free your SRE and DevOps teams from toil.
 
 Need help? Ask in the [Keptn Slack channel](https://slack.keptn.sh)
-
-Found a bug or issue? [Create an issue on GitHub](https://github.com/)
 
 It is almost guaranteed that Keptn works with your tool. Want to know if someone has gone before you? See all [publicly documented integrations here](https://keptn.sh/docs/integrations).
 
 Want to suggest (or submit) a new tooling integration that Keptn could / should work with? [Ask for it or submit it here](https://github.com/keptn/integrations/issues).
+
+Found a bug or issue? [Create an issue on GitHub](https://github.com/)
