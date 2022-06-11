@@ -126,7 +126,7 @@ Result: Keptn orchestrated your deployment which was acheived using `helm` and `
 
 ----
 
-## What's Next?
+## What Next?
 
 Your application is being deployed into both QA and Production. This is great and indeed Keptn works with ArgoCD and Flux in the same way to ensure code is always up to date.
 
