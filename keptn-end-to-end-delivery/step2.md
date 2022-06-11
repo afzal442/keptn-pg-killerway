@@ -93,22 +93,6 @@ The Keptn service name must be called precisely `helloservice` because the helm 
 keptn create project fulltour --shipyard shipyard.yaml --git-remote-url $GIT_REPO --git-user $GIT_USER --git-token $GITHUB_TOKEN
 keptn create service helloservice --project=fulltour
 ```{{exec}}
-  
-## Clone Repo
-Clone the repo locally so we can work with it:
-```
-gh repo clone $GIT_USER/$GIT_NEW_REPO_NAME
-```{{exec}}
-
-You should see:
-```
-Cloning into 'keptndemo'...
-remote: Enumerating objects: 14, done.
-remote: Counting objects: 100% (14/14), done.
-remote: Compressing objects: 100% (11/11), done.
-remote: Total 14 (delta 1), reused 13 (delta 0), pack-reused 0
-Unpacking objects: 100% (14/14), 1.38 KiB | 236.00 KiB/s, done.
-```
 
 ## Add Application Helm Chart
 
