@@ -66,7 +66,7 @@ spec:
           tasks:
             - name: "je-deployment"
 EOF
-```
+```{{exec}}
 
 Now, create the project as `fulltour` and service called `helloservice` using Keptn CLI
 `service` name must be called precisely that because the helm chart we use is called `helloservice.tgz` and the job executor runs `helm install` and relies on a file being available called `helloservice.tgz`.
