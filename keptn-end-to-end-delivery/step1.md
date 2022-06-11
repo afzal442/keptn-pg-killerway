@@ -9,13 +9,13 @@ We'll run Keptn on a local k3s cluster.
 In order to check the cluster just run  `kubectl cluster-info &&
 kubectl get nodes`{{execute}}
 
- ## Install and expose keptn
+ ## Install keptn and expose the bridge (UI) on a loadBalancer
 
  Every Keptn release provides binaries for the Keptn CLI. These binaries are available for Linux, macOS, and Windows.
- To install the latest release of Keptn with full quality gate + continuous delivery capabilities in your Kubernetes cluster, execute the keptn install command.
+ To install the latest release of Keptn with continuous delivery capabilities in your Kubernetes cluster, execute the keptn install command.
 
 `curl -sL https://get.keptn.sh | KEPTN_VERSION=0.15.1 bash &&
-helm install keptn https://github.com/keptn/keptn/releases/download/0.15.1/keptn-0.15.1.tgz -n keptn --create-namespace`{{execute}}
+helm install keptn https://github.com/keptn/keptn/releases/download/0.15.1/keptn-0.15.1.tgz -n keptn --create-namespace --set=control-plane.apiGatewayNginx.type=LoadBalancer`{{execute}}
 
 
 Once you have all pods running on the cluster as below, you can go ahead and execute the next command:
@@ -35,7 +35,6 @@ api-service-*                2/2     Running
 mongodb-datastore-*          2/2     Running
 shipyard-controller-*        2/2     Running
 statistics-service-*         2/2     Running
-job-executor-service-*       2/2     Running
 ```
 You can check all the pods if running with this below command:
 `watch kubectl get pods -n keptn`{{execute}}
@@ -49,12 +48,6 @@ It allows you to run customizable tasks with Keptn as Kubernetes Jobs
 `export JOB_EXECUTOR_SERVICE_VERSION=0.2.0`{{execute}}
 
 `helm install --namespace keptn-jes --create-namespace --timeout=10m --set=remoteControlPlane.api.hostname=api-gateway-nginx.keptn --set=remoteControlPlane.api.token=$KEPTN_API_TOKEN --set=remoteControlPlane.topicSubscription="sh.keptn.event.hello-world.triggered" job-executor-service https://github.com/keptn-contrib/job-executor-service/releases/download/$JOB_EXECUTOR_SERVICE_VERSION/job-executor-service-$JOB_EXECUTOR_SERVICE_VERSION.tgz`{{execute}}
-
-### Expose Keptn via an Ingress:
-
-Run the following to expose the bridge (UI) on a loadBalancer.
-
-`helm upgrade keptn https://github.com/keptn/keptn/releases/download/0.15.1/keptn-0.15.1.tgz -n keptn --set=control-plane.apiGatewayNginx.type=LoadBalancer`{{execute}}
 
 ### Traffic Port Accessor 
 
