@@ -68,7 +68,7 @@ Click the `production` link then inside the approval step, click ✅ to approve 
 
 ## Summary
 
-A new task was added to the shipyard file called `approval`. When it was time to action this task, keptn created and distributed a cloudevent of type `sh.keptn.event.approval.triggered`. The [approval service](https://github.com/keptn/keptn/tree/master/approval-service) is a keptn core microservice which listens for and actions this event.
+A new task was added to the shipyard file called `approval`. When it was time to action this task, Keptn created and distributed a cloudevent of type `sh.keptn.event.approval.triggered`. The [approval service](https://github.com/keptn/keptn/tree/master/approval-service) is a Keptn core microservice which listens for and actions this event.
 
 The `properties` block in the shipyard file tell the approval service that a manual approval is required regardless of the success / fail output of the preceding task.
 
