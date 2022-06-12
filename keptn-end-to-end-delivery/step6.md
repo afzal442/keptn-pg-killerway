@@ -22,23 +22,25 @@ This sequence will recursively self-trigger every 2 minutes until the evaluation
 Add this block to the `production` stage:
 ```
 - name: "remediation"
-          triggeredOn:
-            - event: "production.remediation.finished"
-              selector:
-                match:
-                  evaluation.result: "fail"
-          tasks:
-            - name: "get-action"
-            - name: "action"
-            - name: "je-test"
-            - name: "evaluation"
-              properties:
-                timeframe: "2m"
+  triggeredOn:
+    - event: "production.remediation.finished"
+      selector:
+        match:
+          evaluation.result: "fail"
+      tasks:
+        - name: "get-action"
+        - name: "action"
+        - name: "je-test"
+        - name: "evaluation"
+          properties:
+            timeframe: "2m"
 ```
 
-The `shipyard.yaml` file should now look like this:
+Run this to modify and push to the Git repo:
 
 ```
+cd ~/$GIT_NEW_REPO_NAME
+cat << EOF > ~/$GIT_NEW_REPO_NAME/shipyard.yaml
 apiVersion: "spec.keptn.sh/0.2.2"
 kind: "Shipyard"
 metadata:
@@ -84,7 +86,14 @@ spec:
             - name: "evaluation"
               properties:
                 timeframe: "2m"
-```
+EOF
+git remote set-url origin https://$GIT_USER:$GITHUB_TOKEN@github.com/$GIT_USER/$GIT_NEW_REPO_NAME.git
+git config --global user.email "keptn@keptn.sh"
+git config --global user.name "Keptn"
+git add -A
+git commit -m "add self-healing to production"
+git push
+```{{exec}}
 
 ### Explanation
 
@@ -106,7 +115,9 @@ For simplicity we have only one action, but multiple actions per problem type ar
 The important parts here are `problemType` denotes the name of the problem type we are expecting to be sent (from an external feed or observability platform). The `action` denotes what we do when this problem type is received and the `value` will be used to tell `helm` how many replicas are required in the new deployment.
 
 ```
-cat << EOF > helloservice-remediation.yaml
+cd ~/$GIT_NEW_REPO_NAME
+git checkout production
+cat << EOF > helloservice/remediation.yaml
 apiVersion: spec.keptn.sh/0.1.4
 kind: Remediation
 metadata:
@@ -120,17 +131,16 @@ spec:
           description: Scale up
           value: "2"
 EOF
+git add -A
+git commit -m "add remediation file to production"
+
+
+keptn add-resource --project=fulltour --stage=production --service=helloservice --resource=helloservice-remediation.yaml --resourceUri=remediation.yaml
 ```{{exec}}
 
 Add this file to the Git upstream directly or use the `keptn add-resource` helper command to upload it for you.
 
 Notice that it is stored in Git as `remediation.yaml` and not as it is called on disk: `helloservice-remediation.yaml`. The filename is important and expected to be `remediation.yaml`.
-
-```
-keptn add-resource --project=fulltour --stage=production --service=helloservice --resource=helloservice-remediation.yaml --resourceUri=remediation.yaml
-```{{exec}}
-
-----
 
 ## Link Input to Action
 
