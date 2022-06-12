@@ -256,7 +256,7 @@ keptn send event -f ~/remediation_trigger.json
 
 When the sequence is complete, you should see:
 
-![remediation sequence complete](assets/remediation_sequence_complete.png)
+![remediation sequence complete](./assets/remediation_sequence_complete.png)
   
 ## See Scaling
 
