@@ -7,9 +7,9 @@ Authenticate it now:
 keptn auth --endpoint={{TRAFFIC_HOST1_8080}}/api --api-token=$(kubectl get secret keptn-api-token -n keptn -ojsonpath='{.data.keptn-api-token}' | base64 -d)
 ```{{exec}}
 
-# View Keptns Bridge
+# Keptn Bridge
 
-The Keptns bridge is the web-based interface for Keptn.
+The bridge is the web-based interface for Keptn.
 
 Retrieve the username for the bridge (defaults to `keptn`):
 
