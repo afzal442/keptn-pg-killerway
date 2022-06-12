@@ -10,17 +10,17 @@ export GITHUB_TOKEN=<YourGitPATToken>
 export GIT_NEW_REPO_NAME=keptndemo
 ```{{copy}}
 
-Now set a meta variable which Keptn will use (no need to change this, just run it)
-```
-export GIT_REPO=https://github.com/$GIT_USER/$GIT_NEW_REPO_NAME.git
-```
-
 For example (don't use this!):
 
 ```
 export GIT_USER=dummyuser
 export GITHUB_TOKEN=ghp_abcDEF123XYZ
 export GIT_NEW_REPO_NAME=keptndemo
+export GIT_REPO=https://github.com/$GIT_USER/$GIT_NEW_REPO_NAME.git
+```
+
+Now set a meta variable which Keptn will use (no need to change this, just run it)
+```
 export GIT_REPO=https://github.com/$GIT_USER/$GIT_NEW_REPO_NAME.git
 ```
 
