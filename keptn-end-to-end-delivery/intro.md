@@ -5,7 +5,7 @@ The goal of this tutorial is to:
 - Generate load on the deployed service (using [locust](https://locust.io))
 - Add approval gates into the delivery pipeline
 - Add automated SLO-based quality evaluations both pre and post release
-- Show how keptn can orchestrate self-healing patterns and tools (like scaling a helm deployment)
+- Show how Keptn can orchestrate self-healing patterns and tools (like scaling a helm deployment)
 
 Keptn is unopinionated about tooling. A key strength of Keptn is it allows you to bring the tooling and observability platforms you already use and with which you are familiar.
 
