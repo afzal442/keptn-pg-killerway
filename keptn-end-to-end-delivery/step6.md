@@ -116,7 +116,7 @@ The important parts here are `problemType` denotes the name of the problem type 
 
 ```
 cd ~/$GIT_NEW_REPO_NAME
-git checkout production
+git checkout --track origin/production
 cat << EOF > helloservice/remediation.yaml
 apiVersion: spec.keptn.sh/0.1.4
 kind: Remediation
@@ -131,6 +131,9 @@ spec:
           description: Scale up
           value: "2"
 EOF
+git remote set-url origin https://$GIT_USER:$GITHUB_TOKEN@github.com/$GIT_USER/$GIT_NEW_REPO_NAME.git
+git config --global user.email "keptn@keptn.sh"
+git config --global user.name "Keptn"
 git add -A
 git commit -m "add remediation file to production"
 git push
@@ -146,7 +149,6 @@ On the `production` branch of your Git upstream, modify `helloservice/job/config
 
 ```
 cd ~/$GIT_NEW_REPO_NAME
-git checkout production
 cat << EOF > helloservice/job/config.yaml
 apiVersion: v2
 actions:
@@ -164,7 +166,7 @@ actions:
         image: "alpine/helm:3.9.0"
         serviceAccount: "jes-deploy-using-helm"
         cmd: ["helm"]
-        args: ["upgrade", "--create-namespace", "--install", "-n", "$(KEPTN_PROJECT)-$(KEPTN_STAGE)", "$(KEPTN_SERVICE)", "/keptn/charts/$(KEPTN_SERVICE).tgz", "--set", "image=$(IMAGE)", "--wait"]
+        args: ["upgrade", "--create-namespace", "--install", "-n", "\$(KEPTN_PROJECT)-\$(KEPTN_STAGE)", "\$(KEPTN_SERVICE)", "/keptn/charts/\$(KEPTN_SERVICE).tgz", "--set", "image=\$(IMAGE)", "--wait"]
 
   - name: "Run tests using locust"
     events:
@@ -176,7 +178,7 @@ actions:
           - locust/locust.conf
         image: "locustio/locust:2.8.6"
         cmd: ["locust"]
-        args: ["--config", "/keptn/locust/locust.conf", "-f", "/keptn/locust/basic.py", "--host", "http://$(KEPTN_SERVICE).$(KEPTN_PROJECT)-$(KEPTN_STAGE)", "--only-summary"]
+        args: ["--config", "/keptn/locust/locust.conf", "-f", "/keptn/locust/basic.py", "--host", "http://\$(KEPTN_SERVICE).\$(KEPTN_PROJECT)-\$(KEPTN_STAGE)", "--only-summary"]
 
   - name: "Remediation: Scaling with Helm"
     events:
@@ -195,7 +197,8 @@ actions:
         image: "alpine/helm:3.9.0"
         serviceAccount: "jes-deploy-using-helm"
         cmd: ["helm"]
-        args: ["upgrade", "-n", "$(KEPTN_PROJECT)-$(KEPTN_STAGE)", "$(KEPTN_SERVICE)", "/keptn/charts/$(KEPTN_SERVICE).tgz", "--set", "replicaCount=$(REPLICA_COUNT)"]
+        args: ["upgrade", "-n", "\$(KEPTN_PROJECT)-\$(KEPTN_STAGE)", "\$(KEPTN_SERVICE)", "/keptn/charts/\$(KEPTN_SERVICE).tgz", "--set", "replicaCount=\$(REPLICA_COUNT)"]
+EOF
 git add -A
 git commit -m "add remediation action to jes in production"
 git push
