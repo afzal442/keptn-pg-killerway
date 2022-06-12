@@ -28,7 +28,7 @@ keptn add-resource --project=fulltour --service=helloservice --stage=production 
 keptn add-resource --project=fulltour --service=helloservice --stage=production --resource=./locust/locust.conf
 ```{{exec}}
 
-## Modify Shipyard
+## Add Test and Evaluation to Production
 
 Modify the shipyard on the `main` branch again. After the `je-deployment` task, add two new tasks to the `production` stage:
 
@@ -39,9 +39,9 @@ Modify the shipyard on the `main` branch again. After the `je-deployment` task, 
     timeframe: "2m"
 ```
 
-The shipyard should now look like this:
-
 ```
+cd ~/$GIT_NEW_REPO_NAME
+cat << EOF > ~/$GIT_NEW_REPO_NAME/shipyard.yaml
 apiVersion: "spec.keptn.sh/0.2.2"
 kind: "Shipyard"
 metadata:
@@ -73,7 +73,14 @@ spec:
             - name: "evaluation"
               properties:
                 timeframe: "2m"
-```
+EOF
+git remote set-url origin https://$GIT_USER:$GITHUB_TOKEN@github.com/$GIT_USER/$GIT_NEW_REPO_NAME.git
+git config --global user.email "keptn@keptn.sh"
+git config --global user.name "Keptn"
+git add -A
+git commit -m "add load gen and evaluation to production"
+git push
+```{{exec}}
 
 > An additional `je-test` step is added so locust generates some load on the application. In a real production environment, this task would probably be unneccessary as production traffic would already be present.
 
