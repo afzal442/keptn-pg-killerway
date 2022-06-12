@@ -7,6 +7,8 @@ Clone your demo repo locally so we can work with it:
 ```
 cd ~
 gh repo clone $GIT_REPO
+cd ~/$GIT_REPO
+git fetch && git checkout main
 ```{{exec}}
 
 
