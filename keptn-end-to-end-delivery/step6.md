@@ -257,3 +257,23 @@ keptn send event -f ~/remediation_trigger.json
 When the sequence is complete, you should see:
 
 ![remediation sequence complete](assets/remediation_sequence_complete.png)
+  
+## See Scaling
+
+`qa` environment should still have 1 pod running. `production` environment should have scaled up to 2 pods.
+
+```
+kubectl -n fulltour-qa get pods
+kubectl -n fulltour-production get pods
+```{{exec}}
+  
+```
+$ kubectl get pods -n fulltour-qa
+NAME                           READY   STATUS    RESTARTS   AGE
+helloservice-56db8dc7c-mvqxx   1/1     Running   0          17m
+
+$ kubectl get pods -n fulltour-production
+NAME                           READY   STATUS    RESTARTS   AGE
+helloservice-56db8dc7c-6bvf4   1/1     Running   0          14m
+helloservice-56db8dc7c-2wp4s   1/1     Running   0          67s
+```
