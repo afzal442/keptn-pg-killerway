@@ -75,11 +75,6 @@ kubectl -n monitoring apply -f https://raw.githubusercontent.com/keptn-contrib/p
 kubectl apply -f ~/keptn-job-executor-delivery-poc/job-executor/workloadClusterRoles.yaml
 
 # ---------------------------------------------#
-# Step 12/12: Authenticate Keptn CLI           #
-# ---------------------------------------------#
-keptn auth --endpoint={{TRAFFIC_HOST1_8080}}/api --api-token=$(kubectl get secret keptn-api-token -n keptn -ojsonpath='{.data.keptn-api-token}' | base64 -d)
-
-# ---------------------------------------------#
 #       🎉 Installation Complete 🎉          #
 #           Please proceed now...              #
 # ---------------------------------------------#
