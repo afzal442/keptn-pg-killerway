@@ -3,10 +3,11 @@ You have used Keptn to build a fortified end-to-end delivery orchestration whils
 
 The delivery orchestration you have built:
 
-1. Uses the tooling you already know and love
-2. Prevents bad code, automatically stopping deployments if quality checks fail.
-3. Can accomodate manual approvals if required
-4. Can self-heal by taking actions in production, again using the tooling you want
+1. Uses the tooling you already know and love and allows tool changes by changing a few lines of code
+3. Is tool and task unopinionated. Use any tasks and tools you wish
+4. Prevents bad code, automatically stopping deployments if quality checks fail.
+5. Can accomodate manual approvals if required
+6. Can self-heal by taking actions using a flexible action + action provider format
 
 ### So What Next?
 
