@@ -2,7 +2,9 @@
 
 Much like `kubectl`, the `keptn` CLI can be used to interact with the control plane.
 
-We have already authenticated it for you, but for future reference you can find the command in the Keptn bridge.
+```
+keptn auth --endpoint={{TRAFFIC_HOST1_8080}}/api --api-token=$(kubectl get secret keptn-api-token -n keptn -ojsonpath='{.data.keptn-api-token}' | base64 -d)
+```{{exec}}
 
 # Keptn Bridge
 
