@@ -25,11 +25,9 @@ The tutorial will progress in steps:
 
 While you have been reading, we have been busy installing everything. It is still happening and should only take a few minutes.
 
-While you wait, you will need a brand new uninitialised Git repo and personal access token to follow this tutorial.
+While you wait, you will need a Git Personal access token with full `Repo` rights. We use this to create a new repository and so Keptn has a place to store and manage files.
 
-You can use any Git provider but assuming you're using GitHub.com, follow the instructions below.
-
-Let's get you setup while you wait for the install to finish:
+You can use any Git provider but assuming you're using GitHub.com:
 
 - Go to GitHub token's [setting page](https://github.com/settings/tokens) and generate a personal access token with full `Repo` permissions
 
