@@ -8,6 +8,10 @@ Decide on a new repo name you'd like to use and set it as an environment variabl
 export GIT_USER=<YourUserName>
 export GITHUB_TOKEN=<YourGitPATToken>
 export GIT_NEW_REPO_NAME=keptndemo
+```{{copy}}
+
+Now set a meta variable which Keptn will use (no need to change this, just run it)
+```
 export GIT_REPO=https://github.com/$GIT_USER/$GIT_NEW_REPO_NAME.git
 ```
 
