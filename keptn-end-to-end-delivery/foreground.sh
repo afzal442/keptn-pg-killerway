@@ -10,24 +10,24 @@ JOB_EXECUTOR_SERVICE_VERSION=0.2.0
 KEPTN_PROMETHEUS_SERVICE_VERSION=0.8.0
 
 # -----------------------------------------#
-#    Step 1/11: Installing GitHub CLI      #
+#    Step 1/12: Installing GitHub CLI      #
 # -----------------------------------------#
 wget -q https://github.com/cli/cli/releases/download/v${GH_CLI_VERSION}/gh_${GH_CLI_VERSION}_linux_amd64.deb
 chmod +x gh_${GH_CLI_VERSION}_linux_amd64.deb
 dpkg -i gh_${GH_CLI_VERSION}_linux_amd64.deb
 
 # -----------------------------------------#
-#    Step 2/11: Retrieving demo files      #
+#    Step 2/12: Retrieving demo files      #
 # -----------------------------------------#
 git clone https://github.com/christian-kreuzberger-dtx/keptn-job-executor-delivery-poc.git
 
 # -----------------------------------------#
-#      Step 3/11: Installing Keptn CLI     #
+#      Step 3/12: Installing Keptn CLI     #
 # -----------------------------------------#
 curl -sL https://get.keptn.sh | KEPTN_VERSION=$KEPTN_VERSION bash
 
 # ----------------------------------------#
-#      Step 4/11: Installing Helm         #
+#      Step 4/12: Installing Helm         #
 # ----------------------------------------#
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 && chmod 700 get_helm.sh
 ./get_helm.sh
