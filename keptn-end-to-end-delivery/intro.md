@@ -29,11 +29,9 @@ While you wait, you will need a brand new uninitialised Git repo and personal ac
 
 You can use any Git provider but assuming you're using GitHub.com, follow the instructions below.
 
-Let's get you setup while you wait for the install to finish.
+Let's get you setup while you wait for the install to finish:
 
-1. Go to GitHub.com
-2. Create a brand new, uninitialised repository. Do not add any files (eg. readme). The repo must have zero prior commits
-3. Go to `https://github.com/settings/tokens` and generate a personal access token with full `Repo` permissions
+- Go to `https://github.com/settings/tokens` and generate a personal access token with full `Repo` permissions
 
 ![repo](./assets/repo-token.png)
 
