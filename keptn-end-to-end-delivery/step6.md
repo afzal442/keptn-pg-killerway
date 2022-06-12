@@ -203,7 +203,7 @@ EOF
 git add -A
 git commit -m "add remediation action to jes in production"
 git push
-```
+```{{exec}}
 
 ## Explanation
 
