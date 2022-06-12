@@ -40,30 +40,7 @@ The demo environment has the GitHub CLI. The CLI will automatically use the `GIT
 Ensure the GitHub CLI works by listing your existing repositories which should show all existing repositories on your account:
 
 ```
-gh repo list
-```{{exec}}
-
-Now create the new private repository:
-
-```
 gh repo create $GIT_NEW_REPO_NAME --public
-```{{exec}}
-
-If it worked, you will see:
-
-```
-✓ Created repository <YourUserName>/keptndemo on GitHub
-```
-
-## Create Keptn Project
-
-A Keptn project is a high level logical container. A project contains stages (which mimic your environment eg. `dev` and `production`) and services (which mimic your microservices).
-
-A Keptn project is modelled by a `shipyard.yaml` file which you must define.
-
-Run the following to create a `shipyard.yaml` file on disk:
-
-```
 cd ~
 cat << EOF > shipyard.yaml
 apiVersion: "spec.keptn.sh/0.2.2"
@@ -87,44 +64,20 @@ spec:
           tasks:
             - name: "je-deployment"
 EOF
-```{{exec}}
-
-Create the project: `fulltour` and service called `helloservice` using the Keptn CLI.
-
-The Keptn service name must be called precisely `helloservice` because the helm chart we use in this demo is called `helloservice.tgz` and the job executor runs `helm install` and relies on a file being available called `helloservice.tgz`.
-  
-```
 keptn create project fulltour --shipyard shipyard.yaml --git-remote-url $GIT_REPO --git-user $GIT_USER --git-token $GITHUB_TOKEN
 keptn create service helloservice --project=fulltour
-```{{exec}}
-
-## Add Application Helm Chart
-
-Add the helm chart (this is the real application we will deploy). The `--resource` path is the path to files on disk whereas `--resourceUri` is the Git target folder. Do not change these. Notice also we’re uploading a helm chart with a name matching the Keptn service: `helloservice.tgz`
-
-```
 cd ~/keptn-job-executor-delivery-poc
 keptn add-resource --project=fulltour --service=helloservice --all-stages --resource=./helm/helloservice.tgz --resourceUri=charts/helloservice.tgz
-```{{exec}}
-
-Add the files that locust needs:
-
-```
 keptn add-resource --project=fulltour --service=helloservice --stage=qa --resource=./locust/basic.py
 keptn add-resource --project=fulltour --service=helloservice --stage=qa --resource=./locust/locust.conf
-```{{exec}}
-
-Add the job executor service config file. This tells the JES what container and commands to execute for each Keptn task:
-
-```
 keptn add-resource --project=fulltour --service=helloservice --all-stages --resource=job-executor-config.yaml --resourceUri=job/config.yaml
 ```{{exec}}
 
+The Keptn project setup is now complete. Don't worry, we'll point you to a repository and docs at the end of the tutorial that will explain in-depth how all of this works.
+
+It is now time to trigger your first end-to-end artifact delivery of the `helloservice.tgz` helm chart, testing along the way with locust.
+
 ## 🎉 Trigger Delivery
-
-You are now ready to trigger delivery of the `helloservice` helm chart into all stages, testing along the way with locust:
-
-Trigger a sequence via the API, via the bridge or via the CLI:
 
 ```
 keptn trigger delivery \
@@ -168,6 +121,8 @@ fulltour-qa           Active   2m
 fulltour-production   Active   2m
 ```
 
+## Validate Application Versions
+
 Validate that pods version `v0.1.1` is running in both environments.
 
 ```
@@ -175,10 +130,7 @@ kubectl -n fulltour-qa describe pod -l app=helloservice | grep Image:
 kubectl -n fulltour-production describe pod -l app=helloservice | grep Image:
 ```{{exec}}
 
-
-Also notice that during the `je-test` task, locust was executed. The `job/config.yaml` file in the Git upstream also shows how this was done.
-
-Result: Keptn orchestrated your deployment which was acheived using `helm` and `locust` to generate load.
+> Result: Keptn orchestrated your deployment which was acheived using `helm` and `locust` to generate load.
 
 ----
 
