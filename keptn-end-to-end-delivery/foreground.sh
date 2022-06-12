@@ -75,6 +75,6 @@ kubectl -n monitoring apply -f https://raw.githubusercontent.com/keptn-contrib/p
 kubectl apply -f ~/keptn-job-executor-delivery-poc/job-executor/workloadClusterRoles.yaml
 
 # ---------------------------------------------#
-#       🎉 Installation Completed 🎉          #
+#       🎉 Installation Complete 🎉          #
 #           Please proceed now...              #
 # ---------------------------------------------#
