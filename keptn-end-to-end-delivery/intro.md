@@ -31,7 +31,7 @@ You can use any Git provider but assuming you're using GitHub.com, follow the in
 
 Let's get you setup while you wait for the install to finish:
 
-- Go to GitHub token's [setting](https://github.com/settings/tokens) page and generate a personal access token with full `Repo` permissions
+- Go to GitHub token's [setting page](https://github.com/settings/tokens) and generate a personal access token with full `Repo` permissions
 
 ![repo](./assets/repo-token.png)
 
