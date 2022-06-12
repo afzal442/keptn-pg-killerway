@@ -39,7 +39,7 @@ Let's get you setup while you wait for the install to finish:
 
 You have everything you need now and just need to wait for us to finish the installation.
 
-Please wait here until you see the text `Installation Completed 🎉. Please proceed now.` in the console.
+Please wait here until you see the text `Installation Complete 🎉. Please proceed now.` in the console.
 
 While you wait, here is a visual of what you are about to build.
 
