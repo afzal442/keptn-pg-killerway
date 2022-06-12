@@ -17,16 +17,9 @@ Each observability provider will, of course, have strengths, weaknesses and slig
 
 ## Keptn Retrieves SLIs from Prometheus
 
-Keptn needs to know how to interact with Prometheus; a Keptn SLI provider service is used.
+Keptn needs to know how to interact with Prometheus; a Keptn SLI provider service is used. This service "knows" how to retrieve metrics from Prometheus so we need this **in addition to** Prometheus itself.
 
-This service "knows" how to retrieve metrics from Prometheus so we need this **in addition to** Prometheus itself.
-
-```
-helm install -n keptn prometheus-service https://github.com/keptn-contrib/prometheus-service/releases/download/0.8.0/prometheus-service-0.8.0.tgz --set resources.requests.cpu=25m
-kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/0.8.0/deploy/role.yaml -n monitoring
-```{{exec}}
-
-The Keptn Prometheus service is installed in the `keptn` namespace.
+The Keptn Prometheus service is already installed in the `keptn` namespace.
 
 ## Add Prometheus SLIs and SLOs
 
