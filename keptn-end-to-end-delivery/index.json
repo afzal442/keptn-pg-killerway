@@ -12,7 +12,8 @@
       },
       {
         "title": "Multi Stage Delivery",
-        "text": "step2.md"
+        "text": "step2.md",
+        "foreground": "git_details_foreground.sh"
       },
       {
         "title": "Add Manual Approvals",
@@ -33,7 +34,7 @@
     ],
     "intro": {
       "text": "intro.md",
-      "code": "foreground.sh"
+      "foreground": "intro_foreground.sh"
     },
     "finish": {
       "text": "finish.md"
