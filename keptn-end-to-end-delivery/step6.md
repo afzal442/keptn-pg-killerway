@@ -90,6 +90,7 @@ EOF
 git remote set-url origin https://$GIT_USER:$GITHUB_TOKEN@github.com/$GIT_USER/$GIT_NEW_REPO_NAME.git
 git config --global user.email "keptn@keptn.sh"
 git config --global user.name "Keptn"
+git pull
 git add -A
 git commit -m "add self-healing to production"
 git push
