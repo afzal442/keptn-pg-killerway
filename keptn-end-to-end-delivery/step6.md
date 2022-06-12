@@ -133,14 +133,8 @@ spec:
 EOF
 git add -A
 git commit -m "add remediation file to production"
-
-
-keptn add-resource --project=fulltour --stage=production --service=helloservice --resource=helloservice-remediation.yaml --resourceUri=remediation.yaml
+git push
 ```{{exec}}
-
-Add this file to the Git upstream directly or use the `keptn add-resource` helper command to upload it for you.
-
-Notice that it is stored in Git as `remediation.yaml` and not as it is called on disk: `helloservice-remediation.yaml`. The filename is important and expected to be `remediation.yaml`.
 
 ## Link Input to Action
 
@@ -151,29 +145,9 @@ We need to bring a tool. We choose to use the job executor service which in turn
 On the `production` branch of your Git upstream, modify `helloservice/job/config.yaml` and add a new `action`:
 
 ```
-  - name: "Remediation: Scaling with Helm"
-    events:
-      - name: "sh.keptn.event.action.triggered"
-        jsonpath:
-          property: "$.data.action.action"
-          match: "scale"
-    tasks:
-      - name: "Scale with Helm"
-        files:
-          - /charts
-        env:
-          - name: REPLICA_COUNT
-            value: "$.data.action.value"
-            valueFrom: event
-        image: "alpine/helm:3.9.0"
-        serviceAccount: "jes-deploy-using-helm"
-        cmd: ["helm"]
-        args: ["upgrade", "-n", "$(KEPTN_PROJECT)-$(KEPTN_STAGE)", "$(KEPTN_SERVICE)", "/keptn/charts/$(KEPTN_SERVICE).tgz", "--set", "replicaCount=$(REPLICA_COUNT)"]
-```
-
-Your `job/config.yaml` should now look like this:
-
-```
+cd ~/$GIT_NEW_REPO_NAME
+git checkout production
+cat << EOF > helloservice/job/config.yaml
 apiVersion: v2
 actions:
   - name: "Deploy using helm"
@@ -222,6 +196,9 @@ actions:
         serviceAccount: "jes-deploy-using-helm"
         cmd: ["helm"]
         args: ["upgrade", "-n", "$(KEPTN_PROJECT)-$(KEPTN_STAGE)", "$(KEPTN_SERVICE)", "/keptn/charts/$(KEPTN_SERVICE).tgz", "--set", "replicaCount=$(REPLICA_COUNT)"]
+git add -A
+git commit -m "add remediation action to jes in production"
+git push
 ```
 
 ## Explanation
@@ -232,18 +209,6 @@ The new task:
 2. Retrieves the replica count from the incoming JSON payload (this references the `value` field in `remediation.yaml`)
 3. Uses `helm` to upgrade the `helloservice.tgz` helm chart and sets the `replicaCount` to whatever value is specified in `remediation.yaml` (in our case `2`)
 
-## Subscribe Job Executor Service to the Action
-
-We have all the important parts now in place but we're missing one final piece. The job executor service needs to listen for the `action.triggered` event so it knows to start when a remediation action is successfully detected.
-
-In the Keptn's bridge, add a new subscription for the JES to `action.triggered`.
-
-![jes action subscription](assets/jes_action_subscription.png)
-
-The job executor service subscriptions should now look like this:
-
-![jes subscriptions](assets/jes_subscriptions.png)
-
 ## Create a fake problem
 
 In reality you would rely on prometheus alert manager or another incoming problem feed from an external observability platform.
@@ -251,6 +216,7 @@ In reality you would rely on prometheus alert manager or another incoming proble
 For our demo though, we can "fake" this payload so you can easily and quickly retrigger:
 
 ```
+cd ~
 cat <<EOF > remediation_trigger.json
 {
   "type": "sh.keptn.event.production.remediation.triggered",
@@ -281,7 +247,7 @@ Notice two important details:
 Send Keptn a problem event and watch Keptn scale the pods:
 
 ```
-keptn send event -f remediation_trigger.json
+keptn send event -f ~/remediation_trigger.json
 ```{{exec}}
 
 When the sequence is complete, you should see:
