@@ -23,7 +23,10 @@ Run this script which:
 3. Tells Job executor service to respond to these scaling requests
 4. Tells Job executor service that Helm should upgrade the deployment with the new replica count (2 pods not 1)
 5. Creates a dummy problem which we can use to repeatedly trigger this scenario
-6. After scaling, a further quality evaluation is executed - did scaling the pods actually help?
+
+After the scaling has occurred:
+1. Load is generated on the service (this step would probably not be necessary in a real production environment)
+2. A further quality evaluation is executed - did scaling the pods actually help?
 
 ```
 ~/self_healing.sh
