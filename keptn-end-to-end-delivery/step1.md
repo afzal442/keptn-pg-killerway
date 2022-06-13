@@ -10,7 +10,7 @@ keptn auth --endpoint={{TRAFFIC_HOST1_8080}}/api --api-token=$(kubectl get secre
 
 The bridge is the web-based interface for Keptn.
 
-Retrieve the login details for the bridge (defaults to `keptn`):
+Retrieve the login details for the bridge:
 
 ```
 export BRIDGE_USERNAME=$(kubectl get secret -n keptn bridge-credentials -o jsonpath="{.data.BASIC_AUTH_USERNAME}" | base64 --decode)
