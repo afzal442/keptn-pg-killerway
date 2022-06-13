@@ -25,7 +25,7 @@ The tutorial will progress in steps:
 
 While you have been reading, we have been busy installing everything. It is still happening and should only take a few minutes.
 
-While you wait, you will need a ersonal access token (PAT). We use this to create a new repository and so Keptn has a place to store and manage files.
+While you wait, you will need a personal access token (PAT). We use this to create a new repository and so Keptn has a place to store and manage files.
 
 > Important: For security, invalidate this token immediately after you have finished this tutorial.
 
