@@ -1,4 +1,4 @@
-## Set Git Details As Environment Variables
+## Set Git Details
 
 Keptn needs a brand new, uninitialised repo to store and manage configuration. We will create it automatically now.
 
@@ -8,22 +8,21 @@ Run this script to set your details. If you make a mistake, just click this agai
 . ~/set_git_details.sh
 ```{{exec}}
 
-## Create New Repository
+## Create New Repository, Keptn Project and Trigger Artifact Delivery
 
 Run the following script which will:
 
 1. Create a new uninitialised Git repo on your account
 2. Create a Keptn project and upload to the Git repo
-3. Add all resources that Keptn, Locust and Helm need to run to your Git 
+3. Add all resources that Keptn, Locust and Helm need to run to your Git
+4. Triggers the first delivery sequence of the microservice into `qa` and `production`
 ```
 ~/setup_keptn.sh
 ```{{exec}}
 
-The Keptn project setup is now complete. Don't worry, we'll point you to a repository and docs at the end of the tutorial that will explain in-depth how all of this works.
-
 ## 🎉 Delivery In Progress
 
-The first artifact delivery sequence has been triggered. Watch progress in [the bridge]({{TRAFFIC_HOST1_8080}}/bridge/project/fulltour/sequence).
+Everything is setup correctly and the first artifact delivery sequence has been triggered. Watch progress in [the bridge]({{TRAFFIC_HOST1_8080}}/bridge/project/fulltour/sequence).
 
 Locust runs for 2 minutes (configurable) each time it responds to `je-test.triggered`. Load is generated once in the `qa` stage so expect the end-to-end delivery with Locust load tests to take about 3 minutes.
 
