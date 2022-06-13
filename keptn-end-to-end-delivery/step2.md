@@ -16,6 +16,9 @@ Run the following script which will:
 2. Create a Keptn project and upload to the Git repo
 3. Add all resources that Keptn, Locust and Helm need to run to your Git
 4. Triggers the first delivery sequence of the microservice into `qa` and `production`
+
+*💡 Hint: `Ctrl + Shift + v` works well in the terminal window to paste*
+
 ```
 ~/setup_keptn.sh
 ```{{exec}}
