@@ -1,4 +1,9 @@
-cd ~
+#
+# IMPORTANT: Killercoda should be able to add this file to the VM but it isn't currently working
+# So for now I'll wget it from a private Git in the intro_foreground.sh
+# But this is anticipated to be a temporary workaround and as soon as Killercoda works we'll pull everything from this repo
+#
+cd
 echo ""
 echo "================================================================================="
 echo " Creating brand new Git repo ($GIT_NEW_REPO_NAME) on your GitHub.com account     "
@@ -44,7 +49,7 @@ keptn add-resource --project=fulltour --service=helloservice --stage=qa --resour
 keptn add-resource --project=fulltour --service=helloservice --stage=qa --resource=./locust/locust.conf
 keptn add-resource --project=fulltour --service=helloservice --all-stages --resource=job-executor-config.yaml --resourceUri=job/config.yaml
 
-echo "Triggering Delivery of the helloservice v0.1.1 Artifact (Follow progres in the Bridge)"
+echo "Triggering Delivery of the helloservice v0.1.1 Artifact (Follow progress in the Bridge)"
 keptn trigger delivery \
 --project=fulltour \
 --service=helloservice \
