@@ -1,7 +1,7 @@
 # -----------------------------------------#
 #        Setting Global variables          #
 # -----------------------------------------#
-DEBUG=19
+DEBUG=20
 K3D_VERSION=v5.3.0
 KUBECTL_VERSION=v1.22.6
 GH_CLI_VERSION=2.12.1
@@ -15,21 +15,6 @@ KEPTN_PROMETHEUS_SERVICE_VERSION=0.8.0
 wget -q https://github.com/cli/cli/releases/download/v${GH_CLI_VERSION}/gh_${GH_CLI_VERSION}_linux_amd64.deb
 chmod +x gh_${GH_CLI_VERSION}_linux_amd64.deb
 dpkg -i gh_${GH_CLI_VERSION}_linux_amd64.deb
-wget -q https://gist.githubusercontent.com/agardnerIT/e3dadfaa303d96fc131f3f0f4664c7cc/raw/98a9f8baaf41efb7e11b93e4a57014142d508af8/set_git_details.sh
-wget -q https://gist.githubusercontent.com/agardnerIT/9225e81f42b47edeffc69443da4dbaea/raw/2d9f5e7d6f3897b0206017bd362bc4335f841d40/setup_keptn.sh
-wget -q https://gist.githubusercontent.com/agardnerIT/886ea4952d0ab9208679212bea2b26d0/raw/cb8b0699ead7114d6f79ed5533a56ca247152456/print_bridge_login_details.sh
-wget -q https://gist.githubusercontent.com/agardnerIT/7e91b9ceb0ddffec4f1061e3271515fc/raw/ca5f236e55f1d90835de02097c62c0697ff8aac7/add_approval_step.sh
-wget -q https://gist.githubusercontent.com/agardnerIT/597e18923ad852b2595ccb3e14ac6ca9/raw/ac33ca5eb316959338c0f1ea743c819138aa3fb9/quality_gated_release.sh
-wget -q https://gist.githubusercontent.com/agardnerIT/d2a6cb29c679243f143ebcec7360dd50/raw/01cc7f9e01b89b659bdfb638ad6d8f0da9b5abaa/release_validation.sh
-wget -q https://gist.githubusercontent.com/agardnerIT/f3beeb80b4f4c07173a5f515b3818d33/raw/419b67414eba11d0279d8f52463ebdb95f99ab0c/self_healing.sh
-
-chmod +x set_git_details.sh
-chmod +x setup_keptn.sh
-chmod +x print_bridge_login_details.sh
-chmod +x add_approval_step.sh
-chmod +x quality_gated_release.sh
-chmod +x release_validation.sh
-chmod +x self_healing.sh
 
 # -----------------------------------------#
 #    Step 2/11: Retrieving demo files      #
