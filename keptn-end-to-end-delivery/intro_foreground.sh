@@ -1,7 +1,7 @@
 # -----------------------------------------#
 #        Setting Global variables          #
 # -----------------------------------------#
-DEBUG=11
+DEBUG=12
 K3D_VERSION=v5.3.0
 KUBECTL_VERSION=v1.22.6
 GH_CLI_VERSION=2.12.1
@@ -17,8 +17,10 @@ chmod +x gh_${GH_CLI_VERSION}_linux_amd64.deb
 dpkg -i gh_${GH_CLI_VERSION}_linux_amd64.deb
 wget -q https://gist.githubusercontent.com/agardnerIT/e3dadfaa303d96fc131f3f0f4664c7cc/raw/98a9f8baaf41efb7e11b93e4a57014142d508af8/set_git_details.sh
 wget -q https://gist.githubusercontent.com/agardnerIT/9225e81f42b47edeffc69443da4dbaea/raw/2d9f5e7d6f3897b0206017bd362bc4335f841d40/setup_keptn.sh
+https://gist.githubusercontent.com/agardnerIT/886ea4952d0ab9208679212bea2b26d0/raw/cb8b0699ead7114d6f79ed5533a56ca247152456/print_bridge_login_details.sh
 chmod +x set_git_details.sh
 chmod +x setup_keptn.sh
+chmod +x print_bridge_login_details.sh
 
 # -----------------------------------------#
 #    Step 2/11: Retrieving demo files      #
