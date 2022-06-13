@@ -46,3 +46,5 @@ While you wait, here is a visual of what you are about to build.
 ![keptn-cloud-native](./assets/overview_image.drawio.png)
 
 It should only take a few more minutes...
+
+*Be aware that this environment is invalidated after 60 minutes or 20 minutes of keyboard inactivity, whichever comes first*
