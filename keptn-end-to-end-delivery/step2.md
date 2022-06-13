@@ -45,8 +45,6 @@ While you are waiting for the release and load test to finish, why not have a lo
   
 Notice Keptn has created a branch per stage. Inside those branches are folders for each Keptn service.
 
-The `keptn add-resource` command is a helper which ensures files are stored on the correct branches and in the correct folders. However, it is not mandatory to use this function; you could choose to upload directly to Git if you know your way around.
-
 ## What Happened?
 
 Run `kubectl get namespaces`{{exec}}
