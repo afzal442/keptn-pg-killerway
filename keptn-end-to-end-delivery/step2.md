@@ -2,7 +2,7 @@
 
 Keptn needs a brand new, uninitialised repo to store and manage configuration. We will create it automatically now.
 
-Please run this helper script to set your details. If you make a mistake, just click this again to reset things:
+Run this script to set your details. If you make a mistake, just click this again to reset things:
 
 ```
 . ~/set_git_details.sh
