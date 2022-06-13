@@ -21,7 +21,7 @@ wget -q https://gist.githubusercontent.com/agardnerIT/886ea4952d0ab9208679212bea
 wget -q https://gist.githubusercontent.com/agardnerIT/7e91b9ceb0ddffec4f1061e3271515fc/raw/ca5f236e55f1d90835de02097c62c0697ff8aac7/add_approval_step.sh
 wget -q https://gist.githubusercontent.com/agardnerIT/597e18923ad852b2595ccb3e14ac6ca9/raw/ac33ca5eb316959338c0f1ea743c819138aa3fb9/quality_gated_release.sh
 wget -q https://gist.githubusercontent.com/agardnerIT/d2a6cb29c679243f143ebcec7360dd50/raw/01cc7f9e01b89b659bdfb638ad6d8f0da9b5abaa/release_validation.sh
-wget -q https://gist.githubusercontent.com/agardnerIT/f3beeb80b4f4c07173a5f515b3818d33/raw/960f79c2d32e299fb6561c311a7f9034a751ed81/self_healing.sh
+wget -q https://gist.githubusercontent.com/agardnerIT/f3beeb80b4f4c07173a5f515b3818d33/raw/419b67414eba11d0279d8f52463ebdb95f99ab0c/self_healing.sh
 
 chmod +x set_git_details.sh
 chmod +x setup_keptn.sh
