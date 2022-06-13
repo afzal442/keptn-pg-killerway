@@ -38,7 +38,7 @@
 			"text": "finish.md"
 		},
                 "assets": {
-		    "host01": [{
+		    "host1": [{
 				"file": "set_git_details.sh",
 				"target": "/tmp",
 				"chmod": "+x"
