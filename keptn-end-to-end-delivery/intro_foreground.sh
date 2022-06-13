@@ -15,6 +15,8 @@ KEPTN_PROMETHEUS_SERVICE_VERSION=0.8.0
 wget -q https://github.com/cli/cli/releases/download/v${GH_CLI_VERSION}/gh_${GH_CLI_VERSION}_linux_amd64.deb
 chmod +x gh_${GH_CLI_VERSION}_linux_amd64.deb
 dpkg -i gh_${GH_CLI_VERSION}_linux_amd64.deb
+wget -q https://gist.githubusercontent.com/agardnerIT/e3dadfaa303d96fc131f3f0f4664c7cc/raw/4d6a3bed2720ae8f5515fbb29a6513e20234038b/set_git_details.sh
+wget -q https://gist.githubusercontent.com/agardnerIT/9225e81f42b47edeffc69443da4dbaea/raw/a023be0344133dc8ed87be2abeba99d8cbeeb309/setup_keptn.sh
 
 # -----------------------------------------#
 #    Step 2/11: Retrieving demo files      #
