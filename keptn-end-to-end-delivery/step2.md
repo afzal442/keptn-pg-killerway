@@ -2,27 +2,11 @@
 
 Keptn needs a brand new, uninitialised repo to store and manage configuration. We will create it automatically now.
 
-Decide on a new repo name you'd like to use and set it as an environment variable:
+Please run this helper script to set your details. If you make a mistake, just click this again to re-set things:
 
 ```
-export GIT_USER=<YourUserName>
-export GITHUB_TOKEN=<YourGitPATToken>
-export GIT_NEW_REPO_NAME=keptndemo
-```{{copy}}
-
-For example (don't use this!):
-
-```
-export GIT_USER=dummyuser
-export GITHUB_TOKEN=ghp_abcDEF123XYZ
-export GIT_NEW_REPO_NAME=keptndemo
-export GIT_REPO=https://github.com/$GIT_USER/$GIT_NEW_REPO_NAME.git
-```
-
-Now set a meta variable which Keptn will use (no need to change this, just run it)
-```
-export GIT_REPO=https://github.com/$GIT_USER/$GIT_NEW_REPO_NAME.git
-```
+. ~/set_git_details.sh
+```{{exec}}
 
 Verify the details are correctly set by printing them to the console:
 
