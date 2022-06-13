@@ -39,7 +39,31 @@
 		},
 		"assets": {
 			"host01": [{
-				"file": "scripts/dummy.sh",
+				"file": "scripts/set_git_details.sh",
+				"target": "~/",
+				"chmod": "+x"
+			},{
+				"file": "scripts/setup_keptn.sh",
+				"target": "~/",
+				"chmod": "+x"
+			},{
+				"file": "scripts/print_bridge_login_details.sh",
+				"target": "~/",
+				"chmod": "+x"
+			},{
+				"file": "scripts/add_approval_step.sh",
+				"target": "~/",
+				"chmod": "+x"
+			},{
+				"file": "scripts/quality_gated_release.sh",
+				"target": "~/",
+				"chmod": "+x"
+			},{
+				"file": "scripts/release_validation.sh",
+				"target": "~/",
+				"chmod": "+x"
+			},{
+				"file": "scripts/self_healing.sh",
 				"target": "~/",
 				"chmod": "+x"
 			}]
