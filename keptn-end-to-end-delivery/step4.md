@@ -17,9 +17,17 @@ Each observability provider will, of course, have strengths, weaknesses and slig
 
 ## Configure Prometheus and Run an SLO-based Quality Gated Release
 
+Run the following script which will:
+
+1. Configure the fulltour Keptn project to use Prometheus
+2. Add a quality evaluation step to the `qa` stage. This is configured to **allow** `pass` or `warning` quality builds and **block** any `failed` quality builds
+3. Trigger a new delivery sequence
+
 ```
 ~/quality_gated_release.sh
 ```{{exec}}
+
+Refresh the bridge screen to watch progress.
 
 ## Outcome
 
