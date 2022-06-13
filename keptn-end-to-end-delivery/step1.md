@@ -13,10 +13,7 @@ The bridge is the web-based interface for Keptn.
 Retrieve the login details for the bridge:
 
 ```
-export BRIDGE_USERNAME=$(kubectl get secret -n keptn bridge-credentials -o jsonpath="{.data.BASIC_AUTH_USERNAME}" | base64 --decode)
-export BRIDGE_PASSWORD=$(kubectl get secret -n keptn bridge-credentials -o jsonpath="{.data.BASIC_AUTH_PASSWORD}" | base64 --decode)
-echo "Bridge Username: $BRIDGE_USERNAME"
-echo "Bridge Password: $BRIDGE_PASSWORD"
+~/print_bridge_login_details.sh
 ```{{exec}}
 
 Visit [the bridge]({{TRAFFIC_HOST1_8080}}/bridge) (opens in a new tab). Login and come back here.
