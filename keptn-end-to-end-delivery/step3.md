@@ -3,7 +3,7 @@ Add a step to the delivery sequence which enforces that a user must manually cli
 This script will set things up and trigger another artifact delivery:
 
 ```
-. ~/add_approval_step.sh
+~/add_approval_step.sh
 ```{{exec}}
 
 ## Approve Production Release
