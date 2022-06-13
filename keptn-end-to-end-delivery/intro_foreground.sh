@@ -16,7 +16,7 @@ wget -q https://github.com/cli/cli/releases/download/v${GH_CLI_VERSION}/gh_${GH_
 chmod +x gh_${GH_CLI_VERSION}_linux_amd64.deb
 dpkg -i gh_${GH_CLI_VERSION}_linux_amd64.deb
 wget -q https://gist.githubusercontent.com/agardnerIT/e3dadfaa303d96fc131f3f0f4664c7cc/raw/98a9f8baaf41efb7e11b93e4a57014142d508af8/set_git_details.sh
-wget -q https://gist.githubusercontent.com/agardnerIT/9225e81f42b47edeffc69443da4dbaea/raw/a023be0344133dc8ed87be2abeba99d8cbeeb309/setup_keptn.sh
+wget -q https://gist.githubusercontent.com/agardnerIT/9225e81f42b47edeffc69443da4dbaea/raw/2d9f5e7d6f3897b0206017bd362bc4335f841d40/setup_keptn.sh
 chmod +x set_git_details.sh
 chmod +x setup_keptn.sh
 
