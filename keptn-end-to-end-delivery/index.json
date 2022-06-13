@@ -1,56 +1,61 @@
 {
 
-  "title": "Keptn End to End Delivery",
-  "description": "Keptn uses a declarative approach to build scalable automation for delivery and operations which can be scaled to a large number of services.",
-  "difficulty": "Medium",
-  "time": "10",
-  "details": {
-    "steps": [
-      {
-        "title": "Keptn Bridge",
-        "text": "step1.md"
-      },
-      {
-        "title": "Multi Stage Delivery",
-        "text": "step2.md"
-      },
-      {
-        "title": "Add Manual Approvals",
-        "text": "step3.md"
-      },
-      {
-        "title": "Automated Approvals",
-        "text": "step4.md"
-      },
-      {
-        "title": "Release Validation",
-        "text": "step5.md"
-      },
-      {
-        "title": "Self Healing",
-        "text": "step6.md"
-      }
-    ],
-    "intro": {
-      "text": "intro.md",
-      "foreground": "intro_foreground.sh"
-    },
-    "finish": {
-      "text": "finish.md"
-    }
-  },
-  "environment": {
-    "showdashboard": true,
-    "dashboard": "Dashboard",
-    "uilayout": "terminal"
-  },
-  "backend": {
-    "imageid": "ubuntu:2004"
-  },
-  "assets": {
-      "host01": [
-        {"file": "set_git_details.sh", "target": "/tmp", "chmod": "+x"},
-        {"file": "setup_keptn.sh", "target": "/tmp", "chmod": "+x"}
-      ]
-  }
+	"title": "Keptn End to End Delivery",
+	"description": "Keptn uses a declarative approach to build scalable automation for delivery and operations which can be scaled to a large number of services.",
+	"difficulty": "Medium",
+	"time": "10",
+	"details": {
+		"steps": [{
+				"title": "Keptn Bridge",
+				"text": "step1.md"
+			},
+			{
+				"title": "Multi Stage Delivery",
+				"text": "step2.md"
+			},
+			{
+				"title": "Add Manual Approvals",
+				"text": "step3.md"
+			},
+			{
+				"title": "Automated Approvals",
+				"text": "step4.md"
+			},
+			{
+				"title": "Release Validation",
+				"text": "step5.md"
+			},
+			{
+				"title": "Self Healing",
+				"text": "step6.md"
+			}
+		],
+		"intro": {
+			"text": "intro.md",
+			"foreground": "intro_foreground.sh"
+		},
+		"finish": {
+			"text": "finish.md"
+		},
+        "assets": {
+		    "host01": [{
+				"file": "set_git_details.sh",
+				"target": "/root",
+				"chmod": "+x"
+			},
+			{
+				"file": "setup_keptn.sh",
+				"target": "/root",
+				"chmod": "+x"
+			}]
+	    }
+	},
+	"environment": {
+		"showdashboard": true,
+		"dashboard": "Dashboard",
+		"uilayout": "terminal"
+	},
+	"backend": {
+		"imageid": "ubuntu:2004"
+	}
 }
