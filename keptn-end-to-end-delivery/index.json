@@ -36,14 +36,14 @@
 		},
 		"finish": {
 			"text": "finish.md"
+		},
+		"assets": {
+			"host01": [{
+				"file": "scripts/dummy.sh",
+				"target": "~/",
+				"chmod": "+x"
+			}]
 		}
-	},
-	"assets": {
-		"host01": [{
-			"file": "scripts/dummy.sh",
-			"target": "~/",
-			"chmod": "+x"
-		}]
 	},
 	"environment": {
 		"showdashboard": true,
