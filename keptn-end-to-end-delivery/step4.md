@@ -36,7 +36,7 @@ The artifact receives a warning score which we told Keptn was still good enough 
 ![](./assets/qa-evaluation-1.jpg)
 ![](./assets/qa-evaluation-2.jpg)
 
-Check the application version running in each environment:
+Wait until the sequence has completed then check the application version running in each environment:
 
 ```
 kubectl -n fulltour-qa describe pod -l app=helloservice | grep Image:
