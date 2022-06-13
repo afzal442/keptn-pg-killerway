@@ -36,19 +36,7 @@
 		},
 		"finish": {
 			"text": "finish.md"
-		},
-                "assets": {
-		    "host01": [{
-				"file": "set_git_details.sh",
-				"target": "~/",
-				"chmod": "+x"
-			},
-			{
-				"file": "setup_keptn.sh",
-				"target": "~/",
-				"chmod": "+x"
-			}]
-	    }
+		}
 	},
 	"environment": {
 		"showdashboard": true,
