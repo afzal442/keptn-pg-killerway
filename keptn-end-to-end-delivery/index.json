@@ -12,8 +12,7 @@
       },
       {
         "title": "Multi Stage Delivery",
-        "text": "step2.md",
-        "foreground": "git_details_foreground.sh"
+        "text": "step2.md"
       },
       {
         "title": "Add Manual Approvals",
@@ -47,5 +46,10 @@
   },
   "backend": {
     "imageid": "ubuntu:2004"
+  }
+  "assets": {
+      "host01": [
+        {"file": "set_git_details.sh", "target": "/root", "chmod": "+x"}
+      ]
   }
 }
