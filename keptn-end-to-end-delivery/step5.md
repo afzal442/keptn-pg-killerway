@@ -30,6 +30,6 @@ Navigate to the bridge, select the latest sequence and choose `production`. noti
 
 ## What Next?
 
-As mentioned, problems will always occur in production, so lets equip Keptn to deal with issues.
+As mentioned, problems will always occur in production, so let's equip Keptn to deal with issues.
 
 Self-healing capabilities will be introduced using a provider (eg. helm) and an action (eg. scaling up pods) in response to a problem report.
