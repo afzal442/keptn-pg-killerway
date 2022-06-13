@@ -3,17 +3,6 @@ Finally, release validation was added to run quality evaluations **after** a pro
 
 This step adds the ability to Keptn to self-heal your application based on problems sent to Keptn.
 
-## Scenario
-
-Imagine the application has a known response time problem in production. It can be fixed by scaling the pods - at least until development has a chance to look into the issue.
-
-We will add steps into our Keptn setup to:
-1. Scale the pods (using Helm to upgrade the deployment) when a response time problem is received.
-2. Use `locust` to generate some new load after the deployment has been scaled
-3. Run a quality evaluation to see if the scaling has resolved the issue
-
-> Note: The demo image doesn't actually have a problem pattern that resolves with scaling. So **expect** the quality gate to still provide a warning. Scaling the pods **will** be successful.
-
 ## Setup Problem Definition and Remediation Action
 
 Run this script which:
@@ -28,12 +17,14 @@ After the scaling has occurred:
 1. Load is generated on the service (this step would probably not be necessary in a real production environment)
 2. A further quality evaluation is executed - did scaling the pods actually help?
 
+> Note: The demo image doesn't actually have a problem pattern that resolves with scaling. So **expect** the quality gate to still provide a warning. Scaling the pods **will** be successful.
+> 
 ```
 ~/self_healing.sh
 ```{{exec}}
 
 
-## Trigger a Problem
+## 🚩 Trigger a Problem
 
 In reality you would expect alerts from Prometheus alert manager or any external tool capable of informing Keptn of problems.
 
