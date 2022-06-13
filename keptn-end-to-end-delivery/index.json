@@ -49,8 +49,8 @@
   },
   "assets": {
       "host01": [
-        {"file": "set_git_details.sh", "target": "/root", "chmod": "+x"},
-        {"file": "setup_keptn.sh", "target": "/root", "chmod": "+x"}
+        {"file": "set_git_details.sh", "target": "/tmp", "chmod": "+x"},
+        {"file": "setup_keptn.sh", "target": "/tmp", "chmod": "+x"}
       ]
   }
 }
