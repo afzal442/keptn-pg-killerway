@@ -13,7 +13,7 @@ Keptn currently supports the following providers:
 
 Keptn is unopinionated on the observability platform that provides metrics for the quality evaluations.
 
-Each observability provider will, of course, have strengths, weaknesses and slightly differing setups but overall, the big picture of what can be acheived with Keptn remains the same.
+Each observability provider will, of course, have strengths, weaknesses and slightly differing setups but overall, the big picture of what can be achieved with Keptn remains the same.
 
 ## Configure Prometheus and Run an SLO-based Quality Gated Release
 
