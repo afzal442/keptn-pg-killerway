@@ -1,7 +1,7 @@
 # -----------------------------------------#
 #        Setting Global variables          #
 # -----------------------------------------#
-DEBUG=15
+DEBUG=16
 K3D_VERSION=v5.3.0
 KUBECTL_VERSION=v1.22.6
 GH_CLI_VERSION=2.12.1
@@ -20,12 +20,14 @@ wget -q https://gist.githubusercontent.com/agardnerIT/9225e81f42b47edeffc69443da
 wget -q https://gist.githubusercontent.com/agardnerIT/886ea4952d0ab9208679212bea2b26d0/raw/cb8b0699ead7114d6f79ed5533a56ca247152456/print_bridge_login_details.sh
 wget -q https://gist.githubusercontent.com/agardnerIT/7e91b9ceb0ddffec4f1061e3271515fc/raw/ca5f236e55f1d90835de02097c62c0697ff8aac7/add_approval_step.sh
 wget -q https://gist.githubusercontent.com/agardnerIT/597e18923ad852b2595ccb3e14ac6ca9/raw/ac33ca5eb316959338c0f1ea743c819138aa3fb9/quality_gated_release.sh
+wget -q https://gist.githubusercontent.com/agardnerIT/d2a6cb29c679243f143ebcec7360dd50/raw/01cc7f9e01b89b659bdfb638ad6d8f0da9b5abaa/release_validation.sh
 
 chmod +x set_git_details.sh
 chmod +x setup_keptn.sh
 chmod +x print_bridge_login_details.sh
 chmod +x add_approval_step.sh
 chmod +x quality_gated_release.sh
+chmod +x release_validation.sh
 
 # -----------------------------------------#
 #    Step 2/11: Retrieving demo files      #
