@@ -37,15 +37,15 @@
 		"finish": {
 			"text": "finish.md"
 		},
-        "assets": {
+                "assets": {
 		    "host01": [{
 				"file": "set_git_details.sh",
-				"target": "/root",
+				"target": "/tmp",
 				"chmod": "+x"
 			},
 			{
 				"file": "setup_keptn.sh",
-				"target": "/root",
+				"target": "/tmp",
 				"chmod": "+x"
 			}]
 	    }
