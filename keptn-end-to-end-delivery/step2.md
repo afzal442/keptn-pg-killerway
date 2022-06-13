@@ -74,7 +74,7 @@ kubectl -n fulltour-qa describe pod -l app=helloservice | grep Image:
 kubectl -n fulltour-production describe pod -l app=helloservice | grep Image:
 ```{{exec}}
 
-> Result: Keptn orchestrated your deployment which was acheived using `helm` to deploy and `locust` to generate load.
+> Result: Keptn orchestrated your deployment which was achieved using `helm` to deploy and `locust` to generate load.
 
 ----
 
