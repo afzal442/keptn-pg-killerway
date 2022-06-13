@@ -19,40 +19,6 @@ Run the following script which will:
 ~/setup_keptn.sh
 ```{{exec}}
 
-```
-gh repo create $GIT_NEW_REPO_NAME --public
-cd ~
-cat << EOF > shipyard.yaml
-apiVersion: "spec.keptn.sh/0.2.2"
-kind: "Shipyard"
-metadata:
-  name: "shipyard-delivery"
-spec:
-  stages:
-    - name: "qa"
-      sequences:
-        - name: "delivery"
-          tasks:
-            - name: "je-deployment"
-            - name: "je-test"
-
-    - name: "production"
-      sequences:
-        - name: "delivery"
-          triggeredOn:
-            - event: "qa.delivery.finished"
-          tasks:
-            - name: "je-deployment"
-EOF
-keptn create project fulltour --shipyard shipyard.yaml --git-remote-url $GIT_REPO --git-user $GIT_USER --git-token $GITHUB_TOKEN
-keptn create service helloservice --project=fulltour
-cd ~/keptn-job-executor-delivery-poc
-keptn add-resource --project=fulltour --service=helloservice --all-stages --resource=./helm/helloservice.tgz --resourceUri=charts/helloservice.tgz
-keptn add-resource --project=fulltour --service=helloservice --stage=qa --resource=./locust/basic.py
-keptn add-resource --project=fulltour --service=helloservice --stage=qa --resource=./locust/locust.conf
-keptn add-resource --project=fulltour --service=helloservice --all-stages --resource=job-executor-config.yaml --resourceUri=job/config.yaml
-```{{exec}}
-
 The Keptn project setup is now complete. Don't worry, we'll point you to a repository and docs at the end of the tutorial that will explain in-depth how all of this works.
 
 ## 🎉 Delivery In Progress
@@ -62,6 +28,14 @@ The first artifact delivery sequence has been triggered. Watch progress in [the 
 Locust runs for 2 minutes (configurable) each time it responds to `je-test.triggered`. Load is generated once in the `qa` stage so expect the end-to-end delivery with Locust load tests to take about 3 minutes.
 
 ![deployed](./assets/trigger-delivery-2.jpg)
+
+## Forgot the Bridge Login Details?
+
+Thought so! Here you are.
+
+```
+~/print_bridge_login_details.sh
+```{{exec}}
   
 ## While You Wait
 
