@@ -2,26 +2,22 @@
 
 Keptn needs a brand new, uninitialised repo to store and manage configuration. We will create it automatically now.
 
-Please run this helper script to set your details. If you make a mistake, just click this again to re-set things:
+Please run this helper script to set your details. If you make a mistake, just click this again to reset things:
 
 ```
 . ~/set_git_details.sh
 ```{{exec}}
 
-Verify the details are correctly set by printing them to the console:
-
-```
-echo "Git Username: $GIT_USER"
-echo "Git Token: $GITHUB_TOKEN"
-echo "New Git Repo to be created: $GIT_NEW_REPO_NAME"
-echo "URL of new Git Repo: $GIT_REPO"
-```{{exec}}
-
 ## Create New Repository
 
-The demo environment has the GitHub CLI. The CLI will automatically use the `GITHUB_TOKEN` environment variable to authenticate.
+Run the following script which will:
 
-Ensure the GitHub CLI works by listing your existing repositories which should show all existing repositories on your account:
+1. Create a new uninitialised Git repo on your account
+2. Create a Keptn project and upload to the Git repo
+3. Add all resources that Keptn, Locust and Helm need to run to your Git 
+```
+~/setup_keptn.sh
+```{{exec}}
 
 ```
 gh repo create $GIT_NEW_REPO_NAME --public
@@ -59,21 +55,11 @@ keptn add-resource --project=fulltour --service=helloservice --all-stages --reso
 
 The Keptn project setup is now complete. Don't worry, we'll point you to a repository and docs at the end of the tutorial that will explain in-depth how all of this works.
 
-It is now time to trigger your first end-to-end artifact delivery of the `helloservice.tgz` helm chart, testing along the way with locust.
+## 🎉 Delivery In Progress
 
-## 🎉 Trigger Delivery
-
-```
-keptn trigger delivery \
---project=fulltour \
---service=helloservice \
---image="ghcr.io/podtato-head/podtatoserver:v0.1.1" \
---labels=image="ghcr.io/podtato-head/podtatoserver",version="v0.1.1"
-```{{exec}}
+The first artifact delivery sequence has been triggered. Watch progress in [the bridge]({{TRAFFIC_HOST1_8080}}/bridge/project/fulltour/sequence).
 
 Locust runs for 2 minutes (configurable) each time it responds to `je-test.triggered`. Load is generated once in the `qa` stage so expect the end-to-end delivery with Locust load tests to take about 3 minutes.
-
-View the delivery sequence [in the bridge]({{TRAFFIC_HOST1_8080}}/bridge/project/fulltour/sequence)
 
 ![deployed](./assets/trigger-delivery-2.jpg)
   
