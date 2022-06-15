@@ -4,6 +4,8 @@ Keptn needs a brand new, uninitialised repo to store and manage configuration. W
 
 Run this script to set your details. If you make a mistake, just click this again to reset things:
 
+*💡 Hint: `Ctrl + Shift + v` works well in the terminal window to paste*
+
 ```
 . ~/set_git_details.sh
 ```{{exec}}
@@ -16,8 +18,6 @@ Run the following script which will:
 2. Create a Keptn project and upload to the Git repo
 3. Add all resources that Keptn, Locust and Helm need to run to your Git
 4. Triggers the first delivery sequence of the microservice into `qa` and `production`
-
-*💡 Hint: `Ctrl + Shift + v` works well in the terminal window to paste*
 
 ```
 ~/setup_keptn.sh
