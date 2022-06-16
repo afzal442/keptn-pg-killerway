@@ -7,35 +7,43 @@
 	"details": {
 		"steps": [{
 				"title": "Keptn Bridge",
-				"text": "step1.md"
+				"text": "step1.md",
+				"background": "step1_background.sh"
 			},
 			{
 				"title": "Multi Stage Delivery",
-				"text": "step2.md"
+				"text": "step2.md",
+				"background": "step2_background.sh"
 			},
 			{
 				"title": "Add Manual Approvals",
-				"text": "step3.md"
+				"text": "step3.md",
+				"background": "step3_background.sh"
 			},
 			{
 				"title": "Automated Approvals",
-				"text": "step4.md"
+				"text": "step4.md",
+				"background": "step4_background.sh"
 			},
 			{
 				"title": "Release Validation",
-				"text": "step5.md"
+				"text": "step5.md",
+				"background": "step5_background.sh"
 			},
 			{
 				"title": "Self Healing",
-				"text": "step6.md"
+				"text": "step6.md",
+				"background": "step6_background.sh"
 			}
 		],
 		"intro": {
 			"text": "intro.md",
-			"foreground": "intro_foreground.sh"
+			"foreground": "intro_foreground.sh",
+			"background": "intro_background.sh"
 		},
 		"finish": {
-			"text": "finish.md"
+			"text": "finish.md",
+			"background": "finish_background.sh"
 		},
 		"assets": {
 			"host01": [{
