@@ -3,6 +3,15 @@ Finally, release validation was added to run quality evaluations **after** a pro
 
 This step adds the ability to Keptn to self-heal your application based on problems sent to Keptn.
 
+## Check Current Pod Counds
+
+Both `qa` and `production` should have 1 pod running. Validate this now:
+
+```
+kubectl -n fulltour-qa get pods
+kubectl -n fulltour-production get pods
+```{{exec}}
+
 ## Setup Problem Definition and Remediation Action
 
 Run this script which:
@@ -38,7 +47,7 @@ When the sequence is complete, you should see:
 
 ![remediation sequence complete](./assets/remediation_sequence_complete.png)
   
-## See Scaling
+## Check Pod Counts Again
 
 `qa` environment should still have 1 pod running. `production` environment should have scaled up to 2 pods.
 
