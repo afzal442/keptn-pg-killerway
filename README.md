@@ -1,3 +1,5 @@
+![issues](https://img.shields.io/github/issues/afzal442/keptn-pg-killerway) ![fork](https://img.shields.io/github/forks/afzal442/keptn-pg-killerway) ![stars](https://img.shields.io/github/stars/afzal442/keptn-pg-killerway) ![license](https://img.shields.io/github/license/afzal442/keptn-pg-killerway) 
+
 # Interactive Keptn Killercoda Scenarios
 
 ## About:
