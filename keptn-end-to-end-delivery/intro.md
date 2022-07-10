@@ -15,7 +15,7 @@ The Prometheus observability platform is used to provide data for our exercise. 
 
 The tutorial will progress in steps:
 
-1. Run automated tests the release our software into `qa` and `production` stages
+1. Run automated tests that release our software into `qa` and `production` stages
 2. Add an approval step to ensure a human must always click “go” before a production release
 3. Replace the manual approval step with an automated quality gate. Add Prometheus to the cluster to monitor the workloads. Add SLO-based quality evaluations to ensure no bad build ever makes it to production
 5. Add a quality evaluation in production, post rollout
