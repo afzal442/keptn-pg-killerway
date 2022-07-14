@@ -1,7 +1,6 @@
 # -----------------------------------------#
 #        Setting Global variables          #
 # -----------------------------------------#
-DEBUG=21
 K3D_VERSION=v5.3.0
 KUBECTL_VERSION=v1.22.6
 GH_CLI_VERSION=2.14.1
