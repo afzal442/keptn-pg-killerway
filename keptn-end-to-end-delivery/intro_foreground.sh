@@ -4,10 +4,10 @@
 DEBUG=21
 K3D_VERSION=v5.3.0
 KUBECTL_VERSION=v1.22.6
-GH_CLI_VERSION=2.12.1
-KEPTN_VERSION=0.15.1
-JOB_EXECUTOR_SERVICE_VERSION=0.2.0
-KEPTN_PROMETHEUS_SERVICE_VERSION=0.8.0
+GH_CLI_VERSION=2.14.1
+KEPTN_VERSION=0.17.1
+JOB_EXECUTOR_SERVICE_VERSION=0.2.3
+KEPTN_PROMETHEUS_SERVICE_VERSION=0.8.3
 
 # -----------------------------------------#
 #    Step 1/11: Installing GitHub CLI      #
@@ -54,7 +54,7 @@ helm install prometheus prometheus-community/prometheus --namespace monitoring -
 # -------------------------------------------#
 # Step 8/11: Installing Keptn Control Plane  #
 # -------------------------------------------#
-helm install keptn https://github.com/keptn/keptn/releases/download/$KEPTN_VERSION/keptn-$KEPTN_VERSION.tgz -n keptn --timeout=5m --wait --create-namespace --set=control-plane.apiGatewayNginx.type=LoadBalancer
+helm install keptn https://github.com/keptn/keptn/releases/download/$KEPTN_VERSION/keptn-$KEPTN_VERSION.tgz -n keptn --timeout=5m --wait --create-namespace --set=apiGatewayNginx.type=LoadBalancer
 
 # --------------------------------------------#
 # Step 9/11: Installing Job Executor Service  #
