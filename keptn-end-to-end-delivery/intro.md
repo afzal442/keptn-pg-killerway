@@ -2,16 +2,21 @@
 The goal of this tutorial is to:
 
 - Deploy a microservice (using [helm](https://helm.sh))
-- Generate load on the deployed service (using [locust](https://locust.io))
+- Generate load on the deployed service (using [Locust](https://locust.io))
+- Monitor the microservice (using [Prometheus](https://prometheus.io/))
 - Add approval gates into the delivery pipeline
 - Add automated SLO-based quality evaluations both pre and post release
 - Show how Keptn can orchestrate self-healing patterns and tools (like scaling a helm deployment)
 
-Keptn is unopinionated about tooling. A key strength of Keptn is it allows you to bring the tooling and observability platforms you already use and with which you are familiar.
+Keptn is not opinionated about tooling. A key strength of Keptn is it allows you to bring the tooling and observability platforms you already use and with which you are familiar.
 
-That said, we needed to pick some tools and Helm + Locust are two modern and widely used tools.
+That said, we needed to pick some tools, and Prometheus, Helm as well as Locust are commonly used tools.
 
 The Prometheus observability platform is used to provide data for our exercise. The process is very similar if you use a different data source (integrations are also currently available for Dynatrace and DataDog).
+
+Helm is used to deploy a microservice to a Kubernetes cluster. While other deployment strategies and tools can be used (e.g., argo, kubectl), this tutorial is very specific to Helm.
+
+Last but not least, Locust is a modern Python based load testing tool. You can exchange it with any other load testing tool (integrations for JMeter, artillery, k6, and NeoLoad are available).
 
 The tutorial will progress in steps:
 

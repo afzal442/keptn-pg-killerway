@@ -11,7 +11,7 @@ The delivery orchestration you have built:
 
 ### So What Next?
 
-[Deploy Keptn properly](https://keptn.sh/docs/0.17.x/operate/install/) on your cluster to free your SRE and DevOps teams from toil.
+[Deploy Keptn properly](https://keptn.sh/docs/install/) on your Kubernetes cluster to free your SRE and DevOps teams from toil.
 
 Need help? Ask in the [Keptn Slack channel](https://slack.keptn.sh)
 
