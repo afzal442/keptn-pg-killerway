@@ -12,7 +12,7 @@ We already have nice tutorials, you can find it from here [keptn-tutorials](http
 
 <b>Potential use-cases</b> that could be addressed in the project:
 
-- With the support of Killercoda platform, each tutorial of keptn can be created and visualised smoothly. It would be nice if various kubernetes clusters can be integrated in the playground e.g. k3s, k3d, etc.
+- With the support of Killercoda platform, each tutorial of keptn can be created and visualized smoothly. It would be nice if various kubernetes clusters can be integrated in the playground e.g. k3s, k3d, etc.
 - Developer/Contributor playground for the keptn tutorial, in collaboration with the documentation/tutorial contributors.
 
 ## License
