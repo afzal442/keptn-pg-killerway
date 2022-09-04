@@ -30,8 +30,8 @@ spec:
       sequences:
         - name: "delivery"
           tasks:
-            - name: "je-deployment"
-            - name: "je-test"
+            - name: "deployment"
+            - name: "test"
             - name: "evaluation"
               properties:
                 timeframe: "2m"
@@ -46,8 +46,8 @@ spec:
               properties:
                 pass: "automatic"
                 warning: "automatic"
-            - name: "je-deployment"
-            - name: "je-test"
+            - name: "deployment"
+            - name: "test"
             - name: "evaluation"
               properties:
                 timeframe: "2m"

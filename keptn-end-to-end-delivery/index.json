@@ -1,9 +1,9 @@
 {
 
 	"title": "Keptn End to End Delivery",
-	"description": "Keptn uses a declarative approach to build scalable automation for delivery and operations which can be scaled to a large number of services.",
+	"description": "Keptn uses a declarative approach to build automation for delivery and operations which can be scaled to a large number of services.",
 	"difficulty": "Medium",
-	"time": "10",
+	"time": "50",
 	"details": {
 		"steps": [{
 				"title": "Keptn Bridge",

@@ -4,8 +4,6 @@ Keptn needs a brand new, uninitialised repo to store and manage configuration. W
 
 Run this script to set your details. If you make a mistake, just click this again to reset things:
 
-*💡 Hint: `Ctrl + Shift + v` works well in the terminal window to paste*
-
 ```
 . ~/set_git_details.sh
 ```{{exec}}
@@ -27,7 +25,7 @@ Run the following script which will:
 
 Everything is setup correctly and the first artifact delivery sequence has been triggered. Watch progress in [the bridge]({{TRAFFIC_HOST1_8080}}/bridge/project/fulltour/sequence).
 
-Locust runs for 2 minutes (configurable) each time it responds to `je-test.triggered`. Load is generated once in the `qa` stage so expect the end-to-end delivery with Locust load tests to take about 3 minutes.
+Locust runs for 2 minutes (configurable) each time it responds to `test.triggered`. Load is generated once in the `qa` stage so expect the end-to-end delivery with Locust load tests to take about 3 minutes.
 
 ![deployed](./assets/trigger-delivery-2.jpg)
 
