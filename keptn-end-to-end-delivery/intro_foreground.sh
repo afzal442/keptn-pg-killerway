@@ -1,7 +1,7 @@
 # -----------------------------------------#
 #        Setting Global variables          #
 # -----------------------------------------#
-DEBUG_VERSION=10
+DEBUG_VERSION=11
 K3D_VERSION=v5.3.0
 KUBECTL_VERSION=v1.22.6
 GH_CLI_VERSION=2.14.7
@@ -46,6 +46,7 @@ helm install keptn https://github.com/keptn/keptn/releases/download/$KEPTN_VERSI
 --set remediationService.resources.requests.memory=0 \
 --set apiService.resources.requests.cpu=0 \
 --set apiService.resources.requests.memory=0 \
+--set bridge.versionCheck.enabled=false \
 --set bridge.resources.requests.cpu=0 \
 --set bridge.resources.requests.memory=0 \
 --set distributor.resources.requests.cpu=0 \
