@@ -9,7 +9,7 @@ KEPTN_VERSION=0.17.1
 JOB_EXECUTOR_SERVICE_VERSION=0.2.5
 JOB_EXECUTOR_NAMESPACE=keptn-jes
 KEPTN_PROMETHEUS_SERVICE_VERSION=0.8.6
-PROMETHEUS_VERSION=15.12.1
+PROMETHEUS_VERSION=15.12.0
 
 # ----------------------------------------#
 #      Step 1/11: Installing Kubectl      #
@@ -92,12 +92,12 @@ helm install --namespace $JOB_EXECUTOR_NAMESPACE \
 job-executor-service https://github.com/keptn-contrib/job-executor-service/releases/download/$JOB_EXECUTOR_SERVICE_VERSION/job-executor-service-$JOB_EXECUTOR_SERVICE_VERSION.tgz
 
 # -----------------------------------------#
-#      Step 8/12: Installing Keptn CLI     #
+#      Step 8/11: Installing Keptn CLI     #
 # -----------------------------------------#
 curl -sL https://get.keptn.sh | KEPTN_VERSION=$KEPTN_VERSION bash
 
 # -----------------------------------------#
-#    Step 9/12: Installing GitHub CLI      #
+#    Step 9/11: Installing GitHub CLI      #
 # -----------------------------------------#
 wget -q https://github.com/cli/cli/releases/download/v${GH_CLI_VERSION}/gh_${GH_CLI_VERSION}_linux_amd64.deb
 chmod +x gh_${GH_CLI_VERSION}_linux_amd64.deb
