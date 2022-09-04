@@ -13,8 +13,8 @@ spec:
       sequences:
         - name: "delivery"
           tasks:
-            - name: "je-deployment"
-            - name: "je-test"
+            - name: "deployment"
+            - name: "test"
             - name: "evaluation"
               properties:
                 timeframe: "2m"
@@ -29,8 +29,8 @@ spec:
               properties:
                 pass: "automatic"
                 warning: "automatic"
-            - name: "je-deployment"
-            - name: "je-test"
+            - name: "deployment"
+            - name: "test"
             - name: "evaluation"
               properties:
                 timeframe: "2m"
@@ -44,7 +44,7 @@ spec:
           tasks:
             - name: "get-action"
             - name: "action"
-            - name: "je-test"
+            - name: "test"
             - name: "evaluation"
               properties:
                 timeframe: "2m"
@@ -94,7 +94,7 @@ apiVersion: v2
 actions:
   - name: "Deploy using helm"
     events:
-      - name: "sh.keptn.event.je-deployment.triggered"
+      - name: "sh.keptn.event.deployment.triggered"
     tasks:
       - name: "Run helm"
         files:
@@ -110,7 +110,7 @@ actions:
 
   - name: "Run tests using locust"
     events:
-      - name: "sh.keptn.event.je-test.triggered"
+      - name: "sh.keptn.event.test.triggered"
     tasks:
       - name: "Run locust"
         files:
