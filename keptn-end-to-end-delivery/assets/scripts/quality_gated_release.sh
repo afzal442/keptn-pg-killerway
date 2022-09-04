@@ -20,8 +20,8 @@ spec:
       sequences:
         - name: "delivery"
           tasks:
-            - name: "je-deployment"
-            - name: "je-test"
+            - name: "deployment"
+            - name: "test"
             - name: "evaluation"
               properties:
                 timeframe: "2m"
@@ -36,7 +36,7 @@ spec:
               properties:
                 pass: "automatic"
                 warning: "automatic"
-            - name: "je-deployment"
+            - name: "deployment"
 EOF
 git remote set-url origin https://$GIT_USER:$GITHUB_TOKEN@github.com/$GIT_USER/$GIT_NEW_REPO_NAME.git
 git config --global user.email "keptn@keptn.sh"

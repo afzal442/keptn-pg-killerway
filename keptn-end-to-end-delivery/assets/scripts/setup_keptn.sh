@@ -15,8 +15,8 @@ spec:
       sequences:
         - name: "delivery"
           tasks:
-            - name: "je-deployment"
-            - name: "je-test"
+            - name: "deployment"
+            - name: "test"
 
     - name: "production"
       sequences:
@@ -24,7 +24,7 @@ spec:
           triggeredOn:
             - event: "qa.delivery.finished"
           tasks:
-            - name: "je-deployment"
+            - name: "deployment"
 EOF
 
 echo ""
