@@ -27,7 +27,7 @@ Run the following script which will:
 
 Everything is setup correctly and the first artifact delivery sequence has been triggered. Watch progress in [the bridge]({{TRAFFIC_HOST1_8080}}/bridge/project/fulltour/sequence).
 
-Locust runs for 2 minutes (configurable) each time it responds to `test.triggered`. Load is generated once in the `qa` stage so expect the end-to-end delivery with Locust load tests to take about 3 minutes.
+Locust runs for 1 minute (configurable) each time it responds to `test.triggered`. Load is generated once in the `qa` stage so expect the end-to-end delivery with Locust load tests to take about 3 minutes.
 
 ![deployed](./assets/trigger-delivery-2.jpg)
 
