@@ -4,6 +4,8 @@ Keptn needs a brand new, uninitialised repo to store and manage configuration. W
 
 Run this script to set your details. If you make a mistake, just click this again to reset things:
 
+*💡 Hint: `Ctrl + Shift + v` works well in the terminal window to paste*
+
 ```
 . ~/set_git_details.sh
 ```{{exec}}

@@ -1,12 +1,12 @@
 # -----------------------------------------#
 #        Setting Global variables          #
 # -----------------------------------------#
-DEBUG_VERSION=11
+DEBUG_VERSION=6
 K3D_VERSION=v5.3.0
 KUBECTL_VERSION=v1.22.6
-GH_CLI_VERSION=2.14.7
-KEPTN_VERSION=0.17.1
-JOB_EXECUTOR_SERVICE_VERSION=0.2.5
+GH_CLI_VERSION=2.15.0
+KEPTN_VERSION=0.18.2
+JOB_EXECUTOR_SERVICE_VERSION=0.3.0-next.0
 JOB_EXECUTOR_NAMESPACE=keptn-jes
 KEPTN_PROMETHEUS_SERVICE_VERSION=0.8.6
 PROMETHEUS_VERSION=15.12.0
@@ -108,8 +108,7 @@ dpkg -i gh_${GH_CLI_VERSION}_linux_amd64.deb
 # -----------------------------------------#
 #    Step 10/11: Retrieving demo files     #
 # -----------------------------------------#
-git clone https://github.com/christian-kreuzberger-dtx/keptn-job-executor-delivery-poc.git
-kubectl apply -f ~/keptn-job-executor-delivery-poc/job-executor/workloadClusterRoles.yaml
+kubectl apply -f ~/job-executor/workloadClusterRoles.yaml
 
 # -----------------------------------------#
 #    Step 11/11: Wait for all pods         #
@@ -127,14 +126,13 @@ kubectl -n keptn wait --for condition=Available=True --timeout=5m deployment/bri
 kubectl -n keptn wait --for condition=Available=True --timeout=5m deployment/mongodb-datastore
 kubectl -n keptn wait --for condition=Available=True --timeout=5m deployment/keptn-mongo
 kubectl -n keptn wait --for condition=Available=True --timeout=5m deployment/shipyard-controller
-kubectl -n keptn wait --for condition=Available=True --timeout=5m deployment/remediation-service
-kubectl -n keptn wait --for condition=Available=True --timeout=5m deployment/approval-service
-kubectl -n keptn wait --for condition=Available=True --timeout=5m deployment/webhook-service
+#kubectl -n keptn wait --for condition=Available=True --timeout=5m deployment/remediation-service
+#kubectl -n keptn wait --for condition=Available=True --timeout=5m deployment/approval-service
+#kubectl -n keptn wait --for condition=Available=True --timeout=5m deployment/webhook-service
 kubectl -n keptn wait --for condition=Available=True --timeout=5m deployment/lighthouse-service
 kubectl -n keptn wait --for condition=Available=True --timeout=5m deployment/prometheus-service
 
-
 # ---------------------------------------------#
-#       🎉 Installation Complete 🎉             #
+#       🎉 Installation Complete 🎉           #
 #           Please proceed now...              #
 # ---------------------------------------------#

@@ -26,7 +26,7 @@ kubectl -n fulltour-production describe pod -l app=helloservice | grep Image:
 
 Should show `v0.1.1` in both environments.
 
-Navigate to the bridge, select the latest sequence and choose `production`. notice the quality evaluation in production has provided a `warning` signal.
+Navigate to the bridge, select the latest sequence and choose `production`. notice the quality evaluation in production has provided a `pass` signal.
 
 ## What Next?
 

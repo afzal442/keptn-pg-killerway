@@ -1,9 +1,9 @@
 {
 
 	"title": "Keptn End to End Delivery",
-	"description": "Keptn uses a declarative approach to build automation for delivery and operations which can be scaled to a large number of services.",
+	"description": "Testing. Do not use.",
 	"difficulty": "Medium",
-	"time": "50",
+	"time": "10",
 	"details": {
 		"steps": [{
 				"title": "Keptn Bridge",
@@ -73,6 +73,66 @@
 			},{
 				"file": "scripts/self_healing.sh",
 				"target": "~/",
+				"chmod": "+x"
+			},{
+				"file": "scripts/keptn_setup/shipyard.yaml",
+				"target": "~/",
+				"chmod": "+x"
+			},{
+				"file": "scripts/keptn_setup/helm/helloservice.tgz",
+				"target": "~/helm",
+				"chmod": "+x"
+			}, {
+				"file": "scripts/keptn_setup/job-executor/job-executor-config.yaml",
+				"target": "~/job-executor",
+				"chmod": "+x"
+			}, {
+				"file": "scripts/keptn_setup/job-executor/workloadClusterRoles.yaml",
+				"target": "~/job-executor",
+				"chmod": "+x"
+			}, {
+				"file": "scripts/keptn_setup/locust/basic.py",
+				"target": "~/locust",
+				"chmod": "+x"
+			}, {
+				"file": "scripts/keptn_setup/locust/locust.conf",
+				"target": "~/locust",
+				"chmod": "+x"
+			}, {
+				"file": "scripts/keptn_setup/prometheus/sli.yaml",
+				"target": "~/prometheus",
+				"chmod": "+x"
+			}, {
+				"file": "scripts/add_approval/shipyard.yaml",
+				"target": "~/add_approval",
+				"chmod": "+x"
+			}, {
+				"file": "scripts/quality_gated_release/shipyard.yaml",
+				"target": "~/quality_gated_release",
+				"chmod": "+x"
+			}, {
+				"file": "scripts/quality_gated_release/slo.yaml",
+				"target": "~/quality_gated_release",
+				"chmod": "+x"
+			}, {
+				"file": "scripts/release_validation/shipyard.yaml",
+				"target": "~/release_validation",
+				"chmod": "+x"
+			}, {
+				"file": "scripts/self_healing/shipyard.yaml",
+				"target": "~/self_healing",
+				"chmod": "+x"
+			}, {
+				"file": "scripts/self_healing/remediation.yaml",
+				"target": "~/self_healing",
+				"chmod": "+x"
+			}, {
+				"file": "scripts/self_healing/remediation_trigger.json",
+				"target": "~/self_healing",
+				"chmod": "+x"
+			}, {
+				"file": "scripts/self_healing/job/config.yaml",
+				"target": "~/self_healing/job",
 				"chmod": "+x"
 			}]
 		}

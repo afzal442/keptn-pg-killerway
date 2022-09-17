@@ -3,7 +3,7 @@ Finally, release validation was added to run quality evaluations **after** a pro
 
 This step adds the ability to Keptn to self-heal your application based on problems sent to Keptn.
 
-## Check Current Pod Counds
+## Check Current Pod Counts
 
 Both `qa` and `production` should have 1 pod running. Validate this now:
 
@@ -26,7 +26,7 @@ After the scaling has occurred:
 1. Load is generated on the service (this step would probably not be necessary in a real production environment)
 2. A further quality evaluation is executed - did scaling the pods actually help?
 
-> Note: The demo image doesn't actually have a problem pattern that resolves with scaling. So **expect** the quality gate to still provide a warning. Scaling the pods **will** be successful.
+> Note: The demo image doesn't actually have a problem pattern that resolves with scaling. So **expect** the quality gate to still provide a pass. Scaling the pods **will** be successful.
 > 
 ```
 ~/self_healing.sh
@@ -40,7 +40,7 @@ In reality you would expect alerts from Prometheus alert manager or any external
 For the speed of the demo though, we will use a dummy problem. Send Keptn the problem event and watch Keptn scale the pods:
 
 ```
-keptn send event -f ~/remediation_trigger.json
+keptn send event -f ~/self_healing/remediation_trigger.json
 ```{{exec}}
 
 When the sequence is complete, you should see:
