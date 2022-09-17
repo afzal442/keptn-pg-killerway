@@ -1,0 +1,14 @@
+{
+    "type": "sh.keptn.event.production.remediation.triggered",
+    "specversion": "1.0",
+    "source": "https://github.com/keptn/keptn/fake-problem",
+    "contenttype": "application/json",
+    "data": {
+      "project": "fulltour",
+      "stage": "production",
+      "service": "helloservice",
+      "problem": {
+        "problemTitle": "http_response_time_seconds_main_page_sum"
+      }
+    }
+  }

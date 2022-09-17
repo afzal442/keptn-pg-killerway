@@ -1,43 +1,16 @@
-cd ~/keptn-job-executor-delivery-poc
+cd
 echo ""
 echo "===================================================="
 echo "Configuring Keptn to Use Prometheus                 "
 echo "===================================================="
 
-keptn add-resource --project=fulltour --service=helloservice --stage=qa --resource=prometheus/sli.yaml --resourceUri=prometheus/sli.yaml
-keptn add-resource --project=fulltour --service=helloservice --stage=qa --resource=slo.yaml --resourceUri=slo.yaml
+keptn add-resource --project=fulltour --service=helloservice --stage=qa --resource=./prometheus/sli.yaml --resourceUri=prometheus/sli.yaml
+keptn add-resource --project=fulltour --service=helloservice --stage=qa --resource=./quality_gated_release/slo.yaml --resourceUri=slo.yaml
 keptn configure monitoring prometheus --project=fulltour --service=helloservice
 
 cd ~/$GIT_NEW_REPO_NAME
-cat << EOF > ~/$GIT_NEW_REPO_NAME/shipyard.yaml
-apiVersion: "spec.keptn.sh/0.2.2"
-kind: "Shipyard"
-metadata:
-  name: "shipyard-delivery"
-spec:
-  stages:
-    - name: "qa"
-      sequences:
-        - name: "delivery"
-          tasks:
-            - name: "deployment"
-            - name: "test"
-            - name: "evaluation"
-              properties:
-                timeframe: "2m"
+cp ~/quality_gated_release/shipyard.yaml ~/$GIT_NEW_REPO_NAME/shipyard.yaml
 
-    - name: "production"
-      sequences:
-        - name: "delivery"
-          triggeredOn:
-            - event: "qa.delivery.finished"
-          tasks:
-            - name: "approval"
-              properties:
-                pass: "automatic"
-                warning: "automatic"
-            - name: "deployment"
-EOF
 git remote set-url origin https://$GIT_USER:$GITHUB_TOKEN@github.com/$GIT_USER/$GIT_NEW_REPO_NAME.git
 git config --global user.email "keptn@keptn.sh"
 git config --global user.name "Keptn"
