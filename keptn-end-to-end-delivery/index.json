@@ -1,7 +1,7 @@
 {
 
 	"title": "Keptn End to End Delivery",
-	"description": "Testing. Do not use.",
+	"description": "Keptn uses a declarative approach to build automation for delivery and operations which can be scaled to a large number of services.",
 	"difficulty": "Medium",
 	"time": "10",
 	"details": {
