@@ -1,15 +1,16 @@
 # -----------------------------------------#
 #        Setting Global variables          #
 # -----------------------------------------#
-DEBUG_VERSION=7
+DEBUG_VERSION=1
 K3D_VERSION=v5.3.0
 KUBECTL_VERSION=v1.22.6
-GH_CLI_VERSION=2.15.0
-KEPTN_VERSION=0.18.2
+GH_CLI_VERSION=2.20.2
+KEPTN_VERSION=0.20.0-next.0
 JOB_EXECUTOR_SERVICE_VERSION=0.3.0
 JOB_EXECUTOR_NAMESPACE=keptn-jes
 KEPTN_PROMETHEUS_SERVICE_VERSION=0.9.1
-PROMETHEUS_VERSION=15.12.0
+PROMETHEUS_VERSION=19.0.1
+POD_WAIT_TIMEOUT_MINS=10
 
 # ----------------------------------------#
 #      Step 1/11: Installing Kubectl      #
@@ -113,24 +114,24 @@ kubectl apply -f ~/job-executor/workloadClusterRoles.yaml
 # -----------------------------------------#
 #    Step 11/11: Wait for all pods         #
 # -----------------------------------------#
-kubectl -n monitoring wait --for condition=Available=True --timeout=5m deployment/prometheus-kube-state-metrics
-kubectl -n monitoring wait --for condition=Available=True --timeout=5m deployment/prometheus-pushgateway
-kubectl -n monitoring wait --for condition=Available=True --timeout=5m deployment/prometheus-alertmanager
-kubectl -n monitoring wait --for condition=Available=True --timeout=5m deployment/prometheus-server
-kubectl -n keptn-jes wait --for condition=Available=True --timeout=5m deployment/job-executor-service
-kubectl -n keptn wait --for condition=Available=True --timeout=5m deployment/api-gateway-nginx
-kubectl -n keptn wait --for condition=Available=True --timeout=5m deployment/resource-service
-kubectl -n keptn wait --for condition=Available=True --timeout=5m deployment/secret-service
-kubectl -n keptn wait --for condition=Available=True --timeout=5m deployment/api-service
-kubectl -n keptn wait --for condition=Available=True --timeout=5m deployment/bridge
-kubectl -n keptn wait --for condition=Available=True --timeout=5m deployment/mongodb-datastore
-kubectl -n keptn wait --for condition=Available=True --timeout=5m deployment/keptn-mongo
-kubectl -n keptn wait --for condition=Available=True --timeout=5m deployment/shipyard-controller
-#kubectl -n keptn wait --for condition=Available=True --timeout=5m deployment/remediation-service
-#kubectl -n keptn wait --for condition=Available=True --timeout=5m deployment/approval-service
-#kubectl -n keptn wait --for condition=Available=True --timeout=5m deployment/webhook-service
-kubectl -n keptn wait --for condition=Available=True --timeout=5m deployment/lighthouse-service
-kubectl -n keptn wait --for condition=Available=True --timeout=5m deployment/prometheus-service
+kubectl -n monitoring wait --for condition=Available=True --timeout=${POD_WAIT_TIMEOUT_MINS}m deployment/prometheus-kube-state-metrics
+kubectl -n monitoring wait --for condition=Available=True --timeout=${POD_WAIT_TIMEOUT_MINS}m deployment/prometheus-prometheus-pushgateway
+#kubectl -n monitoring wait --for condition=Available=True --timeout=${POD_WAIT_TIMEOUT_MINS}m deployment/prometheus-alertmanager
+kubectl -n monitoring wait --for condition=Available=True --timeout=${POD_WAIT_TIMEOUT_MINS}m deployment/prometheus-server
+kubectl -n keptn-jes wait --for condition=Available=True --timeout=${POD_WAIT_TIMEOUT_MINS}m deployment/job-executor-service
+kubectl -n keptn wait --for condition=Available=True --timeout=${POD_WAIT_TIMEOUT_MINS}m deployment/api-gateway-nginx
+kubectl -n keptn wait --for condition=Available=True --timeout=${POD_WAIT_TIMEOUT_MINS}m deployment/resource-service
+kubectl -n keptn wait --for condition=Available=True --timeout=${POD_WAIT_TIMEOUT_MINS}m deployment/secret-service
+kubectl -n keptn wait --for condition=Available=True --timeout=${POD_WAIT_TIMEOUT_MINS}m deployment/api-service
+kubectl -n keptn wait --for condition=Available=True --timeout=${POD_WAIT_TIMEOUT_MINS}m deployment/bridge
+kubectl -n keptn wait --for condition=Available=True --timeout=${POD_WAIT_TIMEOUT_MINS}m deployment/mongodb-datastore
+kubectl -n keptn wait --for condition=Available=True --timeout=${POD_WAIT_TIMEOUT_MINS}m deployment/keptn-mongo
+kubectl -n keptn wait --for condition=Available=True --timeout=${POD_WAIT_TIMEOUT_MINS}m deployment/shipyard-controller
+#kubectl -n keptn wait --for condition=Available=True --timeout=${POD_WAIT_TIMEOUT_MINS}m deployment/remediation-service
+#kubectl -n keptn wait --for condition=Available=True --timeout=${POD_WAIT_TIMEOUT_MINS}m deployment/approval-service
+#kubectl -n keptn wait --for condition=Available=True --timeout=${POD_WAIT_TIMEOUT_MINS}m deployment/webhook-service
+kubectl -n keptn wait --for condition=Available=True --timeout=${POD_WAIT_TIMEOUT_MINS}m deployment/lighthouse-service
+kubectl -n keptn wait --for condition=Available=True --timeout=${POD_WAIT_TIMEOUT_MINS}m deployment/prometheus-service
 
 # ---------------------------------------------#
 #       🎉 Installation Complete 🎉           #

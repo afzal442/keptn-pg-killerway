@@ -9,15 +9,14 @@ objectives:
     displayName: "HTTP Response Time"
     pass:
       - criteria:
-          - "<=0.2"
+          - "<=1"
     warning:
       - criteria:
-          - "<=0.1"
+          - "<=1.5"
   - sli: request_throughput
     displayName: "Request Throughput"
     pass:
       - criteria:
-          #- "<=+100%"
           - ">=-80%"
   - sli: go_routines
     displayName: "Go Routines"
@@ -26,5 +25,5 @@ objectives:
       - criteria:
           - "<=30"
 total_score:
-  pass: "90%"
-  warning: "75%"
+  pass: "80%"
+  warning: "50%"
