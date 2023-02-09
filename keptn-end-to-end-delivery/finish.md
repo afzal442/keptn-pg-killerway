@@ -19,4 +19,4 @@ It is almost guaranteed that Keptn works with your tool. Want to know if someone
 
 Want to suggest (or submit) a new tooling integration that Keptn could / should work with? [Ask for it or submit it here](https://github.com/keptn/integrations/issues).
 
-Found a bug or issue? [Create an issue on GitHub](https://github.com/)
+Found a bug or issue? [Create an issue on GitHub]([https://github.com/](https://github.com/afzal442/keptn-pg-killerway/issues/new))
