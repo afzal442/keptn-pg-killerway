@@ -13,25 +13,25 @@ PROMETHEUS_VERSION=19.0.1
 POD_WAIT_TIMEOUT_MINS=10
 
 # ----------------------------------------#
-#      Step 1/11: Installing Kubectl      #
+#      Step 1/10: Installing Kubectl      #
 # ----------------------------------------#
 curl -LO https://dl.k8s.io/release/$KUBECTL_VERSION/bin/linux/amd64/kubectl
 sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 
 # -----------------------------------------#
-#    Step 2/11: Initialising Kubernetes    #
+#    Step 2/10: Initialising Kubernetes    #
 # -----------------------------------------#
 curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=$K3D_VERSION bash
 k3d cluster create mykeptn -p "8080:80@loadbalancer" --k3s-arg "--no-deploy=traefik@server:*"
 
 # ----------------------------------------#
-#      Step 3/11: Installing Helm         #
+#      Step 3/10: Installing Helm         #
 # ----------------------------------------#
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 && chmod 700 get_helm.sh
 ./get_helm.sh
 
 # -------------------------------------------#
-# Step 4/11: Installing Keptn Control Plane  #
+# Step 4/10: Installing Keptn Control Plane  #
 # -------------------------------------------#
 helm install keptn https://github.com/keptn/keptn/releases/download/$KEPTN_VERSION/keptn-$KEPTN_VERSION.tgz \
 -n keptn --create-namespace \
@@ -71,7 +71,7 @@ helm install keptn https://github.com/keptn/keptn/releases/download/$KEPTN_VERSI
 --set webhookService.resources.requests.memory=0
 
 # -----------------------------------------#
-#    Step 5/11: Installing Prometheus      #
+#    Step 5/10: Installing Prometheus      #
 # -----------------------------------------#
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm install prometheus prometheus-community/prometheus \
@@ -79,12 +79,12 @@ helm install prometheus prometheus-community/prometheus \
 --version ${PROMETHEUS_VERSION}
 
 # --------------------------------------------#
-# Step 6/11: Installing Prometheus Service   #
+# Step 6/10: Installing Prometheus Service   #
 # --------------------------------------------#
 helm install -n keptn prometheus-service https://github.com/keptn-contrib/prometheus-service/releases/download/$KEPTN_PROMETHEUS_SERVICE_VERSION/prometheus-service-$KEPTN_PROMETHEUS_SERVICE_VERSION.tgz --set resources.requests.cpu=0m
 
 # --------------------------------------------#
-# Step 7/11: Installing Job Executor Service  #
+# Step 7/10: Installing Job Executor Service  #
 # --------------------------------------------#
 KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 -d)
 helm install --namespace $JOB_EXECUTOR_NAMESPACE \
@@ -95,24 +95,19 @@ job-executor-service https://github.com/keptn-contrib/job-executor-service/relea
 kubectl apply -f https://raw.githubusercontent.com/christian-kreuzberger-dtx/keptn-job-executor-delivery-poc/main/job-executor/workloadClusterRoles.yaml
 
 # -----------------------------------------#
-#      Step 8/11: Installing Keptn CLI     #
+#      Step 8/10: Installing Keptn CLI     #
 # -----------------------------------------#
 curl -sL https://get.keptn.sh | KEPTN_VERSION=$KEPTN_VERSION bash
 
 # -----------------------------------------#
-#    Step 9/11: Installing GitHub CLI      #
+#    Step 9/10: Installing GitHub CLI      #
 # -----------------------------------------#
 wget -q https://github.com/cli/cli/releases/download/v${GH_CLI_VERSION}/gh_${GH_CLI_VERSION}_linux_amd64.deb
 chmod +x gh_${GH_CLI_VERSION}_linux_amd64.deb
 dpkg -i gh_${GH_CLI_VERSION}_linux_amd64.deb
 
 # -----------------------------------------#
-#    Step 10/11: Retrieving demo files     #
-# -----------------------------------------#
-kubectl apply -f ~/job-executor/workloadClusterRoles.yaml
-
-# -----------------------------------------#
-#    Step 11/11: Wait for all pods         #
+#    Step 10/10: Wait for all pods         #
 # -----------------------------------------#
 kubectl -n monitoring wait --for condition=Available=True --timeout=${POD_WAIT_TIMEOUT_MINS}m deployment/prometheus-kube-state-metrics
 kubectl -n monitoring wait --for condition=Available=True --timeout=${POD_WAIT_TIMEOUT_MINS}m deployment/prometheus-prometheus-pushgateway
