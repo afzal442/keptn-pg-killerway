@@ -143,6 +143,6 @@
 		"uilayout": "terminal"
 	},
 	"backend": {
-		"imageid": "ubuntu:2004"
+		"imageid": "kubernetes-kubeadm-2nodes"
 	}
 }
