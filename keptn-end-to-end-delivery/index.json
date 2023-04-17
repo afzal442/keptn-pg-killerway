@@ -131,8 +131,8 @@
 				"target": "~/self_healing",
 				"chmod": "+x"
 			}, {
-				"file": "scripts/self_healing/job/config.yaml",
-				"target": "~/self_healing/job",
+				"file": "scripts/portforward.sh",
+				"target": "~/",
 				"chmod": "+x"
 			}]
 		}
