@@ -1,3 +1,12 @@
+# Port Forward the Bridge
+Open up the Keptn's Bridge by port forwarding the UI. This will expose the UI on port `8080`{{}}:
+
+```
+./portforward.sh
+```{{exec}}
+
+The port-forwarding runs in the background so it should never stop, but if does, just re-run the above command.
+
 # Authenticate Keptn CLI
 
 Much like `kubectl`, the `keptn` CLI can be used to interact with the control plane.
