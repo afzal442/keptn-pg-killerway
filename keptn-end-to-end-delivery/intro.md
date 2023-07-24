@@ -1,4 +1,8 @@
 # Keptn Multistage Delivery and Self-Healing with Helm, Prometheus, Locust and SLO-based Quality Gates
+
+> Note: Keptn v1 (this tutorial) was primarily created for a non-Kubernetes environment.
+> If you are Kubernetes native, you may prefer the [Keptn Lifecycle Toolkit](https://lifecycle.keptn.sh/docs/install) which simplifies things and seamlessly works with Custom Resources.
+
 The goal of this tutorial is to:
 
 - Deploy a microservice (using [helm](https://helm.sh))
