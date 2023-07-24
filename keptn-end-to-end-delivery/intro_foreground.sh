@@ -1,7 +1,7 @@
 # -----------------------------------------#
 #        Setting Global variables          #
 # -----------------------------------------#
-DEBUG_VERSION=2
+DEBUG_VERSION=3
 KUBECTL_VERSION=v1.22.6
 GH_CLI_VERSION=2.23.0
 KEPTN_VERSION=1.4.0
