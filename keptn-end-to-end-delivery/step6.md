@@ -1,3 +1,8 @@
+> ⚠️ Keptn v1 (the product used in this tutorial) is now End of Life.
+> We suggest immediately migrating to [Keptn.](https://keptn.sh/latest/)
+> More information on this decision is [here.](https://medium.com/keptn/keptn-lifecycle-toolkit-is-now-keptn-e0812217bf46)
+> This tutorial is no longer maintained. ⚠️
+
 So far, a fairly robust delivery pipeline has been built. Optional manual approval steps have been added, automated quality gates were then added to automate and improve on the previous manual approval.
 Finally, release validation was added to run quality evaluations **after** a production release and ensure quality software **in** production.
 
