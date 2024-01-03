@@ -1,3 +1,8 @@
+> ⚠️ Keptn v1 (the product used in this tutorial) is now End of Life.
+> We suggest immediately migrating to [Keptn.](https://keptn.sh/latest/)
+> More information on this decision is [here.](https://medium.com/keptn/keptn-lifecycle-toolkit-is-now-keptn-e0812217bf46)
+> This tutorial is no longer maintained. ⚠️
+
 ## 🎉 Congratulations 🎉
 You have used Keptn to build a fortified end-to-end delivery orchestration whilst avoiding tool and vendor lock in.
 

@@ -1,3 +1,8 @@
+> ⚠️ Keptn v1 (the product used in this tutorial) is now End of Life.
+> We suggest immediately migrating to [Keptn.](https://keptn.sh/latest/)
+> More information on this decision is [here.](https://medium.com/keptn/keptn-lifecycle-toolkit-is-now-keptn-e0812217bf46)
+> This tutorial is no longer maintained. ⚠️
+
 In this step an automated go / no-go decision step will be added. If, based on your criteria, Keptn decides the artifact is a `pass`, the release will be automatically promoted to production.
 
 If the evaluation is a `failure`, the release will be blocked.

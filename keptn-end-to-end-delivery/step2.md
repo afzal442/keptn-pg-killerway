@@ -1,5 +1,10 @@
 ## Set Git Details
 
+> ⚠️ Keptn v1 (the product used in this tutorial) is now End of Life.
+> We suggest immediately migrating to [Keptn.](https://keptn.sh/latest/)
+> More information on this decision is [here.](https://medium.com/keptn/keptn-lifecycle-toolkit-is-now-keptn-e0812217bf46)
+> This tutorial is no longer maintained. ⚠️
+
 Keptn needs a brand new, uninitialised repo to store and manage configuration. We will create it automatically now.
 
 Run this script to set your details. If you make a mistake, just click this again to reset things:

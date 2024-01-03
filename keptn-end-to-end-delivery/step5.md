@@ -1,3 +1,8 @@
+> ⚠️ Keptn v1 (the product used in this tutorial) is now End of Life.
+> We suggest immediately migrating to [Keptn.](https://keptn.sh/latest/)
+> More information on this decision is [here.](https://medium.com/keptn/keptn-lifecycle-toolkit-is-now-keptn-e0812217bf46)
+> This tutorial is no longer maintained. ⚠️
+
 In this step, a second quality evaluation step will be added to validate the health of production **after** deployment.
 
 In a perfect world, a service would act identically in preproduction as production. In reality though, services can and will act differently in production for many different reasons.
